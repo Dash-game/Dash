@@ -1,25 +1,25 @@
 <template>
-  <div id="navbar" class="flex justify-center items-center bg-[#222434] text-[#D9D9D9] py-6 px-10">
+  <div id="navbar" class="flex justify-center items-center bg-primary text-text py-6 px-10">
     <NuxtLink to="/" class="hover:text-black mr-8">
       <img src="../assets/images/logo.png" alt="Logo" class="">      
     </NuxtLink>
     <div class="flex text-2xl">
-      <NuxtLink to="/games" class="navlink hover:text-[#10D89F] mr-5">
+      <NuxtLink to="/games" class="navlink hover:text-highlight mr-5">
         <span class="">遊戲商店</span>
         </NuxtLink>
-      <NuxtLink to="/games" class="navlink hover:text-[#10D89F] mr-5">
+      <NuxtLink to="/games" class="navlink hover:text-highlight mr-5">
         <span>遊戲類別</span>
       </NuxtLink>
-      <NuxtLink to="/news" class="navlink hover:text-[#10D89F] mr-5">
+      <NuxtLink to="/news" class="navlink hover:text-highlight mr-5">
         <span>遊戲新聞</span>
       </NuxtLink>
-      <NuxtLink to="/member" class="navlink hover:text-[#10D89F] mr-5">
+      <NuxtLink to="/member" class="navlink hover:text-highlight mr-5">
         <span class="">收藏庫</span>
       </NuxtLink>
     </div>
 
 
-    <div class="w-[364px] h-[44px] rounded-full border border-[#10D89F] ml-auto mr-6 px-5 flex justify-between items-center">
+    <div class="w-[364px] h-[44px] rounded-full border border-highlight ml-auto mr-6 px-5 flex justify-between items-center">
       <input type="text" class="bg-transparent outline-none h-[44px] text-2xl">
       <span class="hover:translate-x-1 duration-150">
         <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,18 +39,18 @@
         <path d="M22.4213 24.339C23.0251 24.339 23.5145 23.8506 23.5145 23.2481C23.5145 22.6456 23.0251 22.1572 22.4213 22.1572C21.8176 22.1572 21.3281 22.6456 21.3281 23.2481C21.3281 23.8506 21.8176 24.339 22.4213 24.339Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M1.65039 1.42999H6.02314L8.95288 16.0373C9.05284 16.5395 9.32665 16.9907 9.72636 17.3118C10.1261 17.6329 10.6262 17.8034 11.1392 17.7936H21.765C22.2781 17.8034 22.7782 17.6329 23.1779 17.3118C23.5776 16.9907 23.8514 16.5395 23.9514 16.0373L25.7005 6.88454H7.11632" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <div class="absolute top-[-6px] right-[-6px] w-[20px] h-[20] rounded-full bg-[#10D89F] flex justify-center items-center">
+      <div class="absolute top-[-6px] right-[-6px] w-[20px] h-[20] rounded-full bg-highlight flex justify-center items-center">
         <span>1</span>
       </div>
     </button>
-    <button class="h-[42px] rounded-[20px/21px] py-[6px] px-2 border-l-4 border-r-4 border-[#10D89F]">
-      <div class="h-[32px] flex justify-between items-center rounded-[14px/16px] px-4 border-l-4 border-r-4 border-[#10D89F]">
+    <button class="h-[42px] rounded-[20px/21px] py-[6px] px-2 border-l-4 border-r-4 border-highlight">
+      <div class="h-[32px] flex justify-between items-center rounded-[14px/16px] px-4 border-l-4 border-r-4 border-highlight">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M11.457 1.58856H14.7313C15.1655 1.58856 15.5819 1.76105 15.8889 2.06807C16.196 2.37509 16.3685 2.79151 16.3685 3.2257V14.6857C16.3685 15.1199 16.196 15.5363 15.8889 15.8433C15.5819 16.1504 15.1655 16.3228 14.7313 16.3228H11.457" stroke="#10D89F" stroke-width="1.84178" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M7.36426 13.0486L11.4571 8.95577L7.36426 4.86292" stroke="#10D89F" stroke-width="1.84178" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M11.4576 8.95569H1.63477" stroke="#10D89F" stroke-width="1.84178" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="text-xl text-[#10D89F] ml-2">登入</span>
+        <span class="text-xl text-highlight ml-2">登入</span>
       </div>
     </button>
 

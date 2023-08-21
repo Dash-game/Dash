@@ -1,4 +1,6 @@
 <template>
-  <NavbarComponent />
-  <slot />
+  <div>
+    <NavbarYC />
+    <slot />
+  </div>
 </template>
