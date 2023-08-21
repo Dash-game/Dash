@@ -1,10 +1,10 @@
 <template>
-  <div id="navbar" class="flex items-center justify-center px-10 py-6 bg-primary text-maintext">
+  <div id="navbar" class="flex items-center justify-center px-10 py-6 bg-primary">
     <NuxtLink to="/" class="mr-8 ">
       <img src="../assets/images/logo.png" alt="Logo" class="">      
     </NuxtLink>
     <div class="flex text-2xl">
-      <NuxtLink to="/games" class="mr-5 navlink text-maintext hover:text-highlight">
+      <NuxtLink to="/games" class="mr-5 navlink text-maintext  hover:text-highlight">
         <span class="">遊戲商店</span>
         </NuxtLink>
       <NuxtLink to="/games" class="mr-5 navlink text-maintext hover:text-highlight">
@@ -21,11 +21,11 @@
 
     <div class="w-[364px] h-[44px] rounded-full border border-highlight ml-auto mr-6 px-5 flex justify-between items-center">
       <input type="text" class="bg-transparent outline-none h-[44px] text-2xl">
-      <span class="duration-150 hover:translate-x-1">
+      <button type="button" class="duration-150 hover:translate-x-1">
         <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M21.0508 6.96032C21.3437 6.66743 21.3437 6.19256 21.0508 5.89966L16.2779 1.12669C15.985 0.833798 15.5101 0.833798 15.2172 1.12669C14.9243 1.41959 14.9243 1.89446 15.2172 2.18735L19.4598 6.42999L15.2172 10.6726C14.9243 10.9655 14.9243 11.4404 15.2172 11.7333C15.5101 12.0262 15.985 12.0262 16.2779 11.7333L21.0508 6.96032ZM0.520508 7.17999H20.5205V5.67999H0.520508V7.17999Z" fill="#D9D9D9"/>
         </svg>
-      </span>
+      </button>
     </div>
     <button class="w-[50px] h-[50px] rounded-full border mr-4 flex justify-center items-center">
       <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
