@@ -1,19 +1,19 @@
 <template>
-  <div id="navbar" class="flex justify-center items-center bg-primary text-text py-6 px-10">
-    <NuxtLink to="/" class="hover:text-black mr-8">
+  <div id="navbar" class="flex items-center justify-center px-10 py-6 bg-primary text-maintext">
+    <NuxtLink to="/" class="mr-8 ">
       <img src="../assets/images/logo.png" alt="Logo" class="">      
     </NuxtLink>
     <div class="flex text-2xl">
-      <NuxtLink to="/games" class="navlink hover:text-highlight mr-5">
+      <NuxtLink to="/games" class="mr-5 navlink text-maintext hover:text-highlight">
         <span class="">遊戲商店</span>
         </NuxtLink>
-      <NuxtLink to="/games" class="navlink hover:text-highlight mr-5">
+      <NuxtLink to="/games" class="mr-5 navlink text-maintext hover:text-highlight">
         <span>遊戲類別</span>
       </NuxtLink>
-      <NuxtLink to="/news" class="navlink hover:text-highlight mr-5">
+      <NuxtLink to="/news" class="mr-5 navlink text-maintext hover:text-highlight">
         <span>遊戲新聞</span>
       </NuxtLink>
-      <NuxtLink to="/member" class="navlink hover:text-highlight mr-5">
+      <NuxtLink to="/member" class="mr-5 navlink text-maintext hover:text-highlight">
         <span class="">收藏庫</span>
       </NuxtLink>
     </div>
@@ -21,7 +21,7 @@
 
     <div class="w-[364px] h-[44px] rounded-full border border-highlight ml-auto mr-6 px-5 flex justify-between items-center">
       <input type="text" class="bg-transparent outline-none h-[44px] text-2xl">
-      <span class="hover:translate-x-1 duration-150">
+      <span class="duration-150 hover:translate-x-1">
         <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M21.0508 6.96032C21.3437 6.66743 21.3437 6.19256 21.0508 5.89966L16.2779 1.12669C15.985 0.833798 15.5101 0.833798 15.2172 1.12669C14.9243 1.41959 14.9243 1.89446 15.2172 2.18735L19.4598 6.42999L15.2172 10.6726C14.9243 10.9655 14.9243 11.4404 15.2172 11.7333C15.5101 12.0262 15.985 12.0262 16.2779 11.7333L21.0508 6.96032ZM0.520508 7.17999H20.5205V5.67999H0.520508V7.17999Z" fill="#D9D9D9"/>
         </svg>
@@ -50,7 +50,7 @@
           <path d="M7.36426 13.0486L11.4571 8.95577L7.36426 4.86292" stroke="#10D89F" stroke-width="1.84178" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M11.4576 8.95569H1.63477" stroke="#10D89F" stroke-width="1.84178" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="text-xl text-highlight ml-2">登入</span>
+        <span class="ml-2 text-xl text-highlight">登入</span>
       </div>
     </button>
 
