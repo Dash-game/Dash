@@ -2,7 +2,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#10D89F',
+        primary: '#222434',
         section:'303141',
         text: 'D9D9D9',
         price: 'FF0A0A',
