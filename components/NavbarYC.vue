@@ -1,11 +1,18 @@
+<script setup>
+let menuOpen = ref(false)
+const toggleMenu = () => {
+  menuOpen.value = !menuOpen.value
+}
+</script>
+
 <template>
   <div id="navbar" class=" bg-primary relative px-3">
-    <button type="button" class="absolute top-[50%] -translate-y-[50%] xl:hidden p-3">
-        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 11.9996H18V9.99963H0V11.9996ZM0 6.99963H18V4.99963H0V6.99963ZM0 -0.000366211V1.99963H18V-0.000366211H0Z" fill="white"/>
-        </svg>
-      </button>
-    <div class="container mx-auto flex items-center justify-between py-2 xl:py-6">
+    <button type="button" class="absolute top-[50%] -translate-y-[50%] xl:hidden p-3" @click="toggleMenu">
+      <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 11.9996H18V9.99963H0V11.9996ZM0 6.99963H18V4.99963H0V6.99963ZM0 -0.000366211V1.99963H18V-0.000366211H0Z" fill="white"/>
+      </svg>
+    </button>
+    <div class="container mx-auto flex items-center justify-between py-2 xl:py-6 z-20">
       <NuxtLink to="/" class="block mx-auto xl:mr-8 xl:ml-0">
         <img src="../assets/images/logo.png" alt="Logo" class="h-12 xl:h-auto">      
       </NuxtLink>
@@ -61,7 +68,7 @@
    
 
 
-    <div id="menu" class="block xl:hidden absolute w-full top-full left-0 bg-section z-10 text-2xl">
+    <div id="menu" class="block xl:hidden absolute w-full top-full left-0 bg-section z-10 text-2xl duration-500" :class="{'-translate-y-[120%]':!menuOpen}">
       <ul class="text-center py-16">
         <li class=" mb-5">
           <NuxtLink to="/games" class="navlink text-maintext  hover:text-highlight">
