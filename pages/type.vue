@@ -1,4 +1,4 @@
 <template>
-categories
+ 遊戲類別
   
 </template>

@@ -1,9 +1,3 @@
 <template>
-
-game
-YC test test
-
-<SectiononeComponent></SectiononeComponent>
-
-
+  <GameSectiononeComponent></GameSectiononeComponent>
 </template>
