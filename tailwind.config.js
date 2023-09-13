@@ -11,6 +11,10 @@ module.exports = {
   ],
   theme: {
     container: {
+      padding: {
+        DEFAULT: "1rem",
+        sm: "0rem",
+      },
       center: true,
     },
     extend: {
