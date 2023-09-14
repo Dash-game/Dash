@@ -1,4 +1,4 @@
 <template>
-cart
-
+shop
+  
 </template>

@@ -6,5 +6,8 @@
 
 
 body {
-    font-family: 'Noto Sans TC','Kanit', sans-serif;
+    font-family: 'Kanit','Noto Sans TC', sans-serif;
+    @apply bg-primary ;
+    @apply text-light 
 }
+

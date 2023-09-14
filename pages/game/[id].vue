@@ -1,6 +1,7 @@
 <template>
+  <div>
 
-<SectiononeComponent></SectiononeComponent>
+<GameSectiononeComponent></GameSectiononeComponent>
 
 <!-- section 2 -->
 <section class="px-3 py-10 lg:py-14 bg-section text-light">
@@ -160,13 +161,10 @@
             </li>
           </ul>
         </div>
-
     </div>
-
   </div>
-  
 </section>
-
+</div>
 </template>
 
 <style scoped>
@@ -178,3 +176,6 @@
   overflow: hidden;
 }
 </style>
+
+  
+
