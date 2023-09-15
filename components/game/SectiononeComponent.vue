@@ -49,9 +49,9 @@
                 <img  src="/icons/xbox.png" alt="" />
               </div>
             </div>
-            <button class="w-full mb-2 buttonPrimary text-20">立即購買</button>
-            <button class="w-full  mb-2 buttonOutline text-20">加入購物車</button>
-            <button class="w-full  button text-20  buttonOutline">加入願望清單</button>
+            <button class="w-full buttonSm md:buttonXl buttonHover  mb-3  md:mb-5 ">立即購買</button>
+            <button class="w-full buttonOutlineSm buttonOutlineHover md:buttonOutlineXl mb-3   md:mb-5  ">加入購物車</button>
+            <button class="w-full buttonOutlineSm buttonOutlineHover md:buttonOutlineXl mb-3   ">加入願望清單</button>
           </div>
         </div>
       </div>
@@ -60,11 +60,7 @@
 </template>
 
 <style>
-  .buttonPrimary{
-    @apply bg-secondary py-3 rounded-xl  text-primary 
-  }
-  .buttonOutline{
-    @apply outline-secondary outline-1 outline py-3 rounded-xl  text-secondary
-  }
+
+
 
 </style>
