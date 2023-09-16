@@ -1,6 +1,6 @@
 <template>
   <article
-    class="bg-primary/70 bg-[url('/images/comment_bg.jpeg')] bg-cover bg-no-repeat bg-center bg-blend-multiply relative"
+    class="bg-primary/70 pt-20 py-12 bg-[url('/images/comment_bg.jpeg')] bg-cover bg-no-repeat bg-center bg-blend-multiply relative"
   >
     <div
       class="container flex flex-wrap gap-4 lg:gap-12 items-center border-b border-b-secondary pb-3 mb-12"
