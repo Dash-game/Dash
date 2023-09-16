@@ -130,5 +130,4 @@ const CommentList = computed(() => [
   }
 ])
 
-console.log(CommentList.value)
 </script>

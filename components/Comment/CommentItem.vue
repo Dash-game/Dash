@@ -1,5 +1,4 @@
 <template>
-  {{ isOverflowContent }}
   <div class="flex justify-between items-center mb-3">
     <div class="flex items-center">
       <GlobalAvatar url="https://picsum.photos/id/237/200/300" />
@@ -32,7 +31,7 @@
       ref="content"
     >
       <a
-        class="readmore block w-full text-end text-white/40 absolute bottom-1 right-3 ease-in-out duration-300 opacity-0"
+        class="readmore block w-full text-end text-white/40 absolute bottom-1 right-3 ease-in-out duration-300 invisible opacity-0"
         :class="{ active: isOverflowContent }"
         href="#"
         >more</a
