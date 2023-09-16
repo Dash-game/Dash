@@ -1,4 +1,0 @@
-<template>
-search
-  
-</template>

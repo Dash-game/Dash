@@ -1,7 +1,4 @@
 <template>
-  game YC test test
-
-  <SectiononeComponent></SectiononeComponent>
-  <CommentComponent />
-
+  <GameSectiononeComponent></GameSectiononeComponent>
+  <GameCommentComponent />
 </template>

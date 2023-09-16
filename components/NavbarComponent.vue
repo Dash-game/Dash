@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-green-400 text-white p-2">
-    <NuxtLink to="/" class="hover:text-black">Home</NuxtLink> |
-    <NuxtLink to="/search" class="hover:text-black">search</NuxtLink> |
-    <NuxtLink to="/member" class="hover:text-black">member</NuxtLink> |
-    <NuxtLink to="/news" class="hover:text-black">news</NuxtLink> |
-    <NuxtLink to="/game/1" class="hover:text-black">遊戲內頁</NuxtLink> |
-    <NuxtLink to="/help" class="hover:text-black">help</NuxtLink> |
-    <NuxtLink to="/login" class="hover:text-black">login</NuxtLink>
+  <div class=" bg-section text-white py-5 px-10 ">
+    <NuxtLink to="/shop" class=" hover:text-secondary">遊戲商店</NuxtLink> |
+    <NuxtLink to="/type" class="hover:text-secondary">遊戲類別</NuxtLink> |
+    <NuxtLink to="/news" class="hover:text-secondary">遊戲新聞</NuxtLink> |
+    <!-- 我先隨便訂一個id(暫定)  -->
+    <NuxtLink to="/game/1" class="hover:text-secondary">遊戲內頁</NuxtLink> |
+    <NuxtLink to="/help" class="hover:text-secondary">客服中心</NuxtLink> |
+
   </div>
 </template>
