@@ -1,3 +1,11 @@
+<script setup>
+import db from "@/db.json"
+// const data = db.game[0]
+const item = db.game[0]
+const data = item[item.id].data
+const score = data.metacritic.score / 10
+
+</script>
 <template>
   <section class="py-10 lg:py-14 bg-section text-light">
     <div class="container mx-auto">
@@ -10,25 +18,22 @@
                   <span class="mr-3 text-28">遊戲簡介</span>
                   <span class="font-medium text-24">description</span>
                 </h2>
-                <ul id="tags" class="flex text-[12px] text-white">
-                  <li class="px-3 py-1 mr-2 rounded bg-tab">合作</li>
-                  <li class="px-3 py-1 mr-2 rounded bg-tab">多人</li>
-                  <li class="px-3 py-1 mr-2 rounded bg-tab">解謎</li>
-                  <li class="px-3 py-1 mr-2 rounded bg-tab">分割畫面</li>
-                  <li class="px-3 py-1 mr-2 rounded bg-tab">單機合作</li>
+                <ul id="tags" class="flex flex-wrap text-[12px] text-white">
+                  <li v-for="tagItem in data.categories" class="px-3 py-1 mr-2 mb-2 rounded bg-tab">{{ tagItem.description }}</li>
+                  <li v-for="tagItem in data.genres" class="px-3 py-1 mr-2 mb-2 rounded bg-tab">{{ tagItem.description }}</li>
                 </ul>
               </div>
-              <div class="flex items-center justify-center order-3 w-16 h-16 bg-tab lg:order-2 rounded-xl text-28 lg:text-40 lg:rounded-3xl lg:w-20 lg:h-20">9.2</div>
+              <div class="flex items-center justify-center order-3 w-16 h-16 bg-score-high lg:order-2 rounded-xl text-28 lg:text-40 lg:rounded-3xl lg:w-20 lg:h-20" :class="{'bg-score-high':score>=8, 'bg-score-mid':score<8 && score>=4, 'bg-score-low':score<4}">
+                {{score}}
+              </div>
                 <ul class="order-2 lg:order-3 ">
-                  <li>發行日期：2021/03/26 </li>
-                  <li>開發人員：Hazelight</li>
-                  <li>發行商：Electronic Arts</li>
+                  <li>發行日期：{{ data.release_date.date }} </li>
+                  <li>開發人員：{{data.developers.join("、")}}</li>
+                  <li>發行商：{{data.publishers.join("、")}}</li>
                 </ul>
                 <button class="order-4 w-full py-3 border rounded-lg lg:w-64 text-secondary border-secondary md:rounded-xl text-20">評論此遊戲</button>
               </div>
-              <p class="">
-                在《雙人成行》這款專為雙人合作遊玩打造，跨越類型界線的橫向捲軸冒險遊戲中，踏上人生中最瘋狂的旅程。利用好友通行證*邀請好友免費遊玩。遊玩一對經常起爭執的夫妻科迪與小梅，兩人因為魔法而變成了玩偶。這兩個人被困在一個充滿驚喜的奇幻世界中，並且不得不挽救他們之間的感情。在每個新關卡中掌握獨特且有關連的角色技能。幫助彼此跨越各種令人意外的障礙與爆笑的時刻。踹向流氓松鼠毛茸茸的尾巴、駕駛一條內褲、在擁擠的夜店中成為 DJ，並在魔法雪景球中搭乘雪橇。體驗一段溫馨且爆笑  ...  
-              </p>
+              <p v-html="data.about_the_game"></p>
           </div>
           
           <div id="combo" class="lg:row-span-2 ">
@@ -44,7 +49,19 @@
               <span class="font-medium text-24">Special</span>
             </h2>
             <ul>
-              <li class="px-4 pt-6 pb-5 mb-7 border border-labellight  rounded-[20px]">
+              <li v-for="packageItem in data.package_groups" class="px-4 pt-6 pb-5 mb-7 border border-labellight  rounded-[20px]">
+                <h3 class="mb-2 text-24">購買豪華禮包</h3>
+                <p class="mb-4 text-18">包含PUNG:BATTLEGROUNDS 遊戲本體 + DLC</p>
+                <div class="flex items-center mb-6">
+                  <div class="[text-shadow:_16px_12px_0_rgb(255_255_255_/_5%),_0_5px_5px_#0004] text-32 font-bold text-labeldark">${{packageItem.subs[0].price_in_cents_with_discount / 100}}</div>
+                  <div class="ml-6">
+                    <div v-if="packageItem.subs.percent_savings" class="mb-0 font-bold leading-5 text-20 text-labellight">-{{packageItem.subs.percent_savings}}%</div>
+                    <div v-if="packageItem.subs.percent_savings" class="leading-3 line-through text-12">1982</div>
+                  </div>
+                </div>
+                <button class="w-full py-3 border rounded-lg border-secondary text-secondary">加入購物車</button>
+              </li>
+              <!-- <li class="px-4 pt-6 pb-5 mb-7 border border-labellight  rounded-[20px]">
                 <h3 class="mb-2 text-24">購買豪華禮包</h3>
                 <p class="mb-4 text-18">包含PUNG:BATTLEGROUNDS 遊戲本體 + DLC</p>
                 <div class="flex items-center mb-6">
@@ -67,7 +84,7 @@
                   </div>
                 </div>
                 <button class="w-full py-3 border rounded-lg border-secondary text-secondary">加入購物車</button>
-              </li>
+              </li> -->
 
             </ul>
           </div>
@@ -117,3 +134,14 @@
     </div>
   </section>
 </template>
+<style scoped>
+.bg-score-high {
+background: linear-gradient(42deg, #145096 24.81%, #FF0006 100%);
+}
+.bg-score-mid {
+background: linear-gradient(42deg, #145096 24.81%, #10D89F 100%);
+}
+.bg-score-low {
+  background: linear-gradient(42deg, #14966F 24.81%, #FFB800 100%);
+}
+</style>
