@@ -12,11 +12,7 @@ module.exports = {
   theme: {
     container: {
       padding: {
-<<<<<<< HEAD
-        DEFAULT: "0.75rem",
-=======
         DEFAULT: '0.75rem'
->>>>>>> main
       },
       center: true
     },
