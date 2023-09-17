@@ -8,5 +8,4 @@
     <NuxtLink to="/help" class="hover:text-secondary">客服中心</NuxtLink> |
 
   </div>
-
 </template>
