@@ -1,6 +1,6 @@
 <template>
   <div class="bg-sec-banner bg-cover">
-    <div class="container py-10 md:py-20">
+    <div class="container py-8 md:py-20">
       <hr class="mb-2 border-secondary" />
       <h1 class="text-20 xl:text-40 font-bold mb-4 text-white">
         PUBG: BATTLEGROUNDS
@@ -21,37 +21,61 @@
 
         <!-- 右 -->
         <div class="md:col-span-4 h-full">
-          <div class="flex flex-col h-full ">
+          <div class="flex flex-col h-full">
             <!-- tittle -->
-            <div class="flex-1">
+            <div class="flex-1 mb-2">
               <img src="/images/sec1-img5.jpg" alt="" />
-              <hr class="mb-2 mt-6 border-secondary" />
+              <hr class="mb-3 mt-6 border-secondary" />
               <p class="font-bold text-28 hidden xl:block">
                 PUBG: BATTLEGROUNDS
               </p>
               <p>
-                《雙人成行》中踏上人生中最瘋狂的旅程。利用好友通行證*邀請好友免費遊玩。
+                在《雙人成行》中踏上人生中最瘋狂的旅程，利用好友通行證*邀請好友免費遊玩。
               </p>
             </div>
             <!-- price -->
-            <div class="flex justify-between items-center mb-7 ">
-              <div class="flex items-center">
-                <p class="text-36 text-labeldark font-medium mr-6">$ 1,982</p>
+            <div class="flex justify-between items-center mb-7">
+              <div class="flex items-center font-medium relative">
+                <p class="text-36 text-labeldark mr-6">$ 1,982</p>
+                <p class="text-36 opacity-5  mr-4 absolute translate-x-6 translate-y-4">$ 1,982</p>
                 <div>
-                  <p class="text-labellight leading-none text-32">-42%</p>
-                  <p class="text-18 leading-none line-through"> $ 1,982 </p>
+                  <p class="text-labellight leading-none text-32">- 42%</p>
+                  <div class="relative text-center">
+                    <!-- 定位刪除線 -->
+                    <div
+                      class="h-[1px] w-full bg-white absolute -left-0 top-1/2"
+                    ></div>
+                    <p class="text-18 leading-none">$ 1,982</p>
+                  </div>
                 </div>
               </div>
 
               <div class="flex">
-                <img class="mr-1" src="/icons/pc.png" alt="" />
-                <img class="mr-1" src="/icons/ps4.png" alt="" />
-                <img  src="/icons/xbox.png" alt="" />
+                <Icon name="mdi:microsoft-windows" class="mr-1 text-24" />
+                <Icon name="mdi:linux" class="mr-1 text-24" />
+                <Icon name="mdi:laptop-mac" class="text-24" />
               </div>
             </div>
-            <button class="w-full buttonSm md:buttonXl buttonHover  mb-3  md:mb-5 ">立即購買</button>
-            <button class="w-full buttonOutlineSm buttonOutlineHover md:buttonOutlineXl mb-3   md:mb-5  ">加入購物車</button>
-            <button class="w-full buttonOutlineSm buttonOutlineHover md:buttonOutlineXl mb-3   ">加入願望清單</button>
+            <button
+              class="w-full button-sm md:button-xl button-hover mb-3 md:mb-5 flex"
+            >
+              <p class="w-10 ml-6 absolute opacity-40">BUY</p>
+              <p class="flex-1">立即購買</p>
+
+              <p></p>
+            </button>
+            <button
+              class="w-full button-outline-sm button-outline-hover md:button-outline-xl mb-3 md:mb-5"
+            >
+              <p class="w-10 ml-6 absolute opacity-40">Cart</p>
+              <p class="flex-1">加入購物車</p>
+            </button>
+            <button
+              class="w-full button-outline-sm button-outline-hover md:button-outline-xl"
+            >
+              <p class="w-10 ml-6 absolute opacity-40">Add</p>
+              <p class="flex-1">加入願望清單</p>
+            </button>
           </div>
         </div>
       </div>
@@ -59,8 +83,4 @@
   </div>
 </template>
 
-<style>
-
-
-
-</style>
+<style></style>
