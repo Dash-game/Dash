@@ -19,8 +19,8 @@ const score = data.metacritic.score / 10
                   <span class="font-medium text-24">description</span>
                 </h2>
                 <ul id="tags" class="flex flex-wrap text-[12px] text-white">
-                  <li v-for="tagItem in data.categories" class="px-3 py-1 mr-2 mb-2 rounded bg-tab">{{ tagItem.description }}</li>
-                  <li v-for="tagItem in data.genres" class="px-3 py-1 mr-2 mb-2 rounded bg-tab">{{ tagItem.description }}</li>
+                  <li v-for="tagItem in data.categories" class="px-3 py-1 mb-2 mr-2 rounded bg-tab" :key="tagItem">{{ tagItem.description }}</li>
+                  <li v-for="tagItem in data.genres" class="px-3 py-1 mb-2 mr-2 rounded bg-tab" :key="tagItem">{{ tagItem.description }}</li>
                 </ul>
               </div>
               <div class="flex items-center justify-center order-3 w-16 h-16 bg-score-high lg:order-2 rounded-xl text-28 lg:text-40 lg:rounded-3xl lg:w-20 lg:h-20" :class="{'bg-score-high':score>=8, 'bg-score-mid':score<8 && score>=4, 'bg-score-low':score<4}">
@@ -49,7 +49,7 @@ const score = data.metacritic.score / 10
               <span class="font-medium text-24">Special</span>
             </h2>
             <ul>
-              <li v-for="packageItem in data.package_groups" class="px-4 pt-6 pb-5 mb-7 border border-labellight  rounded-[20px]">
+              <li v-for="packageItem in data.package_groups" class="px-4 pt-6 pb-5 mb-7 border border-labellight  rounded-[20px]" :key="packageItem.name">
                 <h3 class="mb-2 text-24">購買豪華禮包</h3>
                 <p class="mb-4 text-18">包含PUNG:BATTLEGROUNDS 遊戲本體 + DLC</p>
                 <div class="flex items-center mb-6">
