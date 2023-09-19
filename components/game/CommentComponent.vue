@@ -1,6 +1,6 @@
 <template>
   <article
-    class="bg-primary/70 pt-20 py-12 bg-[url('/images/comment_bg.jpeg')] bg-cover bg-no-repeat bg-center bg-blend-multiply relative"
+    class="bg-primary/80 pt-20 py-12 bg-[url('/images/comment_bg.jpeg')] bg-cover bg-no-repeat bg-center bg-blend-multiply relative"
   >
     <div
       class="container flex flex-wrap gap-4 lg:gap-12 items-center border-b border-b-secondary pb-3 mb-12"
@@ -24,13 +24,13 @@
     </div>
 
     <div class="container text-light z-20">
-      <div class="flex px-7 flex-wrap">
+      <div class="flex flex-wrap">
         <article
-          class="w-full lg:w-1/2 lg:px-7 xl:px-14 mb-8 flex flex-col"
+          class="w-full lg:w-1/2 px-7 mb-8 flex flex-col"
           v-for="comment in CommentList"
           :key="comment.id"
         >
-          <CommentItem :data="{ ...comment }" />
+          <CommentItem :data="{ ...comment }" :showModal="showModal" />
         </article>
       </div>
     </div>
@@ -41,11 +41,14 @@
         >顯示更多...</a
       >
     </div>
+
+    <commonModal ref="commentModal" :data="commentModalData"></commonModal>
   </article>
 </template>
 
 <script setup>
-import CommentItem from '@/components/Comment/CommentItem.vue'
+import CommentItem from '@/components/comment/CommentItem.vue'
+import commonModal from '@/components/common/Modal.vue'
 
 const RandomID = () => {
   return Math.floor(Math.random() * (999999 - 100000)) + 100000
@@ -130,4 +133,11 @@ const CommentList = computed(() => [
   }
 ])
 
+const commentModal = ref(null)
+console.log(commentModal)
+let commentModalData = ref({})
+const showModal = (data) => {
+  commentModalData = { ...data }
+  commentModal.show()
+}
 </script>
