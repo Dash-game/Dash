@@ -2,9 +2,9 @@
   <div class="bg-sec-banner bg-cover overflow-hidden">
     <div class="container py-8 md:py-12 lg:py-16 xl:py-18 relative">
       <hr
-        class="mb-2 border-secondary md:absolute -right-1/2 md:w-full top-[100px] "
+        class="mb-2 border-secondary md:absolute -right-1/2 md:w-[645px] lg:w-[860px] xl:w-[1070px] 2xl:w-[1280px]  md:top-[70px] lg:top-[90px] xl:top-[100px] "
       />
-      <h1 class="text-20 xl:text-40 font-bold mb-4 text-white">
+      <h1 class="text-20 md:text-32 xl:text-40 font-bold mb-4 text-white">
         PUBG: BATTLEGROUNDS
       </h1>
       <!-- 中間區塊 -->
@@ -48,13 +48,13 @@
           <div class="flex flex-col h-full">
             <!-- tittle -->
             <div class="flex-1 mb-2 relative ">
-              <img src="/images/sec1-img5.jpg" alt="" class="w-full mb-6" />
+              <img src="/images/sec1-img5.jpg" alt="" class="w-full mb-8 lg:mb-4" />
               <p class="font-bold text-28 hidden xl:block mt-3">
                 PUBG: BATTLEGROUNDS
               </p>
               <!-- 定位線 -->
-              <hr class="border-secondary md:absolute -right-1/2 md:w-full" />
-              <p class=" ">
+              <hr class="border-secondary md:absolute top-36 lg:top-[185px] xl:top-[260px] 2xl:top-[305px] lg:w-[490px] xl:w-[600px] -right-1/2 md:w-[360px] 2xl:w-[730px]" />
+              <p class=" mt-3">
                 在《雙人成行》中踏上人生中最瘋狂的旅程，利用好友通行證*邀請好友免費遊玩。
               </p>
             </div>
