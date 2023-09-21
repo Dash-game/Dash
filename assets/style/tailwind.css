@@ -6,7 +6,7 @@
 
 body {
   font-family: "Kanit", "Noto Sans TC", sans-serif;
-  @apply bg-primary;
+  @apply bg-primary bg-no-repeat;
   @apply text-light;
 }
 
