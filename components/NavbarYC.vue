@@ -8,44 +8,54 @@ const toggleMenu = () => {
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 right-0 w-full h-full backdrop-blur-lg z-20" :class="{'hidden':!menuOpen}"></div>
+  <div class="fixed top-0 left-0 right-0 w-full h-full backdrop-blur-lg z-20 xl:hidden duration-300" :class="{'hidden':!menuOpen}" @click="toggleMenu"></div>
   <div id="navbar" class="relative ">
-    <div class="sticky z-20 w-full t-0 bg-primary bg-opacity-80">
+    <div class=" z-20 w-full  bg-primary bg-opacity-80 
+      after:absolute 
+      after:inset-0 
+      after:bg-primary 
+      after:z-20
+      after:xl:hidden
+      ">
       <!-- MENU 鍵 -->
-      <button type="button" class="absolute top-[50%] -translate-y-[50%] xl:hidden p-3" @click="toggleMenu">
-        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 11.9996H18V9.99963H0V11.9996ZM0 6.99963H18V4.99963H0V6.99963ZM0 -0.000366211V1.99963H18V-0.000366211H0Z" fill="white"/>
-        </svg>
+      <button type="button" class="absolute top-[50%] -translate-y-[50%] xl:hidden p-3 z-30" @click="toggleMenu">
+        <div class="w-6 h-5">
+          <ul class="flex flex-col justify-between h-full">
+            <li class="bg-white h-1 w-full origin-top-left duration-300" :class="{'rotate-45 translate-x-1':menuOpen}"></li>
+            <li class="bg-white h-1 w-full duration-200" :class="{'opacity-0':menuOpen}"></li>
+            <li class="bg-white h-1 w-full origin-bottom-left duration-300" :class="{'-rotate-45 translate-x-1':menuOpen}"></li>
+          </ul>
+        </div>
       </button>
       <div class="container z-20 flex items-center justify-between py-2 mx-auto xl:py-6 ">
-        <NuxtLink to="/" class="w-auto mx-auto xl:mr-8 xl:ml-0">
+        <NuxtLink to="/" class="w-auto mx-auto xl:mr-8 xl:ml-0 z-30">
           <img src="../assets/images/logo.png" alt="Logo" class="h-12 xl:h-auto">      
         </NuxtLink>
-        <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full text-2xl text-center top-full xl:relative bg-section z-20" :class="{'-translate-x-full':!menuOpen}">
-          <ul class="xl:flex pt-10 pb-8">
+        <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full text-2xl text-center top-full xl:relative bg-section xl:bg-primary z-20 duration-300" :class="{'-translate-y-full xl:translate-y-0 ':!menuOpen}">
+          <ul class="xl:flex pt-10 pb-8 xl:py-0">
             <li class="mb-5 xl:mb-0 xl:mr-5">
-              <NuxtLink to="/" class=" navlink text-light active">
+              <NuxtLink to="/" class="block text-light navlink active">
                 <span class="pseudo">遊戲商店</span>
                 <span data-text="遊戲商店" class="part"></span>
                 <span data-text="遊戲商店" class="part"></span>
               </NuxtLink>
             </li>
             <li class="mb-5 xl:mb-0 xl:mr-5">
-              <NuxtLink to="/" class="block navlink  text-light">
+              <NuxtLink to="/" class="block  text-light navlink">
                 <span class="pseudo">遊戲類別</span>
                 <span data-text="遊戲類別" class="part"></span>
                 <span data-text="遊戲類別" class="part"></span>
               </NuxtLink>
             </li>
             <li class="mb-5 xl:mb-0 xl:mr-5">
-              <NuxtLink to="/" class="block navlink  text-light">
+              <NuxtLink to="/" class="block  text-light navlink">
                 <span class="pseudo">遊戲新聞</span>
                 <span data-text="遊戲新聞" class="part"></span>
                 <span data-text="遊戲新聞" class="part"></span>
               </NuxtLink>
             </li>
             <li class="mb-5 xl:mb-0 xl:mr-5">
-              <NuxtLink to="/" class="block navlink  text-light">
+              <NuxtLink to="/" class="block  text-light navlink">
                 <span class="pseudo">收藏庫</span>
                 <span data-text="收藏庫" class="part"></span>
                 <span data-text="收藏庫" class="part"></span>
@@ -53,7 +63,7 @@ const toggleMenu = () => {
             </li>
           </ul>
           
-          <div class="w-full xl:w-[364px] h-[44px] xl:rounded-full border border-secondary ml-auto xl:mr-6 xl:px-5 flex xl:hidden 2xl:flex justify-between items-center order-first xl:order-none">
+          <div class="w-full xl:w-[364px] h-[44px] xl:rounded-full border border-secondary ml-auto xl:mr-6 pr-5 xl:pl-5 flex xl:hidden 2xl:flex justify-between items-center order-first xl:order-none">
             <input type="text" class="bg-transparent shadow-none border-none outline-none h-[44px] text-2xl w-full">
             <button type="button" class="duration-150 hover:translate-x-1">
               →
@@ -62,24 +72,24 @@ const toggleMenu = () => {
 
 
           <button class="w-[50px] h-[50px] rounded-full border  xl:ml-auto 2xl:ml-0 mr-4 hidden xl:flex justify-center items-center">
-            Ｑ
+            <Icon name="uil:search" color="white" />
           </button>
           <button class="relative w-[50px] h-[50px] rounded-full border mr-[30px] hidden xl:flex justify-center items-center">
-            Ｒ
-            <div class="absolute top-[-6px] right-[-6px] w-[20px] h-[20] rounded-full bg-secondary flex justify-center items-center">
-              <span>1</span>
+            <Icon name="ion:cart" color="white" />
+            <div class="absolute top-[-6px] right-[-6px] w-5 h-5 rounded-full bg-secondary text-primary flex justify-center items-center font-bold text-12">
+              <span>88</span>
             </div>
           </button>
-          <button class="block h-[42px] xl:rounded-[20px/21px] py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary w-full xl:w-auto bg-primary">
+          <button class="block h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary w-full xl:w-auto bg-primary">
             <div class="h-[32px] flex justify-center items-center xl:rounded-[14px/16px] xl:px-4 xl:border-l-4 xl:border-r-4 xl:border-secondary">
-              →
+              <Icon name="majesticons:login-line" color="rgb(16 216 159)" />
               <span class="ml-2 text-xl text-secondary whitespace-nowrap">登入</span>
             </div>
           </button>
         </div>
       </div>
     </div>
-  
+   
   </div>
 
 </template>
