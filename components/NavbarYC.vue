@@ -99,7 +99,6 @@ const toggleMenu = () => {
 
     &::before {
     background-color: rgb(16 216 159 / var(--tw-text-opacity));
-
     }
   }
 
@@ -119,10 +118,10 @@ const toggleMenu = () => {
   &:hover
   {
     &::before {
-    width: 100%;
-    left:0;
-    transition: width position 0.2s
-  }
+      width: 100%;
+      left:0;
+      transition: width position 0.2s
+    }
   }
 }
 
@@ -130,44 +129,38 @@ const toggleMenu = () => {
 .navlink .pseudo {
   padding-left: 2px;
   padding-right: 2px;
-    opacity: 0;
-    // background-color: #FAA5;
+  opacity: 0;
 }
 
 .navlink .part {
-    width: 100%;
-    position: absolute;
-    height: 50%;
-    overflow: hidden;
-    top: 0;
-    left: 20px;
-    // transition-duration: .3s;
-
+  width: 100%;
+  position: absolute;
+  height: 50%;
+  overflow: hidden;
+  top: 0;
+  left: 20px;
 }
 
 .navlink .part:after {
-    content: attr(data-text);
-    position: absolute;
-
-    top: 0;
-    left: 0px;
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0px;
 }
 
 .navlink .part + .part {
-    top: 50%;
+  top: 50%;
 }
 
 .navlink .part + .part:after {
-    top: -100%;
-    transition: .3s;
+  top: -100%;
+  transition: .3s;
 }
 
-
 .navlink:hover .part + .part:after {
-    left: 4px;
+  left: 4px;
 }
 .navlink:hover {
   transform: translateX(-2px)
-
 }
 </style>
