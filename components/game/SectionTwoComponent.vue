@@ -3,16 +3,14 @@ import db from "@/db.json"
 const item = db.game[0]
 
 
-
 // const data = item[item.id].data
-
 
 
 const data = ref({})
 const getData = async () => {
-  await useFetch('https://store.steampowered.com/api/appdetails?appids=1627720&l=tchinese').then((res)=>{
-  data.value = res.data._rawValue[1627720].data
-  // console.log(res.data._rawValue[1627720].data)
+  await useFetch('https://store.steampowered.com/api/appdetails?appids=1446780&l=tchinese').then((res)=>{
+  data.value = res.data._rawValue[1446780].data
+  console.log(data.value)
 })
 }
 getData()
@@ -35,8 +33,8 @@ getData()
                   <li v-for="tagItem in data.genres" class="px-3 py-1 mb-2 mr-2 rounded bg-tab" :key="tagItem">{{ tagItem.description }}</li>
                 </ul>
               </div>
-              <div v-if="data.metacritic?.score" class="flex items-center justify-center order-3 w-16 h-16 bg-score-high lg:order-2 rounded-xl text-28 lg:text-40 lg:rounded-3xl lg:w-20 lg:h-20" :class="{'bg-score-high':data.metacritic?.score>=80, 'bg-score-mid':data.metacritic?.score<80 && data.metacritic?.score>=40, 'bg-score-low':data.metacritic?.score<40}">
-                {{data.metacritic.score / 10}}
+              <div v-if="data?.metacritic?.score" class="flex items-center justify-center order-3 w-16 h-16 bg-score-high lg:order-2 rounded-xl text-28 lg:text-40 lg:rounded-3xl lg:w-20 lg:h-20" :class="{'bg-score-high':data?.metacritic?.score>=80, 'bg-score-mid':data?.metacritic?.score<80 && data?.metacritic?.score>=40, 'bg-score-low':data?.metacritic?.score<40}">
+                {{data?.metacritic?.score / 10}}
               </div>
                 <ul class="order-2 lg:order-3 ">
                   <li>發行日期：{{ data.release_date.date }} </li>
@@ -48,7 +46,7 @@ getData()
               <p v-html="data.about_the_game"></p>
           </div>
           
-          <div id="combo" class="lg:row-span-2 " v-if="data.packages.length>1">
+          <div id="combo" class="lg:row-span-2 " v-if="data.packages">
             <h2 class="pb-1 mb-5 border-b border-secondary lg:border-transparent relative 
             after:absolute 
             after:w-full 
@@ -68,13 +66,18 @@ getData()
                   <div class="[text-shadow:_16px_12px_0_rgb(255_255_255_/_5%),_0_5px_5px_#0004] text-32 font-bold text-labeldark">${{packageItem.option_text.split('NT$')[2]}}</div>
                   <div class="ml-6">
                     <div v-if="packageItem.percent_savings_text" class="mb-0 font-bold leading-5 text-20 text-labellight">{{packageItem.percent_savings_text}}</div>
-                    <div v-if="packageItem.percent_savings_text" class="leading-3 line-through text-12">${{packageItem.option_text.split('NT$')[1].split('</span>')[0]}}</div>
+                    <div v-if="packageItem.percent_savings_text" class="relative leading-3 text-12 
+                    after:w-full 
+                    after:absolute 
+                    after:h-[1px] 
+                  after:bg-light 
+                    after:left-0 
+                    after:top-1/2">${{packageItem.option_text.split('NT$')[1].split('</span>')[0]}}</div>
                   </div>
                 </div>
-                <button class="w-full py-3 border rounded-lg border-secondary text-secondary">加入購物車</button>
+                <button class="w-full py-3 rounded-lg button-outline-hover">加入購物車</button>
               </li>
               
-
             </ul>
           </div>
 
@@ -115,7 +118,7 @@ getData()
 
               </li>
             </ul>
-            <button class="block py-3 mx-auto border rounded-lg w-52 border-light text-light">顯示更多</button>
+            <button class="block py-3 mx-auto border rounded-lg w-52 border-light text-light ">顯示更多</button>
           </div>
 
 
