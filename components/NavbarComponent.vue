@@ -3,18 +3,35 @@ let menuOpen = ref(false)
 const toggleMenu = () => {
   menuOpen.value = !menuOpen.value
 }
+const props = defineProps({
+  hide: false
+})
+const hide = ref({})
 
-// 上滑顯示
+watch(
+  () => props.hide,
+  (newValue) => {
+    hide.value = newValue
+  },
+  {
+    immediate: true
+  }
+)
+
 
 // teleport overflow hidden
-
 </script>
 
 <template>
-  <CartBtnComponent class="fixed bottom-10 right-0 xl:hidden z-10"/>
+<div>
+  <!-- 購物車 -->
+    <CartBtnComponent class="fixed bottom-10 right-0 xl:hidden z-10"/>
 
+    <!-- 毛玻璃 -->
   <div class="fixed top-0 left-0 right-0 w-full h-full backdrop-blur-lg z-20 xl:hidden duration-300 " :class="{'hidden':!menuOpen}" @click="toggleMenu"></div>
-  <div id="navbar" class="fixed top-0 left-0 right-0 z-[1000]">
+
+  <!-- Navbar -->
+  <div id="navbar" class="fixed top-0 left-0 right-0 z-[1000] duration-300" :class="{'xl:-translate-y-full':hide}">
     <div class=" z-80 w-full  bg-primary bg-opacity-80 
       after:absolute 
       after:inset-0 
@@ -36,6 +53,7 @@ const toggleMenu = () => {
         <NuxtLink to="/" class="w-auto mx-auto xl:mr-8 xl:ml-0 z-30">
           <img src="../assets/images/logo.png" alt="Logo" class="h-12 xl:h-auto">      
         </NuxtLink>
+        <!-- MENU -->
         <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full text-2xl text-center top-full xl:relative bg-primary xl:bg-transparent z-20 duration-300" :class="{'-translate-y-full xl:translate-y-0 ':!menuOpen}">
           <ul class="xl:flex pt-10 pb-8 xl:py-0">
             <li class="mb-5 xl:mb-0 xl:mr-5">
@@ -89,6 +107,8 @@ const toggleMenu = () => {
     </div>
    
   </div>
+
+</div>
 
 </template>
 
