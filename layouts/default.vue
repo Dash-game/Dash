@@ -21,7 +21,11 @@ onMounted(()=>{
 </script>
 <template>
   <div>
-    <NavbarComponent :hide="hide" />
+    <NavbarComponent :hide="hide"
+      @wheel.prevent
+      @touchmove.prevent
+      @scroll.prevent
+    />
     <slot />
   </div>
 </template>
