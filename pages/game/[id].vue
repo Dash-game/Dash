@@ -1,4 +1,4 @@
 <template>
-  <GameSectiononeComponent></GameSectiononeComponent>
+  <GameSectionOneComponent></GameSectionOneComponent>
   <GameCommentComponent />
 </template>
