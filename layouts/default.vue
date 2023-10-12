@@ -2,4 +2,5 @@
   <!-- <NavbarComponent /> -->
   <Header />
   <slot />
+  <Footer />
 </template>
