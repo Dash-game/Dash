@@ -17,6 +17,7 @@
           </h3>
           <button
             type="button"
+            ref="CloseModal"
             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
           >
             <svg
@@ -83,11 +84,22 @@ const props = defineProps({
   }
 })
 
-let modal = ref(null)
+const modal = ref(null)
+const CloseModal = ref(null)
+const $modal = ref(null)
 
 const show = () => {
-  modal.value.show()
+  $modal.value.show()
 }
+
+const hide = () => {
+  $modal.value.hide()
+}
+
+defineExpose({
+  show,
+  hide
+})
 
 onMounted(() => {
   const options = {
@@ -106,7 +118,8 @@ onMounted(() => {
       console.log('modal has been toggled')
     }
   }
-  modal.value = new Modal(modal.value, options)
-  //   show()
+  if (modal) {
+    $modal.value = new Modal(modal.value, options)
+  }
 })
 </script>

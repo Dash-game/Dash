@@ -37,7 +37,7 @@
     <div class="flex items-center justify-center z-20">
       <a
         href="#"
-        class="block w-fit ml- border p-3 min-w-[220px] rounded-lg text-center ml-"
+        class="block w-fit ml- border p-3 min-w-[220px] rounded-lg text-center"
         >顯示更多...</a
       >
     </div>
@@ -138,6 +138,6 @@ console.log(commentModal)
 let commentModalData = ref({})
 const showModal = (data) => {
   commentModalData = { ...data }
-  commentModal.show()
+  commentModal.value.show()
 }
 </script>
