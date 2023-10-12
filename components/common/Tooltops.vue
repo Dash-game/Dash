@@ -13,7 +13,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { Tooltip } from 'flowbite'
 
 const triggerEl = ref(null)
