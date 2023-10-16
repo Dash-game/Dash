@@ -41,7 +41,7 @@ getData()
                   <li>開發人員：{{data.developers.join("、")}}</li>
                   <li>發行商：{{data.publishers.join("、")}}</li>
                 </ul>
-                <button class="order-4 w-full py-3 border rounded-lg lg:w-64 text-secondary border-secondary md:rounded-xl text-20">評論此遊戲</button>
+                <button class="order-4 w-full button-outline-md button-outline-hover">評論此遊戲</button>
               </div>
               <p v-html="data.about_the_game"></p>
           </div>

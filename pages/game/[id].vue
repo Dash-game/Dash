@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!-- <GameSectiononeComponent></GameSectiononeComponent> -->
+    <GameSectiononeComponent></GameSectiononeComponent>
     <GameSectionTwoComponent></GameSectionTwoComponent>
-    <!-- <GameCommentComponent /> -->
+    <GameCommentComponent />
 </div>
 
 
