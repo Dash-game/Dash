@@ -1,6 +1,5 @@
 <template>
-  <!-- <NavbarComponent /> -->
-  <Header />
+  <NavbarComponent />
   <slot />
   <Footer />
 </template>

@@ -10,18 +10,11 @@
       </div>
    </footer>
 </template>
-<style>
-  .footer{
-    /* width: 50%;
-    margin: auto; */
-  }
+<style scoped>
   .container{
     border-radius: 40px 40px 0px 0px;
-    /* background: #303141; */
-    /* text-align: center; */
   }
   .container span{
     font-size: clamp(14px, 2.5vw, 18px);
-    /* color: #D9D9D9; */
   }
 </style>
