@@ -1,28 +1,27 @@
 <template>
   <!-- Same Game -->
-  <section>
+  <section class="text-white bg-[url('/images/gameSame/wallpaper.png')] bg-center bg-no-repeat bg-blend-multiply bg-Cover">
     <div class="container py-16 space-y-12">
       <!-- 相似的遊戲 -->
       <div>
-        <!-- 400 -->
-        <p class="text-20 text-white pb-6">與雙人成行<span class="pl-2 text-28">相似的遊戲</span></p>
-        <div class="flex justify-between items-center gap-14">
-          <figure v-for="(item, index) in sameData" :key="index">
-            <img :src="item.image" :alt="item.title">
+        <p class="text-28 text pb-6"><small class="text-20 text-light pr-2">與雙人成行</small>相似的遊戲</p>
+        <figure class="grid lg:grid-cols-3 gap-14">
+          <div v-for="(item, index) in sameData" :key="index">
+            <img :src="item.image" :alt="item.title" class="mb-3 w-full">
             <div class="flex justify-between items-center">
-              <figcaption>{{ item.title }}</figcaption>
-              <span>{{ item.point }}</span>
+              <figcaption class="text-18 font-medium">{{ item.title }}</figcaption>
+              <span class="block text-24 bg-tab px-2 py-1 rounded-2xl">{{ item.point }}</span>
             </div>
-          </figure>
-        </div>
+          </div>
+        </figure>
       </div>
       <!-- 你可能會喜歡的遊戲 -->
       <div>
-        <p class="text-20 text-white pb-6">你可能會喜歡的遊戲</p>
-        <div class="flex justify-between items-center gap-14">
+        <p class="text-28 pb-6">你可能會喜歡的遊戲</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4  gap-14">
           <figure v-for="(item, index) in likeData" :key="index">
-            <img :src="item.image" :alt="item.title">
-            <figcaption>{{ item.title }}</figcaption>
+            <img :src="item.image" :alt="item.title" class="mb-2">
+            <figcaption class="text-18 font-medium">{{ item.title }}</figcaption>
           </figure>
         </div>
       </div>
