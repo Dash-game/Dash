@@ -27,6 +27,7 @@ onMounted(()=>{
       @scroll.prevent
     />
     <slot />
+    <Footer />
   </div>
 </template>
 <style scoped>

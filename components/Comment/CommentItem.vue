@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-between items-center mb-3">
     <div class="flex items-center">
-      <GlobalAvatar url="https://picsum.photos/id/237/200/300" />
+      <commonAvatar url="https://picsum.photos/id/237/200/300" />
       <div class="ml-2">
         <div class="text-18">{{ data.name }}</div>
         <div class="text-darkgray text-12">
@@ -34,6 +34,7 @@
         class="readmore block w-full text-end text-white/40 absolute bottom-1 right-3 ease-in-out duration-300 invisible opacity-0"
         :class="{ active: isOverflowContent }"
         href="#"
+        @click.prevent="props.showModal(data)"
         >more</a
       >
       <p
@@ -44,7 +45,7 @@
 
     <div class="flex gap-9 mb-8 mt-auto">
       <div>
-        <GlobalTooltops
+        <commonTooltops
           placement="bottom"
           :msg="`有${data.recommendCount}人推薦此評論`"
         >
@@ -52,10 +53,10 @@
             <Icon name="icon-park-outline:good-one" color="white" />
             <span class="ml-1">{{ data.recommendCount }}</span>
           </template>
-        </GlobalTooltops>
+        </commonTooltops>
       </div>
       <div>
-        <GlobalTooltops
+        <commonTooltops
           placement="bottom"
           :msg="`有${data.funCount}人覺得此評論有趣`"
         >
@@ -63,7 +64,7 @@
             <Icon name="cil:mood-very-good" color="white" />
             <span class="ml-1">{{ data.funCount }}</span>
           </template>
-        </GlobalTooltops>
+        </commonTooltops>
       </div>
     </div>
   </div>
@@ -78,6 +79,9 @@ const props = defineProps({
   data: {
     type: Object,
     required: true
+  },
+  showModal: {
+    type: Function
   }
 })
 
