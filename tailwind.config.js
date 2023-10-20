@@ -19,12 +19,12 @@ module.exports = {
     extend: {
       colors: {
         primary: '#222434', // 底色、主色
-        section: '#303141', // 高亮提示色
-        light: '#D9D9D9',
+        section: '#303141', // 高亮提示色(黑)
+        light: '#D9D9D9', // 淺灰
         darkgray: '#8C8C8C', // 區塊顏色
-        secondary: '#10D89F', // 字體顏色 - 白灰
+        secondary: '#10D89F', // 字體顏色 - 亮綠
         labeldark: '#FD5A5A', // 字體顏色 - 紅
-        labellight: '#FFB800', // 字體顏色 - 黃
+        labellight: '#FFB800', // 字體顏色 - 橘
         tab: '#145096' // 標籤 - 藍色
       },
       fontSize: {
