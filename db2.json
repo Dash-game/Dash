@@ -1,7 +1,4 @@
 {
-  "1627720": {
-    "success": true,
-    "data": {
       "type": "game",
       "name": "Lies of P",
       "steam_appid": 1627720,
@@ -249,5 +246,3 @@
       "background_raw": "https://cdn.akamai.steamstatic.com/steam/apps/1627720/page.bg.jpg?t=1695058468",
       "content_descriptors": { "ids": [2, 5], "notes": null }
     }
-  }
-}

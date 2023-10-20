@@ -1,7 +1,4 @@
 {
-  "1446780": {
-    "success": true,
-    "data": {
       "type": "game",
       "name": "MONSTER HUNTER RISE",
       "steam_appid": 1446780,
@@ -253,5 +250,3 @@
       "background_raw": "https://cdn.akamai.steamstatic.com/steam/apps/1446780/page.bg.jpg?t=1687140511",
       "content_descriptors": { "ids": [], "notes": null }
     }
-  }
-}
