@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/style/tailwind.css'],
   app: {
-    baseURL: '/Dash'
+    baseURL: '/Dash/'
   },
   alias: { // 設定路徑別名
     'imgs': resolve(__dirname, './public/images'),
