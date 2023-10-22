@@ -1,47 +1,6 @@
+/* 引入 Google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {
-  font-family: "Kanit", "Noto Sans TC", sans-serif;
-  @apply bg-primary text-light font-normal;
-}
-
-/* 元件客製 */
-@layer components {
-  /* 基本樣式 */
-  .button-sm {
-    @apply bg-secondary py-3 rounded-xl  text-primary ;
-  };
-
-  .button-md {
-    @apply bg-secondary py-4 rounded-xl  text-primary text-20;
-  };
-
-  .button-xl {
-    @apply bg-secondary py-4 rounded-xl  text-primary text-24;
-  };
-
-  .button-outline-sm {
-    @apply outline-secondary outline-1 outline py-3 rounded-xl  text-secondary;
-  }
-
-  .button-outline-md {
-    @apply outline-secondary outline-1 outline py-4 rounded-xl  text-secondary text-20;
-  }
-
-  .button-outline-xl {
-    @apply outline-secondary outline-1 outline py-4 rounded-xl  text-secondary text-24;
-  }
-
-  /* 按鈕效果 */
-  .button-hover {
-    @apply duration-300  hover:-translate-y-1 sm:hover:scale-105 hover:bg-gradient-to-r from-white via-transparent to-transparent hover:opacity-100  opacity-80;
-  };
-
-  .button-outline-hover {
-    @apply outline-secondary outline-1 outline duration-300  py-3 rounded-xl  hover:-translate-y-1 sm:hover:scale-105  text-secondary  hover:text-white hover:outline-white  hover:opacity-100  opacity-80;
-  };
-}
