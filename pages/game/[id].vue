@@ -1,6 +1,6 @@
 <template>
   <GameSectionOneComponent></GameSectionOneComponent>
   <GameCommentComponent />
-  <GameSameComponent />
   <GameSysRequiredComponent />
+  <GameSameComponent />
 </template>
