@@ -52,9 +52,9 @@ const data = ref(db)
                 <h3 class="mb-2 text-24">購買豪華禮包</h3>
                 <p class="mb-4 text-18">{{packageItem.option_text.split(' - NT$')[0]}}</p>
                 <div class="flex items-center mb-6">
-                  <div class="[text-shadow:_16px_12px_0_rgb(255_255_255_/_5%),_0_5px_5px_#0004] text-32 font-bold text-labeldark">${{packageItem.option_text.split('NT$')[1]}}</div>
+                  <div class="[text-shadow:_16px_12px_0_rgb(255_255_255_/_5%),_0_5px_5px_#0004] text-32 font-semibold text-labeldark">${{packageItem.option_text.split('NT$')[1]}}</div>
                   <div class="ml-6">
-                    <div v-if="packageItem.percent_savings" class="mb-0 font-bold leading-5 text-20 text-labellight">{{packageItem.percent_savings_text}}</div>
+                    <div v-if="packageItem.percent_savings" class="mb-0 font-semibold leading-5 text-20 text-labellight">{{packageItem.percent_savings_text}}</div>
                     <div v-if="packageItem.percent_savings" class="relative leading-3 text-12 
                     after:w-full 
                     after:absolute 
