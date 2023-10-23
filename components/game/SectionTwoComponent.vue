@@ -3,7 +3,6 @@ import db from "@/db1.json"
 
 const data = ref(db)
 
-
 </script>
 <template>
 
