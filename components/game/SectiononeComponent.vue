@@ -1,8 +1,57 @@
 <template>
+  <!-- Breadcrumb -->
+  <div class="bg-Breadcrumb hidden md:block">
+    <nav class="flex container xl:text-20 py-3" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">所有遊戲</li>
+        <li>
+          <div class="flex items-center">
+            <svg
+              class="w-3 h-3 text-gray-400 mx-1"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <p>冒險遊戲</p>
+          </div>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <svg
+              class="w-3 h-3 text-gray-400 mx-1"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <span class="ml-1 text-gray-400 md:ml-2">雙人成行</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <!-- banner -->
   <div class="bg-sec-banner bg-cover overflow-hidden">
-    <div class="container py-8 md:py-12 lg:py-16 xl:py-18 relative">
+    <div class="container py-8 md:py-12 lg:py-16 xl:py-16 relative">
       <hr
-        class="mb-2 border-secondary md:absolute -right-1/2 md:w-[645px] lg:w-[860px] xl:w-[1070px] 2xl:w-[1280px]  md:top-[70px] lg:top-[90px] xl:top-[100px] "
+        class="mb-2 border-secondary md:absolute -right-1/2 md:w-[645px] lg:w-[860px] xl:w-[1070px] 2xl:w-[1280px] md:top-[70px] lg:top-[90px] xl:top-[100px]"
       />
       <h1 class="text-20 md:text-32 xl:text-40 font-bold mb-4 text-white">
         PUBG: BATTLEGROUNDS
@@ -47,14 +96,20 @@
         <div class="col-span-4 h-full">
           <div class="flex flex-col h-full">
             <!-- tittle -->
-            <div class="flex-1 mb-2 relative ">
-              <img src="/images/sec1-img5.jpg" alt="" class="w-full mb-8 lg:mb-4" />
+            <div class="flex-1 mb-2 relative">
+              <img
+                src="/images/sec1-img5.jpg"
+                alt=""
+                class="w-full mb-8 lg:mb-4"
+              />
               <p class="font-bold text-28 hidden xl:block mt-3">
                 PUBG: BATTLEGROUNDS
               </p>
               <!-- 定位線 -->
-              <hr class="border-secondary md:absolute top-36 lg:top-[185px] xl:top-[260px] 2xl:top-[305px] lg:w-[490px] xl:w-[600px] -right-1/2 md:w-[360px] 2xl:w-[730px]" />
-              <p class=" mt-3">
+              <hr
+                class="border-secondary md:absolute top-36 lg:top-[185px] xl:top-[260px] 2xl:top-[305px] lg:w-[490px] xl:w-[600px] -right-1/2 md:w-[360px] 2xl:w-[730px]"
+              />
+              <p class="mt-3">
                 在《雙人成行》中踏上人生中最瘋狂的旅程，利用好友通行證*邀請好友免費遊玩。
               </p>
             </div>
@@ -116,4 +171,13 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.bg-Breadcrumb {
+  background: linear-gradient(
+    90deg,
+    rgba(32, 34, 47, 0.5) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(32, 34, 47, 0.5) 100%
+  );
+}
+</style>

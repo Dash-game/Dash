@@ -1,8 +1,8 @@
 <template>
-  <GameSectiononeComponent></GameSectiononeComponent>
+  <GameSectionOneComponent></GameSectionOneComponent>
   <GameSectionTwoComponent></GameSectionTwoComponent>
   <GameCommentComponent />
-  <GameSameComponent />
   <GameSysRequiredComponent />
+  <GameSameComponent />
 </template>
 

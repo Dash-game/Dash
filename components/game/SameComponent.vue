@@ -5,25 +5,35 @@
       <!-- 相似的遊戲 -->
       <div>
         <p class="text-28 text pb-6"><small class="text-20 text-light pr-2">與雙人成行</small>相似的遊戲</p>
-        <figure class="grid lg:grid-cols-3 gap-14">
-          <div v-for="(item, index) in sameData" :key="index">
-            <img :src="item.image" :alt="item.title" class="mb-3 w-full">
-            <div class="flex justify-between items-center">
-              <figcaption class="text-18 font-medium">{{ item.title }}</figcaption>
-              <span class="block text-24 bg-tab px-2 py-1 rounded-2xl">{{ item.point }}</span>
-            </div>
-          </div>
-        </figure>
+        <ul class="grid lg:grid-cols-3 gap-14">
+          <li v-for="(item, index) in sameData" :key="index" class="hover:text-secondary hover:opacity-80 hover:-translate-y-1 duration-300">
+            <!-- 之後要改 <Nuxtlink> -->
+            <a href="#">
+              <figure>
+                <img :src="item.image" :alt="item.title" class="mb-3 w-full">
+                <div class="flex justify-between items-center">
+                  <figcaption class="text-18 font-medium">{{ item.title }}</figcaption>
+                  <span class="block text-24 bg-tab px-2 py-1 rounded-2xl">{{ item.point }}</span>
+                </div>
+              </figure>
+            </a>
+          </li>
+        </ul>
       </div>
       <!-- 你可能會喜歡的遊戲 -->
       <div>
         <p class="text-28 pb-6">你可能會喜歡的遊戲</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4  gap-14">
-          <figure v-for="(item, index) in likeData" :key="index">
-            <img :src="item.image" :alt="item.title" class="mb-2">
-            <figcaption class="text-18 font-medium">{{ item.title }}</figcaption>
-          </figure>
-        </div>
+        <ul class="grid md:grid-cols-2 lg:grid-cols-4 gap-14">
+          <li v-for="(item, index) in likeData" :key="index" class="hover:text-secondary hover:opacity-80 hover:-translate-y-1 duration-300">
+            <!-- 之後要改 <Nuxtlink> -->
+            <a href="#">
+              <figure>
+                <img :src="item.image" :alt="item.title" class="mb-2">
+                <figcaption class="text-18 font-medium">{{ item.title }}</figcaption>
+              </figure>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </section>

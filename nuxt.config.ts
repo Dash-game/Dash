@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   "imports": {
     "dirs": ['stores']
   },
-  css: ['~/assets/style/tailwind.css'],
+  css: ['~/assets/style/main.css'],
   app: {
     baseURL: '/Dash/'
   },
