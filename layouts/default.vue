@@ -22,9 +22,6 @@ onMounted(()=>{
 <template>
   <div>
     <NavbarComponent :hide="hide"
-      @wheel.prevent
-      @touchmove.prevent
-      @scroll.prevent
     />
     <slot />
     <Footer />
