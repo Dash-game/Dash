@@ -354,9 +354,7 @@ watch(
 
 
 
-.category-scrollbar {
 
-}
 .category-scrollbar::-webkit-scrollbar {
     width: 8px; /*滚动条的宽度*/
 }
