@@ -119,7 +119,7 @@ watch(
                 </NuxtLink>
               </li>
               <li class="mb-5">
-                <NuxtLink to="/" class="block w-full text-light active navlink relative" @click="toggleCategory">
+                <button type="button" class="block w-full text-light active navlink relative" @click="toggleCategory">
                   <div class="nav-design">
                     <span class="pseudo">遊戲類別</span>
                     <span data-text="遊戲類別" class="part"></span>
@@ -127,7 +127,7 @@ watch(
                   </div>
 
                   <div class="absolute right-3 top-0">...</div>
-                </NuxtLink>
+                </button>
               </li>
               <li class="mb-5">
                 <NuxtLink to="/" class="block w-full text-light navlink" @click="closeMenu">
