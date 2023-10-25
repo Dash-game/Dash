@@ -2,9 +2,13 @@
 let menuOpen = ref(false)
 const toggleMenu = () => {
   menuOpen.value = !menuOpen.value
+  if(!menuOpen.value){
+    categoryOpen.value = false
+  }
 }
 const closeMenu = () => {
   menuOpen.value = false
+  categoryOpen.value = false
 }
 
 const categoryOpen = ref(false)
@@ -77,38 +81,50 @@ watch(
           <ul class="hidden xl:flex py-0">
             <li class="mb-0 mr-5">
               <NuxtLink to="/game/1" class="block text-light navlink active" @click="closeMenu">
-                <span class="pseudo">遊戲商店</span>
-                <span data-text="遊戲商店" class="part"></span>
-                <span data-text="遊戲商店" class="part"></span>
+                <div class="nav-design">
+                  <span class="pseudo">遊戲商店</span>
+                  <span data-text="遊戲商店" class="part"></span>
+                  <span data-text="遊戲商店" class="part"></span>
+                </div>
               </NuxtLink>
             </li>
             <li class="mb-0 mr-5">
               <NuxtLink to="/" class="block  text-light navlink" >
-                <span class="pseudo">遊戲類別</span>
-                <span data-text="遊戲類別" class="part"></span>
-                <span data-text="遊戲類別" class="part"></span>
+                <div class="nav-design">
+                  <span class="pseudo">遊戲類別</span>
+                  <span data-text="遊戲類別" class="part"></span>
+                  <span data-text="遊戲類別" class="part"></span>
+                </div>
               </NuxtLink>
             </li>
             <li class="mb-0 mr-5">
               <NuxtLink to="/" class="block  text-light navlink" @click="closeMenu">
-                <span class="pseudo">遊戲新聞</span>
-                <span data-text="遊戲新聞" class="part"></span>
-                <span data-text="遊戲新聞" class="part"></span>
+                <div class="nav-design">
+                  <span class="pseudo">遊戲新聞</span>
+                  <span data-text="遊戲新聞" class="part"></span>
+                  <span data-text="遊戲新聞" class="part"></span>
+                </div>
               </NuxtLink>
             </li>
             <li class="mb-0 mr-5">
               <NuxtLink to="/" class="block  text-light navlink" @click="closeMenu">
-                <span class="pseudo">客服中心</span>
-                <span data-text="客服中心" class="part"></span>
-                <span data-text="客服中心" class="part"></span>
+                <div class="nav-design">
+                  <span class="pseudo">客服中心</span>
+                  <span data-text="客服中心" class="part"></span>
+                  <span data-text="客服中心" class="part"></span>
+                </div>
               </NuxtLink>
             </li>
           </ul>
           
           <!-- 手機版 -->
-          <div class="flex xl:hidden duration-300 w-[300vw] " >
-            <div class="duration-300" :class="{'w-[100vw]':!categoryOpen, 'w-0':categoryOpen}"></div>
-            <ul class="xl:hidden pt-10 pb-8  w-[100vw] duration-300">
+          <div class="flex xl:hidden duration-300 w-[300%] " >
+            <div class="duration-300" :class="{'w-[33.33%]':!categoryOpen, 'w-0':categoryOpen}"></div>
+            <ul class="xl:hidden pt-10 pb-8  w-[33.33%] duration-300"
+            @wheel.prevent
+            @touchmove.prevent
+            @scroll.prevent
+            >
               <li class="mb-5">
                 <NuxtLink to="/game/1" class="block text-light navlink " @click="closeMenu">
                   <div class="nav-design">
@@ -126,7 +142,9 @@ watch(
                     <span data-text="遊戲類別" class="part"></span>
                   </div>
 
-                  <div class="absolute right-3 top-0">...</div>
+                  <div class="absolute right-6 top-0">
+                    <Icon name="mdi:dots-horizontal" />
+                  </div>
                 </button>
               </li>
               <li class="mb-5">
@@ -150,7 +168,7 @@ watch(
             </ul>
 
             <!-- 類別清單 -->
-            <ul class="pt-10 pb-8 w-[100vw] overflow-y-auto duration-300 category-scrollbar" :class="{'h-0':!categoryOpen, 'h-[calc(100vh-174px)]':categoryOpen}">
+            <ul class="pt-10 pb-8 w-[33.33%] overflow-y-auto duration-300 category-scrollbar relative" :class="{'h-0':!categoryOpen, 'h-[calc(100vh-174px)]':categoryOpen}">
               <li class="mb-5">
                 <button class="w-full navlink relative" @click="toggleCategory">
                   <div class="nav-design">
@@ -158,11 +176,13 @@ watch(
                     <span data-text="返回目錄" class="part"></span>
                     <span data-text="返回目錄" class="part"></span>                    
                   </div>
-                  <div class="absolute left-3 top-0">...</div>
+                  <div class="absolute left-6 top-0">
+                    <Icon name="mdi:dots-horizontal" />
+                  </div>
                 </button>
               </li>
               <li class="mb-5">
-                <NuxtLink to="#" class="block navlink w-full">
+                <NuxtLink to="/" class="block navlink w-full" @click="closeMenu">
                   <div class="nav-design">
                     <span class="pseudo">類別1</span>
                     <span data-text="類別1" class="part"></span>
@@ -171,7 +191,7 @@ watch(
                 </NuxtLink>
               </li>
               <li class="mb-5">
-                <NuxtLink to="#" class="block navlink w-full">
+                <NuxtLink to="/" class="block navlink w-full" @click="closeMenu">
                   <div class="nav-design">
                     <span class="pseudo">類別2</span>
                     <span data-text="類別2" class="part"></span>
@@ -180,7 +200,7 @@ watch(
                 </NuxtLink>
               </li>
               <li class="mb-5">
-                <NuxtLink to="#" class="block navlink w-full">
+                <NuxtLink to="/" class="block navlink w-full" @click="closeMenu">
                   <div class="nav-design">
                     <span class="pseudo">類別3</span>
                     <span data-text="類別3" class="part"></span>
@@ -189,7 +209,7 @@ watch(
                 </NuxtLink>
               </li>
               <li class="mb-5">
-                <NuxtLink to="#" class="block navlink w-full">
+                <NuxtLink to="/" class="block navlink w-full" @click="closeMenu">
                   <div class="nav-design">
                     <span class="pseudo">類別4</span>
                     <span data-text="類別4" class="part"></span>
@@ -198,7 +218,7 @@ watch(
                 </NuxtLink>
               </li>
               <li class="mb-5">
-                <NuxtLink to="#" class="block navlink w-full">
+                <NuxtLink to="/" class="block navlink w-full" @click="closeMenu">
                   <div class="nav-design">
                     <span class="pseudo">類別5</span>
                     <span data-text="類別5" class="part"></span>
@@ -207,7 +227,7 @@ watch(
                 </NuxtLink>
               </li>
               <li class="mb-5">
-                <NuxtLink to="#" class="block navlink w-full">
+                <NuxtLink to="/" class="block navlink w-full" @click="closeMenu">
                   <div class="nav-design">
                     <span class="pseudo">類別6</span>
                     <span data-text="類別6" class="part"></span>
@@ -216,7 +236,7 @@ watch(
                 </NuxtLink>
               </li>
               <li class="mb-5">
-                <NuxtLink to="#" class="block navlink w-full">
+                <NuxtLink to="/" class="block navlink w-full" @click="closeMenu">
                   <div class="nav-design">
                     <span class="pseudo">類別7</span>
                     <span data-text="類別7" class="part"></span>
@@ -226,6 +246,7 @@ watch(
               </li>
              
             </ul>
+            <div class="duration-300" :class="{'w-[33.33%]':categoryOpen, 'w-0':!categoryOpen}"></div>
 
           </div>
 
