@@ -1,5 +1,4 @@
 <template>
-
   <div class="bg-sec-banner bg-cover overflow-hidden pt-28">
     <!-- Breadcrumb -->
     <div class="bg-Breadcrumb hidden md:block">
@@ -50,7 +49,7 @@
       </nav>
     </div>
       <!-- banner -->
-    <div class="container py-8 md:py-12 lg:py-16 xl:py-16 relative">
+    <div class="container pb-6  md:pt-6 md:pb-12 lg:pt-8 lg:pb-16 xl:pt-10 xl:pb-16 relative">
       <hr
         class="mb-2 border-secondary md:absolute -right-1/2 md:w-[645px] lg:w-[860px] xl:w-[1070px] 2xl:w-[1280px] md:top-[70px] lg:top-[90px] xl:top-[100px]"
       />
