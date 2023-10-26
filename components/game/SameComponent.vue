@@ -1,7 +1,7 @@
 <template>
   <!-- Same Game -->
-  <section class="text-white bg-[url('/images/gameSame/wallpaper.png')] bg-center bg-no-repeat bg-blend-multiply bg-Cover">
-    <div class="container py-16 space-y-12">
+  <section class="text-white bg-[url('/images/gameSame/wallpaper.png')] bg-center bg-no-repeat bg-blend-multiply bg-cover">
+    <div class="container pt-16 pb-36 lg:pb-28 space-y-12">
       <!-- 相似的遊戲 -->
       <div>
         <p class="text-28 text pb-6"><small class="text-20 text-light pr-2">與雙人成行</small>相似的遊戲</p>
