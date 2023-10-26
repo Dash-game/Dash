@@ -6,7 +6,7 @@
 <template>
 
     <div class="sysRequired">
-        <div class="conatainer px-3 py-8 md:m-auto">
+        <div class="container px-3 py-8 md:m-auto">
             <h2 class="text-28 mb-2">系統需求</h2>
             <div class="sysRequired-content">
                 <div class="lowRequired">
