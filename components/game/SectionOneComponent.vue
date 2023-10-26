@@ -1,54 +1,55 @@
 <template>
-  <!-- Breadcrumb -->
-  <div class="bg-Breadcrumb hidden md:block">
-    <nav class="flex container xl:text-20 py-3" aria-label="Breadcrumb">
-      <ol class="inline-flex items-center space-x-1 md:space-x-3">
-        <li class="inline-flex items-center">所有遊戲</li>
-        <li>
-          <div class="flex items-center">
-            <svg
-              class="w-3 h-3 text-gray-400 mx-1"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 9 4-4-4-4"
-              />
-            </svg>
-            <p>冒險遊戲</p>
-          </div>
-        </li>
-        <li aria-current="page">
-          <div class="flex items-center">
-            <svg
-              class="w-3 h-3 text-gray-400 mx-1"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 9 4-4-4-4"
-              />
-            </svg>
-            <span class="ml-1 text-gray-400 md:ml-2">雙人成行</span>
-          </div>
-        </li>
-      </ol>
-    </nav>
-  </div>
-  <!-- banner -->
-  <div class="bg-sec-banner bg-cover overflow-hidden">
+
+  <div class="bg-sec-banner bg-cover overflow-hidden pt-28">
+    <!-- Breadcrumb -->
+    <div class="bg-Breadcrumb hidden md:block">
+      <nav class="flex container xl:text-20 py-3" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">所有遊戲</li>
+          <li>
+            <div class="flex items-center">
+              <svg
+                class="w-3 h-3 text-gray-400 mx-1"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+              <p>冒險遊戲</p>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <svg
+                class="w-3 h-3 text-gray-400 mx-1"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+              <span class="ml-1 text-gray-400 md:ml-2">雙人成行</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
+      <!-- banner -->
     <div class="container py-8 md:py-12 lg:py-16 xl:py-16 relative">
       <hr
         class="mb-2 border-secondary md:absolute -right-1/2 md:w-[645px] lg:w-[860px] xl:w-[1070px] 2xl:w-[1280px] md:top-[70px] lg:top-[90px] xl:top-[100px]"
