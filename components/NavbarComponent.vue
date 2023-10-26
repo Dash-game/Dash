@@ -79,7 +79,7 @@ watch(
 
           <!-- 電腦版 -->
           <ul class="hidden xl:flex py-0">
-            <li class="mb-0 mr-5">
+            <li class="mr-2">
               <NuxtLink to="/game/1" class="block text-light navlink active" @click="closeMenu">
                 <div class="nav-design">
                   <span class="pseudo">遊戲商店</span>
@@ -88,7 +88,7 @@ watch(
                 </div>
               </NuxtLink>
             </li>
-            <li class="mb-0 mr-5">
+            <li class="mr-2">
               <NuxtLink to="/" class="block  text-light navlink" >
                 <div class="nav-design">
                   <span class="pseudo">遊戲類別</span>
@@ -97,7 +97,7 @@ watch(
                 </div>
               </NuxtLink>
             </li>
-            <li class="mb-0 mr-5">
+            <li class="mr-2">
               <NuxtLink to="/" class="block  text-light navlink" @click="closeMenu">
                 <div class="nav-design">
                   <span class="pseudo">遊戲新聞</span>
@@ -106,7 +106,7 @@ watch(
                 </div>
               </NuxtLink>
             </li>
-            <li class="mb-0 mr-5">
+            <li>
               <NuxtLink to="/" class="block  text-light navlink" @click="closeMenu">
                 <div class="nav-design">
                   <span class="pseudo">客服中心</span>
