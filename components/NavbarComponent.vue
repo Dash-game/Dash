@@ -1,4 +1,17 @@
 <script setup>
+
+// 判斷是不是首頁
+const isHome = ref(true)
+const route = useRoute()
+watch(
+  ()=>route.path, 
+  () => {
+  isHome.value = route.path == '/' ? true : false
+}, {deep: true, immediate: true})
+
+
+
+// menu開闔
 let menuOpen = ref(false)
 const toggleMenu = () => {
   menuOpen.value = !menuOpen.value
@@ -17,6 +30,7 @@ const toggleCategory = () => {
 }
 
 
+// 上下滑 menu 開闔
 const props = defineProps({
   hide: false
 })
@@ -32,24 +46,27 @@ watch(
   }
 )
 
-
-// teleport overflow hidden
+// category menu 是否有scrollbar
+const categoryMenu = ref(null)
+const checkScrollbar = (e) =>{
+  if(categoryMenu.value.clientHeight==categoryMenu.value.scrollHeight){
+    e.preventDefault();
+  }
+}
 </script>
 
 <template>
-<div>
+<div class="sticky top-0 z-[1000]" >
   <!-- 購物車 -->
     <CartBtnComponent class="fixed bottom-10 right-0 xl:hidden z-10"/>
 
     <!-- 毛玻璃 -->
   <div class="fixed top-0 left-0 right-0 w-full h-full backdrop-blur-lg z-20 xl:hidden duration-300 " :class="{'hidden':!menuOpen}" @click="toggleMenu" 
-    @wheel.prevent
-    @touchmove.prevent
-    @scroll.prevent
+
   ></div>
 
   <!-- Navbar -->
-  <div id="navbar" class="fixed top-0 left-0 right-0 z-[1000] duration-300" :class="{'xl:-translate-y-full':hide}">
+  <div id="navbar" class="sticky top-0 z-[1000] duration-300" :class="{'xl:fixed left-0 right-0':isHome,'xl:-translate-y-full':hide}">
     <div class=" z-80 w-full  bg-primary bg-opacity-80 
       after:absolute 
       after:inset-0 
@@ -75,7 +92,7 @@ watch(
 
 
         <!-- MENU -->
-        <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full text-2xl text-center top-full xl:relative bg-primary xl:bg-transparent z-20 duration-300" :class="{'-translate-y-full xl:translate-y-0 ':!menuOpen}">
+        <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full text-2xl text-center top-full xl:relative bg-primary xl:bg-transparent z-20 duration-300 overflow-x-hidden" :class="{'-translate-y-full xl:translate-y-0 ':!menuOpen}">
 
           <!-- 電腦版 -->
           <ul class="hidden xl:flex py-0">
@@ -98,7 +115,7 @@ watch(
               </NuxtLink>
             </li>
             <li class="mr-2">
-              <NuxtLink to="/" class="block  text-light navlink" @click="closeMenu">
+              <NuxtLink to="/news" class="block  text-light navlink" @click="closeMenu">
                 <div class="nav-design">
                   <span class="pseudo">遊戲新聞</span>
                   <span data-text="遊戲新聞" class="part"></span>
@@ -107,7 +124,7 @@ watch(
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/" class="block  text-light navlink" @click="closeMenu">
+              <NuxtLink to="/help" class="block  text-light navlink" @click="closeMenu">
                 <div class="nav-design">
                   <span class="pseudo">客服中心</span>
                   <span data-text="客服中心" class="part"></span>
@@ -118,12 +135,9 @@ watch(
           </ul>
           
           <!-- 手機版 -->
-          <div class="flex xl:hidden duration-300 w-[300%] " >
+          <div class="flex xl:hidden duration-300 w-[300%]" >
             <div class="duration-300" :class="{'w-[33.33%]':!categoryOpen, 'w-0':categoryOpen}"></div>
             <ul class="xl:hidden pt-10 pb-8  w-[33.33%] duration-300"
-            @wheel.prevent
-            @touchmove.prevent
-            @scroll.prevent
             >
               <li class="mb-5">
                 <NuxtLink to="/game/1" class="block text-light navlink " @click="closeMenu">
@@ -148,7 +162,7 @@ watch(
                 </button>
               </li>
               <li class="mb-5">
-                <NuxtLink to="/" class="block w-full text-light navlink" @click="closeMenu">
+                <NuxtLink to="/news" class="block w-full text-light navlink" @click="closeMenu">
                   <div class="nav-design">
                     <span class="pseudo">遊戲新聞</span>
                     <span data-text="遊戲新聞" class="part"></span>
@@ -157,7 +171,7 @@ watch(
                 </NuxtLink>
               </li>
               <li class="mb-5">
-                <NuxtLink to="/" class="block w-full text-light navlink" @click="closeMenu">
+                <NuxtLink to="/help" class="block w-full text-light navlink" @click="closeMenu">
                   <div class="nav-design">
                     <span class="pseudo">客服中心</span>
                     <span data-text="客服中心" class="part"></span>
@@ -168,7 +182,11 @@ watch(
             </ul>
 
             <!-- 類別清單 -->
-            <ul class="pt-10 pb-8 w-[33.33%] overflow-y-auto duration-300 category-scrollbar relative" :class="{'h-0':!categoryOpen, 'h-[calc(100vh-174px)]':categoryOpen}">
+            <ul ref="categoryMenu" class="pt-10 pb-8 w-[33.33%] overflow-y-scroll overscroll-contain duration-300 category-scrollbar relative" :class="{'h-0':!categoryOpen, 'h-[calc(100vh-174px)]':categoryOpen}"
+            @wheel.stop="checkScrollbar"
+            @touchmove.stop="checkScrollbar"
+            @scroll.stop="checkScrollbar"
+            >
               <li class="mb-5">
                 <button class="w-full navlink relative" @click="toggleCategory">
                   <div class="nav-design">
@@ -246,7 +264,6 @@ watch(
               </li>
              
             </ul>
-            <div class="duration-300" :class="{'w-[33.33%]':categoryOpen, 'w-0':!categoryOpen}"></div>
 
           </div>
 
@@ -260,12 +277,15 @@ watch(
             <Icon name="uil:search" />
           </button>
           <CartBtnComponent class="relative hidden xl:block"/>
-          <button class="block h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary w-full xl:w-auto xl:bg-transparent bg-section hover:bg-secondary text-secondary hover:text-primary duration-300">
-            <div class="h-[32px] flex justify-center items-center xl:rounded-[14px/16px] xl:px-4 xl:border-l-4 xl:border-r-4 xl:border-secondary ">
-              <Icon name="majesticons:login-line" />
-              <span class="ml-2 text-xl  whitespace-nowrap">登入</span>
-            </div>
-          </button>
+          <nuxt-link to="/login" class="block w-full xl:w-auto"  @click="closeMenu">
+            <button class="block w-full h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary xl:bg-transparent bg-section hover:bg-secondary text-secondary hover:text-primary duration-300">
+              <div class="h-[32px] flex justify-center items-center xl:rounded-[14px/16px] xl:px-4 xl:border-l-4 xl:border-r-4 xl:border-secondary ">
+                <Icon name="majesticons:login-line" />
+                <span class="ml-2 text-xl  whitespace-nowrap">登入</span>
+              </div>
+            </button>            
+          </nuxt-link>
+
         </div>
       </div>
     </div>

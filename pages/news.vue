@@ -8,4 +8,6 @@
 
 <script setup>
 const newsStore = useNewsStore();
+
+
 </script>
