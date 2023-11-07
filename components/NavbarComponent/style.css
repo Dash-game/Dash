@@ -1,0 +1,92 @@
+.navlink {
+  &.active{
+    color: rgb(16 216 159 / var(--tw-text-opacity));
+    & .nav-design::before {
+    background-color: rgb(16 216 159 / var(--tw-text-opacity));
+    }
+  }
+.nav-design {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: 0.2s;
+
+  &::before{
+    content:'';
+    display: block;
+    position: absolute;
+    background-color: #c8c8c8;
+    height: 1px;
+    z-index: 50;
+    top: 50%;
+    right: 0;
+    width: 0;
+    transition: width 0.2s;
+  }
+}
+
+  &:hover .nav-design{
+    &::before {
+      width: 100%;
+      left:0;
+      transition: width position 0.2s
+    }
+  }
+}
+
+.nav-design  .pseudo {
+  padding-left: 2px;
+  padding-right: 2px;
+  opacity: 0;
+}
+
+.nav-design  .part {
+  width: 100%;
+  position: absolute;
+  height: 50%;
+  overflow: hidden;
+  top: 0;
+  left: 20px;
+}
+
+.nav-design  .part:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0px;
+}
+
+.nav-design  .part + .part {
+  top: 50%;
+}
+
+.nav-design  .part + .part:after {
+  top: -100%;
+  transition: .3s;
+}
+
+.navlink:hover .nav-design  .part + .part:after {
+  left: 4px;
+}
+.navlink:hover .nav-design{
+  transform: translateX(-2px)
+}
+
+
+.category-scrollbar::-webkit-scrollbar {
+    width: 8px; /*滚动条的宽度*/
+}
+.category-scrollbar::-webkit-scrollbar-track{
+    background-color: rgb(34 36 52 / var(--tw-text-opacity));
+    -webkit-border-radius: 5px;
+
+}
+.category-scrollbar::-webkit-scrollbar-thumb { /*垂直滚动条的样式*/
+    background-color: #FFB800;
+    -webkit-border-radius: 5px;
+  border: 2px solid rgb(34 36 52 / var(--tw-text-opacity));
+}
+.category-scrollbar::-webkit-scrollbar-thumb:hover { /*滚动条的hover样式*/
+    background-color: #9f9f9f;
+}
