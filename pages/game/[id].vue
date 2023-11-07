@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <!-- <GameSectiononeComponent></GameSectiononeComponent> -->
-    <GameSectionTwoComponent></GameSectionTwoComponent>
-    <!-- <GameCommentComponent /> -->
-</div>
-
-
+  <GameSectionOneComponent/>
+  <GameSectionTwoComponent/>
+  <GameCommentComponent />
+  <GameSysRequiredComponent />
+  <GameSameComponent />
 </template>
 

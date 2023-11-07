@@ -1,6 +1,6 @@
 <template>
   <article
-    class="bg-primary/70 pt-20 py-12 bg-[url('/images/comment_bg.jpeg')] bg-cover bg-no-repeat bg-center bg-blend-multiply relative"
+    class="bg-primary/80 pt-20 py-12 bg-[url('/images/comment_bg.jpeg')] bg-cover bg-no-repeat bg-center bg-blend-multiply relative"
   >
     <div
       class="container flex flex-wrap gap-4 lg:gap-12 items-center border-b border-b-secondary pb-3 mb-12"
@@ -24,28 +24,83 @@
     </div>
 
     <div class="container text-light z-20">
-      <div class="flex px-7 flex-wrap">
+      <div class="flex flex-wrap">
         <article
-          class="w-full lg:w-1/2 lg:px-7 xl:px-14 mb-8 flex flex-col"
+          class="w-full lg:w-1/2 px-7 mb-8 flex flex-col"
           v-for="comment in CommentList"
           :key="comment.id"
         >
-          <CommentItem :data="{ ...comment }" />
+          <CommentItem :data="{ ...comment }" :showModal="showModal" />
         </article>
       </div>
     </div>
     <div class="flex items-center justify-center z-20">
       <a
         href="#"
-        class="block w-fit ml- border p-3 min-w-[220px] rounded-lg text-center ml-"
+        @click.="ReadMore(comment)"
+        class="block w-fit ml- border p-3 min-w-[220px] rounded-lg text-center"
         >顯示更多...</a
       >
     </div>
+
+    <commonModal
+      ref="commentModal"
+      class="CommentModal"
+      :footer="false"
+      :data="commentModalData"
+    >
+      <template #modalHeader>
+        <div class="flex justify-between items-center mb-3 w-full pr-[17px]">
+          <div class="flex items-center">
+            <commonAvatar url="https://picsum.photos/id/237/200/300" />
+            <div class="ml-2">
+              <div class="text-18">{{ commentModalData.name }}</div>
+              <div class="text-darkgray text-12">
+                寫了{{ commentModalData.commentCount }}條評論
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template #modalBody>
+        <article class="-mt-8 md:-mt-16">
+          <div class="flex justify-between items-end mb-4">
+            <div class="text-14 text-darkgray">
+              發表於
+              <div class="md:inline-block">
+                {{ commentModalData.createTime }}
+              </div>
+            </div>
+            <div class="flex flex-col justify-center items-center w-fit">
+              <div
+                class="rounded-lg min-w-[75px] md:min-w-[150px] text-center text-primary mb-1 w-fit"
+                :class="[
+                  commentModalData.isRecommend
+                    ? 'bg-labellight'
+                    : 'bg-labeldark'
+                ]"
+              >
+                {{ commentModalData.isRecommend ? '推薦' : '不推薦' }}
+              </div>
+              <div class="text-14 text-labellight text-center">
+                遊玩時數 {{ commentModalData.gameTimes }} 小時
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="max-h-[250px] mt-auto overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-secondary scrollbar-track-white scrollbar-thumb-rounded-full scrollbar-track-rounded-full pr-4 mb-6 leading-loose tracking-wide"
+            v-html="commentModalData.conent"
+          ></p>
+        </article>
+      </template>
+    </commonModal>
   </article>
 </template>
 
 <script setup>
-import CommentItem from '@/components/Comment/CommentItem.vue'
+import CommentItem from '@/components/comment/CommentItem.vue'
+import commonModal from '@/components/common/Modal.vue'
 
 const RandomID = () => {
   return Math.floor(Math.random() * (999999 - 100000)) + 100000
@@ -130,4 +185,22 @@ const CommentList = computed(() => [
   }
 ])
 
+const commentModal = ref(null)
+const commentModalData = ref({})
+const showModal = (data) => {
+  commentModalData.value = { ...data }
+  console.log(commentModalData.value)
+  commentModal.value.show()
+}
 </script>
+
+<style scope>
+.CommentModal {
+  background: linear-gradient(
+    54deg,
+    rgba(16, 216, 159, 0.5) -10.18%,
+    rgba(34, 36, 52, 0.5) 55.25%
+  );
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+</style>

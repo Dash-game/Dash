@@ -9,6 +9,8 @@ onMounted(() => {
 
 let scrollPosition = ref(0);
 const handleScroll = () => {
+  
+
   if (window.scrollY > scrollPosition.value) {
     hide.value = true;
   } else {
@@ -19,12 +21,8 @@ const handleScroll = () => {
 };
 </script>
 <template>
-  <div class="relative">
-    <NavbarComponent :hide="hide" 
-    @wheel.prevent
-    @touchmove.prevent
-    @scroll.prevent
-    />
+  <div class=" relative">
+    <NavbarComponent :hide="hide" />
     <slot />
     <FooterComponent />
   </div>
