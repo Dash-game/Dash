@@ -1,5 +1,12 @@
 <script setup>
+  const router = useRouter()
+  const loginStore = useLoginStore()
+  const login = () => {
+    loginStore.loggedIn = true
+    router.back()
+  }
   let forgetPassword = ref(false)
+
 </script>
 
 <template>
@@ -15,7 +22,7 @@
             <div class="mb-16">
               <input type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Password">
             </div>
-            <button class="w-full h-16 rounded-xl text-2xl bg-secondary text-primary hover:text-white">登入</button>
+            <button class="w-full h-16 rounded-xl text-2xl bg-secondary text-primary hover:text-white" @click="login">登入</button>
             <div class=" text-center mt-4">
               <a href="#" class=" text-darkgray hover:text-white text-[18px]" @click="forgetPassword = true">忘記密碼</a>
             </div>

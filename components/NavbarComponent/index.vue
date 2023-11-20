@@ -29,7 +29,7 @@ const toggleCategory = () => {
 }
 
 // 是否已登入
-const loggedIn = ref(false)
+const loginStore = useLoginStore()
 
 
 // 上下滑 menu 開闔
@@ -84,9 +84,9 @@ const checkScrollbar = (e) =>{
           </ul>
         </div>
       </button>
-      <div class="px-3 z-20 flex items-center justify-between py-2 mx-auto " :class="{'xl:py-0':loggedIn, 'xl:py-6':!loggedIn}">
-        <NuxtLink to="/" class="w-auto mx-auto xl:mr-8 xl:ml-0 z-30" @click="closeMenu">
-          <img src="@/assets/images/logo.png" alt="Logo" class="h-12 xl:h-auto">      
+      <div class="px-3 z-20 flex items-center justify-between py-2 mx-auto " :class="{'xl:py-0':loginStore.loggedIn, 'xl:py-6':!loginStore.loggedIn}">
+        <NuxtLink to="/" class="block xl:h-[76px] w-auto mx-auto xl:mr-8 xl:ml-0 z-30" @click="closeMenu">
+          <img src="@/assets/images/logo.png" alt="Logo" class="">      
         </NuxtLink>
 
         <!-- MENU -->
@@ -273,8 +273,8 @@ const checkScrollbar = (e) =>{
             <Icon name="uil:search" />
           </button>
           <CartBtnComponent class="relative hidden xl:block my-2"/>
-          <nuxt-link to="/login" class="block w-full xl:w-auto"  @click="closeMenu" :class="{'hidden':loggedIn}">
-            <button class="block w-full h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary xl:bg-transparent bg-section hover:bg-secondary text-secondary hover:text-primary duration-300">
+          <nuxt-link to="/login" class="block w-full xl:w-auto"  @click="closeMenu" :class="{'hidden':loginStore.loggedIn}">
+            <button class="block w-full h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary xl:bg-transparent bg-section hover:bg-secondary text-secondary hover:text-primary duration-300" >
               <div class="h-[32px] flex justify-center items-center xl:rounded-[14px/16px] xl:px-4 xl:border-l-4 xl:border-r-4 xl:border-secondary ">
                 <Icon name="majesticons:login-line" />
                 <span class="ml-2 text-xl  whitespace-nowrap">登入</span>
@@ -284,7 +284,7 @@ const checkScrollbar = (e) =>{
         </div>
 
         <!-- 會員中心 -->
-        <div class="absolute top-0 right-0 xl:relative w-[122px] h-16 xl:h-[124px] flex flex-col items-center justify-center group " :class="{'hidden':!loggedIn}">
+        <div class="absolute top-0 right-0 xl:relative w-[122px] h-16 xl:h-[116px] flex flex-col items-center justify-center group " :class="{'hidden':!loginStore.loggedIn}">
           <a href="#" class="absolute top-0 flex flex-col items-center justify-center w-full h-full xl:bg-primary z-40">
             <img src="https://s3-alpha-sig.figma.com/img/cfbf/8e85/c101d9ee509ebd1615efb93f1332b8d2?Expires=1701648000&Signature=BS6nVO7d6q6c03Ihi0h2zyaSAbTnNJMWK1y2Q5axpUmNrJO4d~p0eSFMcSm7snivW2lwcCmBPBQIqDLDK1BZeZ7awwmLanq78qjyMG~VzKoF11Wq8TcWPx~8yudJli6heuM8ShKKLTA-QB1BoH0aJEwofJSuq4LRKDSJXGa-BXQEZ5JnJEuta9sLrU20wjARSMjC8JJxeLhnfyrTs1pA9zwPVjSaTIgsEJ~W7NGB1Ovu9l3K9QiVui3qjDRq-6KA14usvOhMD02Z-XiN9QkKBnOih9gZWE5Q7XWxahlJEu2GbMv6MjczvbdZxaqBOvfocahyG-Fsd5zoB~-gao2org__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" class="block w-[52px] h-[52px] rounded-xl object-cover">
             <div class="text-base">Mouse3153</div>
@@ -301,7 +301,7 @@ const checkScrollbar = (e) =>{
                 <NuxtLink to="/" class="block py-2">遊戲評論</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary rounded-b-xl">
-                <button type="button" class="w-full py-2">登出</button>
+                <button type="button" class="w-full py-2" @click="loginStore.loggedIn = false">登出</button>
               </li>
             </ul>
           </div>
@@ -315,4 +315,7 @@ const checkScrollbar = (e) =>{
 
 <style lang="scss" scoped>
   @import url("./style.css");
+  *{
+    outline: 1px solid #A00
+  }
 </style>
