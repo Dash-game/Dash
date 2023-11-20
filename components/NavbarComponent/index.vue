@@ -6,7 +6,7 @@ const route = useRoute()
 watch(
   ()=>route.path, 
   () => {
-  isHome.value = route.path == '/' ? true : false
+  isHome.value = route.path == '/' || route.path == '/login' ? true : false
 }, {deep: true, immediate: true})
 
 
