@@ -28,6 +28,9 @@ const toggleCategory = () => {
   categoryOpen.value = !categoryOpen.value
 }
 
+// 是否已登入
+const loggedIn = ref(false)
+
 
 // 上下滑 menu 開闔
 const props = defineProps({
@@ -81,7 +84,7 @@ const checkScrollbar = (e) =>{
           </ul>
         </div>
       </button>
-      <div class="px-3 z-20 flex items-center justify-between py-2 mx-auto xl:py-6">
+      <div class="px-3 z-20 flex items-center justify-between py-2 mx-auto " :class="{'xl:py-0':loggedIn, 'xl:py-6':!loggedIn}">
         <NuxtLink to="/" class="w-auto mx-auto xl:mr-8 xl:ml-0 z-30" @click="closeMenu">
           <img src="@/assets/images/logo.png" alt="Logo" class="h-12 xl:h-auto">      
         </NuxtLink>
@@ -260,7 +263,7 @@ const checkScrollbar = (e) =>{
             </ul>
           </div>
 
-          <div v-if="!isHome" class="max-w-[364px] h-[44px] xl:rounded-full border-y xl:border border-secondary ml-auto xl:mr-6 pr-5 xl:pl-5 flex 2xl:flex justify-between items-center order-first xl:order-none">
+          <div v-if="!isHome" class="w-full xl:max-w-[364px] h-[44px] xl:rounded-full border-y xl:border border-secondary ml-auto xl:mr-6 pr-5 xl:pl-5 flex 2xl:flex justify-between items-center order-first xl:order-none">
             <input type="text" class="bg-transparent shadow-none border-none outline-none h-[44px] text-2xl w-full">
             <button type="button" class="duration-150 text-white hover:text-secondary flex items-center">
               <Icon name="uil:search" />
@@ -270,7 +273,7 @@ const checkScrollbar = (e) =>{
             <Icon name="uil:search" />
           </button>
           <CartBtnComponent class="relative hidden xl:block my-2"/>
-          <nuxt-link to="/login" class="block w-full xl:w-auto"  @click="closeMenu">
+          <nuxt-link to="/login" class="block w-full xl:w-auto"  @click="closeMenu" :class="{'hidden':loggedIn}">
             <button class="block w-full h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary xl:bg-transparent bg-section hover:bg-secondary text-secondary hover:text-primary duration-300">
               <div class="h-[32px] flex justify-center items-center xl:rounded-[14px/16px] xl:px-4 xl:border-l-4 xl:border-r-4 xl:border-secondary ">
                 <Icon name="majesticons:login-line" />
@@ -279,6 +282,31 @@ const checkScrollbar = (e) =>{
             </button>            
           </nuxt-link>
         </div>
+
+        <!-- 會員中心 -->
+        <div class="absolute top-0 right-0 xl:relative w-[122px] h-16 xl:h-[124px] flex flex-col items-center justify-center group " :class="{'hidden':!loggedIn}">
+          <a href="#" class="absolute top-0 flex flex-col items-center justify-center w-full h-full xl:bg-primary z-40">
+            <img src="https://s3-alpha-sig.figma.com/img/cfbf/8e85/c101d9ee509ebd1615efb93f1332b8d2?Expires=1701648000&Signature=BS6nVO7d6q6c03Ihi0h2zyaSAbTnNJMWK1y2Q5axpUmNrJO4d~p0eSFMcSm7snivW2lwcCmBPBQIqDLDK1BZeZ7awwmLanq78qjyMG~VzKoF11Wq8TcWPx~8yudJli6heuM8ShKKLTA-QB1BoH0aJEwofJSuq4LRKDSJXGa-BXQEZ5JnJEuta9sLrU20wjARSMjC8JJxeLhnfyrTs1pA9zwPVjSaTIgsEJ~W7NGB1Ovu9l3K9QiVui3qjDRq-6KA14usvOhMD02Z-XiN9QkKBnOih9gZWE5Q7XWxahlJEu2GbMv6MjczvbdZxaqBOvfocahyG-Fsd5zoB~-gao2org__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" class="block w-[52px] h-[52px] rounded-xl object-cover">
+            <div class="text-base">Mouse3153</div>
+          </a>
+          <div class="absolute top-full w-full  -translate-y-full group-hover:-translate-y-0 transition-transform duration-300">
+            <ul class="rounded-b-xl shadow border border-primary text-center ">
+              <li class="hover:text-secondary bg-section border border-primary">
+                <NuxtLink to="/" class="block py-2">收藏庫</NuxtLink>
+              </li>
+              <li class="hover:text-secondary bg-section border border-primary">
+                <NuxtLink to="/" class="block py-2">願望清單</NuxtLink>
+              </li>
+              <li class="hover:text-secondary bg-section border border-primary">
+                <NuxtLink to="/" class="block py-2">遊戲評論</NuxtLink>
+              </li>
+              <li class="hover:text-secondary bg-section border border-primary rounded-b-xl">
+                <button type="button" class="w-full py-2">登出</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
