@@ -99,7 +99,7 @@
 </template>
 
 <script setup>
-import CommentItem from '@/components/comment/CommentItem.vue'
+import CommentItem from '@/components/Comment/CommentItem.vue'
 import commonModal from '@/components/common/Modal.vue'
 
 const RandomID = () => {

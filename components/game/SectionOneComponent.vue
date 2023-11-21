@@ -102,3 +102,10 @@
   background: linear-gradient(90deg, rgba(32, 34, 47, 0.5) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(32, 34, 47, 0.5) 100%);
 }
 </style>
+
+<script setup lang="ts">
+
+const props = defineProps<{ user: IUser }>();
+
+
+</script>
