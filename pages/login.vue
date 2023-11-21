@@ -7,6 +7,10 @@
   }
   let forgetPassword = ref(false)
 
+  onMounted(()=>{
+    forgetPassword.value = false
+  })
+
 </script>
 
 <template>
