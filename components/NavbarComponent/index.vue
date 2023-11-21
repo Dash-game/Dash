@@ -84,13 +84,14 @@ const checkScrollbar = (e) =>{
           </ul>
         </div>
       </button>
-      <div class="px-3 z-20 flex items-center justify-between py-2 mx-auto " :class="{'xl:py-0':loginStore.loggedIn, 'xl:py-6':!loginStore.loggedIn}">
+      <div class="px-3 z-20 flex items-center py-2 mx-auto" :class="{'xl:py-0':loginStore.loggedIn}">
+        <!-- logo -->
         <NuxtLink to="/" class="block xl:h-[76px] w-auto mx-auto xl:mr-8 xl:ml-0 z-30" @click="closeMenu">
-          <img src="@/assets/images/logo.png" alt="Logo" class="">      
+          <img src="@/assets/images/logo.png" alt="Logo" class="h-12 xl:h-[76px]">      
         </NuxtLink>
 
         <!-- MENU -->
-        <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full text-2xl text-center top-full xl:relative bg-primary xl:bg-transparent z-20 duration-300 overflow-x-hidden" :class="{'-translate-y-full xl:translate-y-0 ':!menuOpen}">
+        <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full xl:w-auto grow text-2xl text-center top-full xl:relative bg-primary xl:bg-transparent z-20 duration-300 overflow-x-hidden" :class="{'-translate-y-full xl:translate-y-0 ':!menuOpen}">
 
           <!-- 電腦版 -->
           <ul class="hidden xl:flex py-0 whitespace-nowrap">
@@ -180,7 +181,7 @@ const checkScrollbar = (e) =>{
             </ul>
 
             <!-- 類別清單 -->
-            <ul ref="categoryMenu" class="pt-10 pb-8 w-[33.33%] overflow-y-scroll overscroll-contain duration-300 category-scrollbar relative" :class="{'h-0':!categoryOpen, 'h-[calc(100vh-174px)]':categoryOpen}"
+            <ul ref="categoryMenu" class="pt-10 pb-8 w-[33.33%] overflow-y-scroll overscroll-contain duration-300 category-scrollbar relative" :class="{'h-0':!categoryOpen, 'h-[calc(100vh-132px)]':categoryOpen}"
             @wheel.stop="checkScrollbar"
             @touchmove.stop="checkScrollbar"
             @scroll.stop="checkScrollbar"
@@ -263,16 +264,20 @@ const checkScrollbar = (e) =>{
             </ul>
           </div>
 
+          <!-- 搜尋欄 -->
           <div v-if="!isHome" class="w-full xl:max-w-[364px] h-[44px] xl:rounded-full border-y xl:border border-secondary ml-auto xl:mr-6 pr-5 xl:pl-5 flex 2xl:flex justify-between items-center order-first xl:order-none">
             <input type="text" class="bg-transparent shadow-none border-none outline-none h-[44px] text-2xl w-full">
             <button type="button" class="duration-150 text-white hover:text-secondary flex items-center">
               <Icon name="uil:search" />
             </button>
           </div>
+          <!-- 搜尋按鈕 -->
           <button v-else class="w-[50px] h-[50px] rounded-full border ml-auto mr-4 hidden xl:flex justify-center items-center text-white hover:text-secondary hover:border-secondary">
             <Icon name="uil:search" />
           </button>
+          <!-- 購物車 -->
           <CartBtnComponent class="relative hidden xl:block my-2"/>
+          <!-- 登入按鈕 -->
           <nuxt-link to="/login" class="block w-full xl:w-auto"  @click="closeMenu" :class="{'hidden':loginStore.loggedIn}">
             <button class="block w-full h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary xl:bg-transparent bg-section hover:bg-secondary text-secondary hover:text-primary duration-300" >
               <div class="h-[32px] flex justify-center items-center xl:rounded-[14px/16px] xl:px-4 xl:border-l-4 xl:border-r-4 xl:border-secondary ">
@@ -284,7 +289,7 @@ const checkScrollbar = (e) =>{
         </div>
 
         <!-- 會員中心 -->
-        <div class="absolute top-0 right-0 xl:relative w-[122px] h-16 xl:h-[116px] flex flex-col items-center justify-center group " :class="{'hidden':!loginStore.loggedIn}">
+        <div class="absolute top-0 right-0 xl:relative w-[122px] h-16 xl:h-[92px] flex flex-col items-center justify-center group " :class="{'hidden':!loginStore.loggedIn}">
           <a href="#" class="absolute top-0 flex flex-col items-center justify-center w-full h-full xl:bg-primary z-40">
             <img src="https://s3-alpha-sig.figma.com/img/cfbf/8e85/c101d9ee509ebd1615efb93f1332b8d2?Expires=1701648000&Signature=BS6nVO7d6q6c03Ihi0h2zyaSAbTnNJMWK1y2Q5axpUmNrJO4d~p0eSFMcSm7snivW2lwcCmBPBQIqDLDK1BZeZ7awwmLanq78qjyMG~VzKoF11Wq8TcWPx~8yudJli6heuM8ShKKLTA-QB1BoH0aJEwofJSuq4LRKDSJXGa-BXQEZ5JnJEuta9sLrU20wjARSMjC8JJxeLhnfyrTs1pA9zwPVjSaTIgsEJ~W7NGB1Ovu9l3K9QiVui3qjDRq-6KA14usvOhMD02Z-XiN9QkKBnOih9gZWE5Q7XWxahlJEu2GbMv6MjczvbdZxaqBOvfocahyG-Fsd5zoB~-gao2org__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" class="block w-[52px] h-[52px] rounded-xl object-cover">
             <div class="text-base">Mouse3153</div>
