@@ -319,8 +319,4 @@ const checkScrollbar = (e) =>{
 
 <style lang="scss" scoped>
   @import url("./style.css");
-
-  * {
-    outline: 1px solid #A00
-  }
 </style>
