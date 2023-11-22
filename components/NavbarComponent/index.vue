@@ -94,7 +94,7 @@ const checkScrollbar = (e) =>{
         <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full xl:w-auto grow text-2xl text-center top-full xl:relative bg-primary xl:bg-transparent z-20 duration-300 overflow-x-hidden" :class="{'-translate-y-full xl:translate-y-0 ':!menuOpen}">
 
           <!-- 電腦版 -->
-          <ul class="hidden xl:flex py-0 whitespace-nowrap">
+          <ul class="hidden xl:flex py-0 whitespace-nowrap mr-auto">
             <li class="mr-2">
               <NuxtLink to="/game/1" class="block text-light navlink active" @click="closeMenu">
                 <div class="nav-design">
@@ -264,14 +264,14 @@ const checkScrollbar = (e) =>{
           </div>
 
           <!-- 搜尋欄 -->
-          <div class="w-full xl:max-w-[364px] h-[44px] xl:rounded-full border-y xl:border border-secondary ml-auto xl:mr-6 pr-5 xl:pl-5 flex 2xl:flex justify-between items-center order-first xl:order-none" :class="{'xl:none':!isHome}">
+          <div class="w-full xl:max-w-[364px] h-[44px] xl:rounded-full border-y xl:border border-secondary  xl:mr-6 pr-5 xl:pl-5 flex  justify-between items-center order-first xl:order-none" :class="{'xl:hidden':!isHome}">
             <input type="text" class="bg-transparent shadow-none border-none outline-none h-[44px] text-2xl w-full">
             <button type="button" class="duration-150 text-white hover:text-secondary flex items-center">
               <Icon name="uil:search" />
             </button>
           </div>
           <!-- 搜尋按鈕 -->
-          <button v-if="!isHome" class="w-[50px] h-[50px] rounded-full border ml-auto mr-4 hidden xl:flex justify-center items-center text-white hover:text-secondary hover:border-secondary">
+          <button v-if="!isHome" class="w-[50px] h-[50px] rounded-full border  mr-4 hidden xl:flex justify-center items-center text-white hover:text-secondary hover:border-secondary">
             <Icon name="uil:search" />
           </button>
           <!-- 購物車 -->
@@ -319,4 +319,8 @@ const checkScrollbar = (e) =>{
 
 <style lang="scss" scoped>
   @import url("./style.css");
+
+  * {
+    outline: 1px solid #A00
+  }
 </style>
