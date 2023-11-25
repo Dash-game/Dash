@@ -1,12 +1,3 @@
-declare global {
-  interface IUser {
-    name: string
-    address: string
-  }
-}
-
-export {};
-
 interface IApiRes {
   message: string;
   code: string;

@@ -104,8 +104,32 @@
 </style>
 
 <script setup lang="ts">
+import { IData } from './game.d';
 
-const props = defineProps<{ user: IUser }>();
+let data: IData = {
+  id: '',
+  category: '', 
+  name: '', 
+  screenshots: [],
+  description: '',
+  description_short: '',
+  tags: [],
+  release_date: 0,
+  rating: 0,
+  developers: [],
+  publishers: [],
+  price: { price: 0, sale_price: 0 },
+  packages: [],
+  news: [],
+  platforms: { windows: false, mac: false, linux: false },
+  legal_notice: '',
+  similar_game: [],
+  recommended_game: [],
+  message: '', 
+  code: '', 
+};
 
+
+console.log(data);
 
 </script>
