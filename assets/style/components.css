@@ -30,6 +30,10 @@
     @apply duration-300  hover:-translate-y-1 sm:hover:scale-105 hover:bg-gradient-to-r from-white via-transparent to-transparent hover:opacity-100  opacity-80;
   };
 
+  .button-hover-labeldark {
+    @apply duration-300  hover:-translate-y-1 sm:hover:scale-105 hover:bg-labeldark hover:outline-labeldark hover:text-white;
+  };
+
   .button-outline-hover {
     @apply outline-secondary outline-1 outline duration-300  py-3 rounded-xl  hover:-translate-y-1 sm:hover:scale-105  text-secondary  hover:text-white hover:outline-white  hover:opacity-100  opacity-80;
   };

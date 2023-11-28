@@ -1,6 +1,8 @@
 <template>
-  <div class="container">
+  <div>
     <MemberUserComponent />
-    <MemberListComponent></MemberListComponent>
+    <div class="container">
+      <MemberListComponent></MemberListComponent>
+    </div>
   </div>
 </template>
