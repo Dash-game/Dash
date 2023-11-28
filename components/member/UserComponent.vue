@@ -24,20 +24,37 @@
         </ol>
       </nav>
     </div>
-    <p>我的資料</p>
-    <div class=" bg-section rounded-2xl py-10 px-12">
+    <p class="text-28">我的資料</p>
+    <!-- usertitle -->
+    <div class="bg-section rounded-2xl py-10 px-12 flex justify-between items-center">
       <div class="flex items-center">
-        <img :src="data.userPhotoUrl" alt="" width="100px" height="100px">
-        <p class="ml-20 text-24">您好，{{ data.userName }}( {{  data.userId }} )</p>
+        <img :src="data.userPhotoUrl" alt="" width="100px" height="100px" />
+        <p class="ml-20 text-24">您好，{{ data.userName }}( {{ data.userId }} )</p>
       </div>
-      <!-- <div>
-        <button>修改</button>
-        <button>返回</button>
-      </div> -->
-      <div>
-        <button>
+      <div v-if="userToggle">
+        <button @click="toggleUser()">
+          <Icon name="fa6-solid:square-pen" class="text-40" />
           <p>修改帳號</p>
         </button>
+      </div>
+      <div v-else>
+        <button @click="toggleUser()">修改</button>
+        <button @click="toggleUser()">返回</button>
+      </div>
+    </div>
+    <!-- usercontent -->
+    <div v-if="!userToggle" class="rounded-2xl bg-section h-[500px] mt-12 flex justify-between items-center">
+      <div>
+        <img :src="data.userPhotoUrl" alt="" width="250px" height="250px" />
+        <button>上傳圖片</button>
+      </div>
+      <div>
+        <div class="flex items-center">
+          <p>帳號</p>
+          <p>{{ data.userId }}</p>
+        </div>
+        <label for="userName" >暱稱</label>
+        <input type="text" id="userName" name="userName" placeholder="請輸入您的暱稱">
       </div>
     </div>
   </div>
@@ -45,7 +62,7 @@
 
 <script setup lang="ts">
 import { IUserData } from "./member.d";
-
+let userToggle = ref(true);
 //引入範例
 let data: IUserData = {
   userId: "Mouse3153",
@@ -53,4 +70,9 @@ let data: IUserData = {
   password: "12345",
   userPhotoUrl: "https://i.imgur.com/JfkeyjH.png",
 };
+
+function toggleUser() {
+  userToggle.value = !userToggle.value;
+  console.log(userToggle);
+}
 </script>
