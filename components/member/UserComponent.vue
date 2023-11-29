@@ -35,10 +35,10 @@
         <hr class="absolute -left-[240px] top-1/2 w-[250px] h-1" />
       </div>
       <!-- usertitle -->
-      <div class="bg-section rounded-2xl py-10 px-12 flex justify-between items-center">
+      <div class="bg-section rounded-2xl py-2 px-6 xl:py-10 xl:px-12 flex justify-between items-center">
         <div class="flex items-center">
-          <img :src="`${data.userPhotoUrl}?${Date.now()}`" class="rounded-3xl" alt="" width="100px" height="100px" />
-          <p class="ml-20 text-24">您好，{{ data.userName }}( {{ data.userId }} )</p>
+          <img :src="data.userPhotoUrl" class=" rounded-xl xl:rounded-3xl  w-[50px] h-[50px] xl:w-[100px] xl:h-[100px]" alt=""  />
+          <p class="ml-10 xl:ml-20 xl:text-24">您好，{{ data.userName }}<span class="block xl:inline">( {{ data.userId }} )</span></p>
         </div>
         <div v-if="userToggle">
           <button @click="toggleUser()">
@@ -47,15 +47,15 @@
           </button>
         </div>
         <div v-else>
-          <button class="button-md button-hover px-20 mr-10" @click="toggleUser()">修改</button>
-          <button class="button-outline-md outline-labeldark text-labeldark px-20 button-hover-labeldark" @click="toggleUser()">返回</button>
+          <button class="button-sm xl:button-md button-hover px-4 py-2 xl:px-20 mr-2 xl:mr-10" @click="toggleUser()">修改</button>
+          <button class="button-outline-sm xl:button-outline-md px-4 py-2  outline-labeldark text-labeldark xl:px-20 button-hover-labeldark" @click="toggleUser()">返回</button>
         </div>
       </div>
       <!-- usercontent -->
-      <div v-if="!userToggle" class="rounded-2xl bg-section h-[500px] mt-12 flex justify-between items-center px-28 py-20">
+      <div v-if="!userToggle" class="rounded-2xl bg-section h-[500px] mt-12 xl:flex justify-between items-center px-28 py-20">
         <!-- 上傳圖片 -->
         <div>
-          <img :src="`${data.userPhotoUrl}?${Date.now()}`" class="rounded-[50px] mb-10" alt="" width="250px" height="250px" />
+          <img :src="data.userPhotoUrl" class="rounded-[50px] mb-10 w-[200px] mx-auto "  alt="">
           <button class="button-outline-md button-outline-hover px-20">上傳圖片</button>
         </div>
 
