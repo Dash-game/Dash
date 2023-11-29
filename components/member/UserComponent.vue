@@ -34,11 +34,10 @@
         <p class="text-28 ml-10">我的資料</p>
         <hr class="absolute -left-[240px] top-1/2 w-[250px] h-1" />
       </div>
-
       <!-- usertitle -->
       <div class="bg-section rounded-2xl py-10 px-12 flex justify-between items-center">
         <div class="flex items-center">
-          <img :src="data.userPhotoUrl" class=" rounded-3xl" alt="" width="100px" height="100px" />
+          <img :src="`${data.userPhotoUrl}?${Date.now()}`" class="rounded-3xl" alt="" width="100px" height="100px" />
           <p class="ml-20 text-24">您好，{{ data.userName }}( {{ data.userId }} )</p>
         </div>
         <div v-if="userToggle">
@@ -53,18 +52,64 @@
         </div>
       </div>
       <!-- usercontent -->
-      <div v-if="!userToggle"  class="rounded-2xl bg-section h-[500px] mt-12 flex justify-between items-center px-28 py-20">
+      <div v-if="!userToggle" class="rounded-2xl bg-section h-[500px] mt-12 flex justify-between items-center px-28 py-20">
+        <!-- 上傳圖片 -->
         <div>
-          <img :src="data.userPhotoUrl" class=" rounded-[50px] mb-10" alt="" width="250px" height="250px" />
-          <button class=" button-outline-md button-outline-hover px-20 " >上傳圖片</button>
+          <img :src="`${data.userPhotoUrl}?${Date.now()}`" class="rounded-[50px] mb-10" alt="" width="250px" height="250px" />
+          <button class="button-outline-md button-outline-hover px-20">上傳圖片</button>
         </div>
+
         <div>
+          <!-- 帳號 -->
           <div class="flex items-center mb-7">
-            <p class="text-24  mr-20">帳號</p>
-            <p class="text-20  mx-auto">{{ data.userId }}</p>
+            <p class="text-24 mr-20">帳號</p>
+            <p class="text-20 mx-auto">{{ data.userId }}</p>
           </div>
-          <label for="userName" class="text-24 mr-20">暱稱</label>
-          <input type="text" id="userName" name="userName" placeholder="請輸入您的暱稱" class=" py-3 px-6 bg-section rounded-2xl w-[450px] " />
+          <!-- 暱稱 -->
+          <div class="flex justify-between">
+            <label for="userName" class="text-24 ">暱稱</label>
+            <input
+              type="text"
+              id="userName"
+              name="userName"
+              placeholder="請輸入您的暱稱"
+              class="focus:border-white focus:ring-0 py-3 px-6 bg-section rounded-2xl w-[450px]"
+            />
+          </div>
+          <hr class="my-10" />
+          <!-- 舊密碼 -->
+          <div class="mb-6">
+            <label for="password" class="text-24 mr-20">舊密碼</label>
+            <input
+              type="password"
+              id="userName"
+              name="userName"
+              placeholder="請輸入舊的密碼"
+              class="focus:border-white focus:ring-0 py-3 px-6 bg-section rounded-2xl w-[450px]"
+            />
+          </div>
+          <!-- 新密碼 -->
+          <div class="mb-6">
+            <label for="newPassWord" class="text-24 mr-20">新密碼</label>
+            <input
+              type="password"
+              id="newPassWord"
+              name="newPassWord"
+              placeholder="請輸入新的密碼"
+              class="focus:border-white focus:ring-0 py-3 px-6 bg-section rounded-2xl w-[450px]"
+            />
+          </div>
+          <!-- 再次輸入密碼 -->
+          <div class="flex justify-between">
+            <label for="checkPassWord" class="text-24 ">再次輸入</label>
+            <input
+              type="password"
+              id="checkPassWord"
+              name="checkPassWord"
+              placeholder="再次輸入新密碼"
+              class="focus:border-white focus:ring-0 py-3 px-6  bg-section rounded-2xl w-[450px]"
+            />
+          </div>
         </div>
       </div>
     </div>
