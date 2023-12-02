@@ -31,83 +31,75 @@
     <!-- user -->
     <div class="container pt-10">
       <div class="relative mb-10">
-        <p class="text-28 ml-10">我的資料</p>
-        <hr class="absolute -left-[240px] top-1/2 w-[250px] h-1" />
+        <p class="text-28 ml-12 xl:ml-10">我的資料</p>
+        <hr class="absolute -left-[240px] top-1/2 w-[260px] xl:w-[250px] h-1" />
       </div>
       <!-- usertitle -->
-      <div class="bg-section rounded-2xl py-2 px-6 xl:py-10 xl:px-12 flex justify-between items-center">
+      <div class="bg-section rounded-2xl py-4 px-6 md:py-6 xl:py-10 xl:px-12 flex justify-between items-center">
         <div class="flex items-center">
-          <img :src="data.userPhotoUrl" class=" rounded-xl xl:rounded-3xl  w-[50px] h-[50px] xl:w-[100px] xl:h-[100px]" alt=""  />
-          <p class="ml-10 xl:ml-20 xl:text-24">您好，{{ data.userName }}<span class="block xl:inline">( {{ data.userId }} )</span></p>
+          <img :src="data.userPhotoUrl" class="rounded-xl xl:rounded-3xl w-[50px] h-[50px] xl:w-[100px] xl:h-[100px]" alt="" />
+          <p class="ml-10 xl:ml-20 xl:text-24">
+            您好，{{ data.userName }}<span class="block xl:inline">( {{ data.userId }} )</span>
+          </p>
         </div>
         <div v-if="userToggle">
           <button @click="toggleUser()">
-            <Icon name="fa6-solid:square-pen" class="text-40" />
+            <Icon name="fa6-solid:square-pen" class="text-24 xl:text-40" />
             <p>修改帳號</p>
           </button>
         </div>
         <div v-else>
-          <button class="button-sm xl:button-md button-hover px-4 py-2 xl:px-20 mr-2 xl:mr-10" @click="toggleUser()">修改</button>
-          <button class="button-outline-sm xl:button-outline-md px-4 py-2  outline-labeldark text-labeldark xl:px-20 button-hover-labeldark" @click="toggleUser()">返回</button>
+          <button class="block md:inline md:px-6 button-sm xl:button-md button-hover px-4 py-2 xl:px-20 xl:mr-10" @click="toggleUser()">修改</button>
+          <button class="button-outline-sm md:ml-3 md:px-6  px-4 mt-2 py-2 xl:py-4 outline-labeldark text-labeldark xl:px-20 button-hover-labeldark" @click="toggleUser()">返回</button>
         </div>
       </div>
       <!-- usercontent -->
-      <div v-if="!userToggle" class="rounded-2xl bg-section h-[500px] mt-12 xl:flex justify-between items-center px-28 py-20">
+      <div v-if="!userToggle" class="z-10 rounded-2xl bg-section mt-5 xl:mt-12 lg:flex justify-between items-center px-8 py-10 lg:px-24 lg:py-12 xl:px-28 xl:py-20">
         <!-- 上傳圖片 -->
-        <div>
-          <img :src="data.userPhotoUrl" class="rounded-[50px] mb-10 w-[200px] mx-auto "  alt="">
-          <button class="button-outline-md button-outline-hover px-20">上傳圖片</button>
+        <div class="text-center xl:w-1/3">
+          <img :src="data.userPhotoUrl" class="rounded-[50px] mb-5 xl:mb-10 w-[200px] mx-auto" alt="" />
+          <button class="button-outline-sm md:button-outline-md button-outline-hover px-16 xl:px-20">上傳圖片</button>
         </div>
 
-        <div>
+        <div class="mt-5 border-t pt-7 lg:border-0 lg:pt-0 xl:w-1/2">
           <!-- 帳號 -->
-          <div class="flex items-center mb-7">
-            <p class="text-24 mr-20">帳號</p>
-            <p class="text-20 mx-auto">{{ data.userId }}</p>
+          <div class="flex items-center mb-2 xl:mb-7">
+            <p class="text-18 xl:text-24  w-1/3">帳號</p>
+            <p class="text-20 text-center w-full">{{ data.userId }}</p>
           </div>
           <!-- 暱稱 -->
-          <div class="flex justify-between">
-            <label for="userName" class="text-24 ">暱稱</label>
-            <input
-              type="text"
-              id="userName"
-              name="userName"
-              placeholder="請輸入您的暱稱"
-              class="focus:border-white focus:ring-0 py-3 px-6 bg-section rounded-2xl w-[450px]"
-            />
+          <div class="flex justify-between items-center mb-2 lg:mb-0">
+            <label for="userName" class="text-18 xl:text-24 w-1/3">暱稱</label>
+            <input type="text" id="userName" name="userName" placeholder="請輸入您的暱稱" class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]" />
           </div>
-          <hr class="my-10" />
+          <hr class="my-10 hidden lg:block" />
           <!-- 舊密碼 -->
-          <div class="mb-6">
-            <label for="password" class="text-24 mr-20">舊密碼</label>
-            <input
-              type="password"
-              id="userName"
-              name="userName"
-              placeholder="請輸入舊的密碼"
-              class="focus:border-white focus:ring-0 py-3 px-6 bg-section rounded-2xl w-[450px]"
-            />
+          <div class="flex justify-between items-center mb-2 xl:mb-7">
+            <label for="password" class="text-18 xl:text-24 w-1/3">舊密碼</label>
+            <input type="password" id="password" name="password" placeholder="請輸入舊的密碼" class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]" />
           </div>
+
           <!-- 新密碼 -->
-          <div class="mb-6">
-            <label for="newPassWord" class="text-24 mr-20">新密碼</label>
+          <div class="flex justify-between items-center mb-2 xl:mb-7">
+            <label for="newPassWord" class="text-18 xl:text-24 w-1/3">新密碼</label>
             <input
-              type="password"
+              type="passWord"
               id="newPassWord"
               name="newPassWord"
               placeholder="請輸入新的密碼"
-              class="focus:border-white focus:ring-0 py-3 px-6 bg-section rounded-2xl w-[450px]"
+              class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
             />
           </div>
+
           <!-- 再次輸入密碼 -->
-          <div class="flex justify-between">
-            <label for="checkPassWord" class="text-24 ">再次輸入</label>
+          <div class="flex justify-between items-center mb-2 xl:mb-7">
+            <label for="checkPassWord" class="text-18 xl:text-24 w-1/3">再次輸入</label>
             <input
-              type="password"
+              type="passWord"
               id="checkPassWord"
               name="checkPassWord"
               placeholder="再次輸入新密碼"
-              class="focus:border-white focus:ring-0 py-3 px-6  bg-section rounded-2xl w-[450px]"
+              class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
             />
           </div>
         </div>
