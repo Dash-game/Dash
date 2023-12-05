@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@nuxt/devtools',
-    'nuxt-icon'
+    'nuxt-icon',
+    '@vee-validate/nuxt',
   ],
   "imports": {
     "dirs": ['stores']
@@ -17,5 +18,16 @@ export default defineNuxtConfig({
   },
   alias: { // 設定路徑別名
     'imgs': resolve(__dirname, './public/images'),
+  },
+  veeValidate: {
+    // 啟用 auto imports
+    autoImports: true,
+    // 更換 components 名稱
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage',
+    }
   }
 })

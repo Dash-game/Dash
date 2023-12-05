@@ -18,6 +18,9 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
+    "@vee-validate/i18n": "^4.12.2",
+    "@vee-validate/nuxt": "^4.12.2",
+    "@vee-validate/rules": "^4.12.2",
     "flowbite": "^1.8.1",
     "pinia": "^2.1.6",
     "tailwind-scrollbar": "^3.0.5"

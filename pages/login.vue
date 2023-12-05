@@ -11,6 +11,24 @@
     forgetPassword.value = false
   })
 
+  const submit = value => {
+  console.log('submit', value);
+};
+const passwordRule = (password) => {
+    // Define the regular expressions for each requirement
+    const hasNumber = /\d/;
+  const hasUpperCase = /[A-Z]/;
+  const hasLowerCase = /[a-z]/;
+
+  // Check if the password meets all requirements
+  return (
+    hasNumber.test(password) &&
+    hasUpperCase.test(password) &&
+    hasLowerCase.test(password)
+  );
+
+}
+
 </script>
 
 <template>
@@ -20,16 +38,22 @@
         <div class="grid md:grid-cols-6 border-b xl:border-r xl:border-b-0 border-light">
           <div class="md:col-start-2 md:col-span-4 py-16 xl:py-5" :class="{'hidden':forgetPassword}">
             <h1 class="text-center text-2xl xl:text-3xl mb-16">登入Dash徜徉遊戲世界</h1>
-            <div class="mb-10">
-              <input type="email" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Email">
-            </div>
-            <div class="mb-16">
-              <input type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Password">
-            </div>
-            <button class="w-full h-16 rounded-xl text-2xl bg-secondary text-primary hover:text-white" @click="login">登入</button>
-            <div class=" text-center mt-4">
-              <a href="#" class=" text-darkgray hover:text-white text-[18px]" @click="forgetPassword = true">忘記密碼</a>
-            </div>
+            <VeeForm @submit="submit">
+              <div class="mb-10">
+                <VeeField name="email" type="email" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Email" rules="required|email" />
+                <VeeErrorMessage name="email" class="text-sm text-labeldark" />
+              </div>
+              <div class="mb-16">
+                <VeeField name="password" type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Password" rules="required|min:8" />
+                <VeeErrorMessage name="password" class="text-sm text-labeldark" />
+              </div>
+              <button type="submit" class="w-full h-16 rounded-xl text-2xl bg-secondary text-primary hover:text-white" @click="login">登入</button>
+              <div class=" text-center mt-4">
+                <a href="#" class=" text-darkgray hover:text-white text-[18px]" @click="forgetPassword = true">忘記密碼</a>
+              </div>
+            </VeeForm>
+
+
           </div>
           <div class="md:col-start-2 md:col-span-4 py-16 xl:py-5" :class="{'hidden':!forgetPassword}">
             <h1 class="text-center text-2xl xl:text-[28px] mb-16">忘記密碼</h1>
