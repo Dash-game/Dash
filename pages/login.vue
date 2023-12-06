@@ -1,10 +1,7 @@
 <script setup>
   const router = useRouter()
   const loginStore = useLoginStore()
-  const login = () => {
-    loginStore.loggedIn = true
-    router.back()
-  }
+
   let forgetPassword = ref(false)
 
   onMounted(()=>{
@@ -12,23 +9,15 @@
   })
 
   const submit = value => {
-  console.log('submit', value);
-};
+    console.log('submit', value);
+    loginStore.loggedIn = true
+    router.back()
+  };
+  const sendPassword = value => {
+    console.log('sendPassword', value);
+    router.back()
+  };
 
-const passwordRule = (password) => {
-    // Define the regular expressions for each requirement
-    const hasNumber = /\d/;
-  const hasUpperCase = /[A-Z]/;
-  const hasLowerCase = /[a-z]/;
-
-  // Check if the password meets all requirements
-  return (
-    hasNumber.test(password) &&
-    hasUpperCase.test(password) &&
-    hasLowerCase.test(password)
-  );
-
-}
 
 </script>
 
@@ -40,15 +29,15 @@ const passwordRule = (password) => {
           <div class="md:col-start-2 md:col-span-4 py-16 xl:py-5" :class="{'hidden':forgetPassword}">
             <h1 class="text-center text-2xl xl:text-3xl mb-16">登入Dash徜徉遊戲世界</h1>
             <VeeForm @submit="submit">
-              <div class="mb-10">
+              <div class="mb-10 relative">
                 <VeeField name="email" type="email" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Email" rules="required|email" />
-                <VeeErrorMessage name="email" class="text-sm text-labeldark" />
+                <VeeErrorMessage name="email" class="text-sm text-labeldark mt-1 absolute top-full left-1" />
               </div>
-              <div class="mb-16">
+              <div class="mb-16 relative">
                 <VeeField name="password" type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Password" rules="required|min:8|uppercase" />
-                <VeeErrorMessage name="password" class="text-sm text-labeldark" />
+                <VeeErrorMessage name="password" class="text-sm text-labeldark mt-1 absolute top-full left-1" />
               </div>
-              <button type="submit" class="w-full h-16 rounded-xl text-2xl bg-secondary text-primary hover:text-white" @click="login">登入</button>
+              <button type="submit" class="w-full h-16 rounded-xl text-2xl bg-secondary text-primary hover:text-white">登入</button>
               <div class=" text-center mt-4">
                 <a href="#" class=" text-darkgray hover:text-white text-[18px]" @click="forgetPassword = true">忘記密碼</a>
               </div>
@@ -58,10 +47,13 @@ const passwordRule = (password) => {
           </div>
           <div class="md:col-start-2 md:col-span-4 py-16 xl:py-5" :class="{'hidden':!forgetPassword}">
             <h1 class="text-center text-2xl xl:text-[28px] mb-16">忘記密碼</h1>
-            <div class="mb-10">
-              <input type="email" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl placeholder:text-center" placeholder="請輸入您的註冊 Email">
-            </div>
-            <button class="w-full h-16 rounded-xl text-2xl border border-secondary text-secondary hover:bg-secondary hover:text-primary">寄送新密碼</button>
+            <VeeForm  @submit="sendPassword">
+              <div class="mb-10 relative">
+                <VeeField name="email" type="email" rules="required|email" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl placeholder:text-center" placeholder="請輸入您的註冊 Email" />
+                <VeeErrorMessage name="email" class="text-sm text-labeldark mt-1 absolute top-full left-1" />
+              </div>
+              <button class="w-full h-16 rounded-xl text-2xl border border-secondary text-secondary hover:bg-secondary hover:text-primary">寄送新密碼</button>
+            </VeeForm>
             <div class=" text-center mt-4">
               <a href="#" class=" text-darkgray hover:text-white" @click="forgetPassword = false">返回登入</a>
             </div>
