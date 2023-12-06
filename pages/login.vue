@@ -30,11 +30,11 @@
             <h1 class="text-center text-2xl xl:text-3xl mb-16">登入Dash徜徉遊戲世界</h1>
             <VeeForm @submit="submit">
               <div class="mb-10 relative">
-                <VeeField name="email" type="email" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Email" rules="required|email" />
+                <VeeField name="email" type="email" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl focus:border-light focus:ring-light" placeholder="Email" rules="required|email" />
                 <VeeErrorMessage name="email" class="text-sm text-labeldark mt-1 absolute top-full left-1" />
               </div>
               <div class="mb-16 relative">
-                <VeeField name="password" type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Password" rules="required|min:8|uppercase" />
+                <VeeField name="password" type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl focus:border-light focus:ring-light" placeholder="Password" rules="required|min:8|uppercase" />
                 <VeeErrorMessage name="password" class="text-sm text-labeldark mt-1 absolute top-full left-1" />
               </div>
               <button type="submit" class="w-full h-16 rounded-xl text-2xl bg-secondary text-primary hover:text-white">登入</button>
@@ -49,7 +49,7 @@
             <h1 class="text-center text-2xl xl:text-[28px] mb-16">忘記密碼</h1>
             <VeeForm  @submit="sendPassword">
               <div class="mb-10 relative">
-                <VeeField name="email" type="email" rules="required|email" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl placeholder:text-center" placeholder="請輸入您的註冊 Email" />
+                <VeeField name="email" type="email" rules="required|email" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl focus:border-light focus:ring-light placeholder:text-center autofill" placeholder="請輸入您的註冊 Email" />
                 <VeeErrorMessage name="email" class="text-sm text-labeldark mt-1 absolute top-full left-1" />
               </div>
               <button class="w-full h-16 rounded-xl text-2xl border border-secondary text-secondary hover:bg-secondary hover:text-primary">寄送新密碼</button>
@@ -84,3 +84,14 @@
   </div>
     
 </template>
+<style scoped>
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+</style>
