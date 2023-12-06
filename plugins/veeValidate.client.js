@@ -1,7 +1,6 @@
-import { defineRule } from 'vee-validate';
+import { defineRule, configure } from 'vee-validate';
 import * as allRules from '@vee-validate/rules';
 
-import { configure } from 'vee-validate';
 import { localize, setLocale } from '@vee-validate/i18n';
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 
@@ -11,20 +10,26 @@ Object.keys(allRules).forEach(rule => {
   defineRule(rule, allRules[rule]);
 });
 
-// extend('uppercase', {
-//   validate: value => {
-//     const hasUpperCase = /[A-Z]/;
-//     return hasUpperCase.test(value);
-//   },
-//   message: 'The password must contain at least one uppercase letter.',
-// });
 
-
+defineRule('uppercase', value => {
+  const hasNumber = /\d/;
+  const hasUpperCase = /[A-Z]/;
+  const hasLowerCase = /[a-z]/;
+  if(  
+    hasNumber.test(value) &&
+    hasUpperCase.test(value) &&
+    hasLowerCase.test(value)
+  ){
+    return true
+  }
+    return '須包含大小寫及數字'
+})
 
 
 // 配置訊息
 configure({
-  generateMessage: localize({ zh_TW: zhTW })
+  generateMessage: localize({ zh_TW: zhTW }),
+  validateOnInput:true
 });
 
 setLocale('zh_TW');

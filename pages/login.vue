@@ -14,6 +14,7 @@
   const submit = value => {
   console.log('submit', value);
 };
+
 const passwordRule = (password) => {
     // Define the regular expressions for each requirement
     const hasNumber = /\d/;
@@ -44,7 +45,7 @@ const passwordRule = (password) => {
                 <VeeErrorMessage name="email" class="text-sm text-labeldark" />
               </div>
               <div class="mb-16">
-                <VeeField name="password" type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Password" rules="required|min:8" />
+                <VeeField name="password" type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl" placeholder="Password" rules="required|min:8|uppercase" />
                 <VeeErrorMessage name="password" class="text-sm text-labeldark" />
               </div>
               <button type="submit" class="w-full h-16 rounded-xl text-2xl bg-secondary text-primary hover:text-white" @click="login">登入</button>
