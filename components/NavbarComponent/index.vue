@@ -291,19 +291,19 @@ const checkScrollbar = (e) =>{
         <!-- 會員中心 -->
         <div class="absolute top-0 right-0 xl:relative w-[122px] h-16 xl:h-[92px] flex flex-col items-center justify-center group " :class="{'hidden':!loginStore.loggedIn}">
           <a href="#" class="absolute top-0 py-1 flex flex-col items-center justify-center w-full h-full bg-section xl:bg-primary z-40" @click.prevent>
-            <img src="https://s3-alpha-sig.figma.com/img/cfbf/8e85/c101d9ee509ebd1615efb93f1332b8d2?Expires=1701648000&Signature=BS6nVO7d6q6c03Ihi0h2zyaSAbTnNJMWK1y2Q5axpUmNrJO4d~p0eSFMcSm7snivW2lwcCmBPBQIqDLDK1BZeZ7awwmLanq78qjyMG~VzKoF11Wq8TcWPx~8yudJli6heuM8ShKKLTA-QB1BoH0aJEwofJSuq4LRKDSJXGa-BXQEZ5JnJEuta9sLrU20wjARSMjC8JJxeLhnfyrTs1pA9zwPVjSaTIgsEJ~W7NGB1Ovu9l3K9QiVui3qjDRq-6KA14usvOhMD02Z-XiN9QkKBnOih9gZWE5Q7XWxahlJEu2GbMv6MjczvbdZxaqBOvfocahyG-Fsd5zoB~-gao2org__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" class="block w-[52px] h-[52px] rounded-xl object-cover">
-            <div class="text-[10px]">{{ loginStore.id }}</div>
+            <img :src="loginStore.image" alt="" class="block w-[52px] h-[52px] rounded-xl object-cover">
+            <div class="text-[10px] xl:text-base">{{ loginStore.id }}</div>
           </a>
           <div class="absolute top-full w-full  -translate-y-full group-hover:-translate-y-0 transition-transform duration-300 z-30">
             <ul class="rounded-b-xl shadow border border-primary text-center ">
               <li class="hover:text-secondary bg-section border border-primary">
-                <NuxtLink to="/" class="block py-2">收藏庫</NuxtLink>
+                <NuxtLink to="/member" class="block py-2">收藏庫</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary">
-                <NuxtLink to="/" class="block py-2">願望清單</NuxtLink>
+                <NuxtLink to="/member" class="block py-2">願望清單</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary">
-                <NuxtLink to="/" class="block py-2">遊戲評論</NuxtLink>
+                <NuxtLink to="/member" class="block py-2">遊戲評論</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary rounded-b-xl">
                 <button type="button" class="w-full py-2" @click="loginStore.logout">登出</button>
