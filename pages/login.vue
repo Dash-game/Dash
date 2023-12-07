@@ -8,15 +8,20 @@
     forgetPassword.value = false
   })
 
+  const dashLogin = useCookie('dashLogin')
+
   const submit = value => {
-    console.log('submit', value);
+    dashLogin.value = value
+    console.log(dashLogin.value)
     loginStore.loggedIn = true
     router.back()
   };
+
   const sendPassword = value => {
     console.log('sendPassword', value);
     router.back()
   };
+
 
 
 </script>
@@ -34,7 +39,8 @@
                 <VeeErrorMessage name="email" class="text-sm text-labeldark mt-1 absolute top-full left-1" />
               </div>
               <div class="mb-16 relative">
-                <VeeField name="password" type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl focus:border-light focus:ring-light" placeholder="Password" rules="required|min:8|uppercase" />
+                <VeeField name="password" type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl focus:border-light focus:ring-light" placeholder="Password" rules="required" />
+                <!-- <VeeField name="password" type="password" class="w-full h-16 bg-transparent text-2xl font-medium border border-light rounded-xl focus:border-light focus:ring-light" placeholder="Password" rules="required|min:8|uppercase" /> -->
                 <VeeErrorMessage name="password" class="text-sm text-labeldark mt-1 absolute top-full left-1" />
               </div>
               <button type="submit" class="w-full h-16 rounded-xl text-2xl bg-secondary text-primary hover:text-white">登入</button>
