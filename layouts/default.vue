@@ -19,8 +19,9 @@ const handleScroll = () => {
 };
 </script>
 <template>
-  <div class="relative">
-    <NavbarComponent :hide="hide" 
+  <!-- pb 讓 footer 不要擋住內容 -->
+  <div class="relative pb-24">
+    <NavbarComponent :hide="hide"
     @wheel.prevent
     @touchmove.prevent
     @scroll.prevent

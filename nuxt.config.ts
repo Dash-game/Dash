@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { resolve } from 'path';
+import { resolve } from "path";
 
 export default defineNuxtConfig({
   modules: [
@@ -12,10 +12,11 @@ export default defineNuxtConfig({
   "imports": {
     "dirs": ['stores']
   },
-  css: ['~/assets/style/main.css'],
+  css: ["~/assets/style/main.css"],
   app: {
-    baseURL: '/Dash/'
+    baseURL: "/Dash/",
   },
+
   alias: { // 設定路徑別名
     'imgs': resolve(__dirname, './public/images'),
   },
@@ -29,5 +30,6 @@ export default defineNuxtConfig({
       FieldArray: 'VeeFieldArray',
       ErrorMessage: 'VeeErrorMessage',
     }
+
   }
-})
+});
