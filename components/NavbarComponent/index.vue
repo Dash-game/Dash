@@ -56,6 +56,13 @@ const checkScrollbar = (e) =>{
   }
 }
 
+
+// 切換 member 分頁
+const tabStore = useTabStore()
+const memberOpen = ref(false)
+const toggleMember = () => {
+  memberOpen.value = !memberOpen.value
+}
 </script>
 
 <template>
@@ -290,23 +297,23 @@ const checkScrollbar = (e) =>{
 
         <!-- 會員中心 -->
         <div class="absolute top-0 right-0 xl:relative w-[122px] h-16 xl:h-[92px] flex flex-col items-center justify-center group " :class="{'hidden':!loginStore.loggedIn}">
-          <a href="#" class="absolute top-0 py-1 flex flex-col items-center justify-center w-full h-full bg-section xl:bg-primary z-40" @click.prevent>
+          <div class="absolute top-0 py-1 flex flex-col items-center justify-center w-full h-full bg-section xl:bg-primary z-40" @click="toggleMember">
             <img :src="loginStore.image" alt="" class="block w-[52px] h-[52px] rounded-xl object-cover">
             <div class="text-[10px] xl:text-base">{{ loginStore.id }}</div>
-          </a>
-          <div class="absolute top-full w-full  -translate-y-full group-hover:-translate-y-0 transition-transform duration-300 z-30">
+          </div>
+          <div class="absolute top-full w-full   transition-transform duration-300 z-30" :class="{'-translate-y-full':!memberOpen}">
             <ul class="rounded-b-xl shadow border border-primary text-center ">
               <li class="hover:text-secondary bg-section border border-primary">
-                <NuxtLink to="/member" class="block py-2">收藏庫</NuxtLink>
+                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'collectPage'; memberOpen=false">收藏庫</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary">
-                <NuxtLink to="/member" class="block py-2">願望清單</NuxtLink>
+                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'wonderPage'; memberOpen=false">願望清單</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary">
-                <NuxtLink to="/member" class="block py-2">遊戲評論</NuxtLink>
+                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'commentPage'; memberOpen=false">遊戲評論</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary rounded-b-xl">
-                <button type="button" class="w-full py-2" @click="loginStore.logout">登出</button>
+                <button type="button" class="w-full py-2" @click="loginStore.logout; memberOpen=false">登出</button>
               </li>
             </ul>
           </div>
