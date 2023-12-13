@@ -3,5 +3,6 @@
     member
     <MemberUserComponent />
     <MemberListComponent></MemberListComponent>
+    <MemberCommentComponent />
   </div>
 </template>
