@@ -3,5 +3,6 @@
     <MemberUserComponent />
     <CommonTabPageComponent />
     <MemberListComponent></MemberListComponent>
+    <MemberCommentComponent />
   </div>
 </template>
