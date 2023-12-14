@@ -18,7 +18,7 @@
       </button>
       <!-- Dropdown menu -->
       <!-- hidden -->
-      <div id="dropdown" class="z-10 bg-white divide-y divide-gray-100 rounded shadow basis-full lg:basis-1/4">
+      <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow basis-full lg:basis-1/4">
           <ul class="py-2 text-24 text-primary" aria-labelledby="dropdownDefaultButton">
             <li v-for="(item, index) in dropData" :key="index">
               <a href="#" class="block px-7 py-3 hover:bg-secondary">{{ item.item }}</a>
@@ -28,15 +28,15 @@
     </div>
     <!-- item -->
     <ul class="grid lg:grid-cols-2 gap-14">
-      <li class="bg-section rounded-lg shadow hover:text-secondary hover:-translate-y-1 duration-300 group" v-for="(item, index) in listData" :key="index">
-        <a href="#" class="flex flex-row justify-between items-stretch w-full h-full">
+      <li class="bg-section rounded-lg shadow hover:text-secondary hover:-translate-y-1 duration-300 group h-[234px]" v-for="(item, index) in listData" :key="index">
+        <a href="#" class="flex flex-row justify-between items-stretch h-full">
           <figure class="mr-7 lg:mr-14 filter grayscale group-hover:grayscale-0 flex-none">
-            <img class="object-cover rounded-t-lg  w-[324px] h-[234px]" :src="item.image" :alt="item.title">
+            <img class="object-cover rounded-t-lg w-[324px] h-[234px]" :src="item.image" :alt="item.title">
           </figure>
-          <div class="flex-1 h-full py-3 pr-3 text-light flex flex-col justify-between">
+          <div class="flex-1 w-0 h-full py-3 pr-3 text-light flex flex-col justify-between">
             <p class="text-12 text-right mb-3.5">上次遊玩 {{ item.releaseDate }}</p>
             <div>
-              <h5 class="mb-7 text-20 font-semibold text-white">{{ item.title }}</h5>
+              <p class="mb-7 text-20 font-semibold text-white truncate">{{ item.title }}</p>
               <ul class="space-y-2 mb-3">
                 <li>發行商：{{ item.supplier }}</li>
                 <li>發行日期：{{ item.issuingDate }}</li>
