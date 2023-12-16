@@ -101,7 +101,7 @@
                   name="bxs:like"
                   size="20"
                   class="ml-2"
-                  @click.stop="showModal({ ...item, isRecommend: true })"
+                  @click.stop="showModal(item)"
                 ></Icon>
               </p>
               <p
@@ -112,7 +112,7 @@
                   name="bxs:dislike"
                   size="20"
                   class="ml-2"
-                  @click.stop="showModal({ ...item, isRecommend: false })"
+                  @click.stop="showModal(item)"
                 ></Icon>
               </p>
               <p v-else>
@@ -120,12 +120,12 @@
                   name="bx:like"
                   size="20"
                   class="mr-2"
-                  @click.stop="showModal({ ...item, isRecommend: true })"
+                  @click.stop="showModal(item)"
                 ></Icon>
                 <Icon
                   name="bx:dislike"
                   size="20"
-                  @click.stop="showModal({ ...item, isRecommend: false })"
+                  @click.stop="showModal(item)"
                 ></Icon>
               </p>
             </div>
