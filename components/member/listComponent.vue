@@ -94,7 +94,7 @@
             </div>
             <div class="text-right text-14">
               <p
-                v-if="item.isLike === 'like'"
+                v-if="item.isLike === 1"
                 class="text-labellight inline-flex items-center"
               >
                 您推薦這款遊戲<Icon
@@ -105,7 +105,7 @@
                 ></Icon>
               </p>
               <p
-                v-else-if="item.isLike === 'dislike'"
+                v-else-if="item.isLike === -1"
                 class="text-labeldark inline-flex items-center"
               >
                 您不推薦這款遊戲<Icon
@@ -193,7 +193,7 @@ export default {
           issuingDate: '2020-09-10',
           releaseDate: '2023-07-28 18:26',
           playTime: 1100,
-          isLike: null // like|dislike|null or true|false|null
+          isLike: 0 // like|dislike|null or true|false|null
         },
         {
           image: '/images/member/memberGameImage001.png',
@@ -203,7 +203,7 @@ export default {
           issuingDate: '2020-09-10',
           releaseDate: '2023-07-28 18:26',
           playTime: 1100,
-          isLike: null // like|dislike|null or true|false|null
+          isLike: 1 // like|dislike|null or true|false|null
         },
         {
           image: '/images/member/memberGameImage001.png',
@@ -212,7 +212,7 @@ export default {
           issuingDate: '2020-09-10',
           releaseDate: '2023-07-28 18:26',
           playTime: 1100,
-          isLike: null // like|dislike|null or true|false|null
+          isLike: -1 // like|dislike|null or true|false|null
         },
         {
           image: '/images/member/memberGameImage001.png',
@@ -221,7 +221,7 @@ export default {
           issuingDate: '2020-09-10',
           releaseDate: '2023-07-28 18:26',
           playTime: 1100,
-          isLike: null // like|dislike|null or true|false|null
+          isLike: 0 // like|dislike|null or true|false|null
         },
         {
           image: '/images/member/memberGameImage001.png',
@@ -230,7 +230,7 @@ export default {
           issuingDate: '2020-09-10',
           releaseDate: '2023-07-28 18:26',
           playTime: 1100,
-          isLike: null // like|dislike|null or true|false|null
+          isLike: 1 // like|dislike|null or true|false|null
         }
       ]
     }
