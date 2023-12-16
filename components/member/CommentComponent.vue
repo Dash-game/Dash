@@ -29,11 +29,11 @@
         </div>
         <div
           :class="{
-            'text-labeldark': !data.is_recommend,
-            'text-secondary': data.is_recommend
+            'text-labeldark': data.is_recommend === -1,
+            'text-labellight': data.is_recommend === 1
           }"
         >
-          <span v-if="!data.is_recommend">
+          <span v-if="data.is_recommend === -1">
             <Icon
               class="mr-1"
               name="icon-park-outline:bad-one"
@@ -112,7 +112,7 @@ const CommentList = computed(() => {
       created_at: '2023-07-31 21:34',
       recommend_count: 30,
       interested_count: 0,
-      is_recommend: false,
+      is_recommend: -1,
       content:
         '沒有一款 PlayStation 的遊戲上PC評價差的 因為個個都是佳作啊 ! ! ! ! ( 除了某款10/10 那個不上PC沒關係 )索尼 做的好繼續把作品上PC 就對了 你們賺爽爽 我們玩爽爽這樣大家都能 好蒿爽爽wwww'
     },
@@ -124,7 +124,7 @@ const CommentList = computed(() => {
       created_at: '2023-07-31 21:34',
       recommend_count: 30,
       interested_count: 0,
-      is_recommend: false,
+      is_recommend: -1,
       content:
         '沒有一款 PlayStation 的遊戲上PC評價差的 因為個個都是佳作啊 ! ! ! ! ( 除了某款10/10 那個不上PC沒關係 )索尼 做的好繼續把作品上PC 就對了 你們賺爽爽 我們玩爽爽這樣大家都能 好蒿爽爽wwww'
     },
@@ -136,7 +136,7 @@ const CommentList = computed(() => {
       created_at: '2023-07-31 21:34',
       recommend_count: 30,
       interested_count: 0,
-      is_recommend: true,
+      is_recommend: 1,
       content:
         '沒有一款 PlayStation 的遊戲上PC評價差的 因為個個都是佳作啊 ! ! ! ! ( 除了某款10/10 那個不上PC沒關係 )索尼 做的好繼續把作品上PC 就對了 你們賺爽爽 我們玩爽爽這樣大家都能 好蒿爽爽wwww'
     }

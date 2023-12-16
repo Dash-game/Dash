@@ -29,7 +29,7 @@ export interface IReview{
   avatar: string,
   name: string,
   review_count: number,
-  is_recommend: boolean,
+  is_recommend: number, // -1不推薦 0未評論 1推薦
   recommend_count: number,
   interested_count: number,
   playing_hours: number,

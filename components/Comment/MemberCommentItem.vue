@@ -7,15 +7,15 @@
       <li class="w-auto">
         <div class="flex items-center">
           <input
-            id="recommend"
+            :id="'recommend' + props.data.id"
             type="radio"
-            value="true"
+            value="1"
             name="list-radio"
-            v-model="isRecommended"
+            v-model.number="isRecommended"
             class="peer/recommend hidden w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
           />
           <label
-            for="recommend"
+            :for="'recommend' + props.data.id"
             class="peer-checked/recommend:bg-labellight peer-checked/recommend:text-primary px-6 py-3 text-sm font-medium text-white rounded text-center"
           >
             <span class="flex items-center">
@@ -30,15 +30,15 @@
       <li class="w-auto">
         <div class="flex items-center">
           <input
-            id="not_recommend"
+            :id="'not_recommend' + props.data.id"
             type="radio"
-            value="false"
+            value="-1"
             name="list-radio"
-            v-model="isRecommended"
+            v-model.number="isRecommended"
             class="peer/not_recommend hidden w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
           />
           <label
-            for="not_recommend"
+            :for="'not_recommend' + props.data.id"
             class="py-3 px-6 text-sm font-medium text-white peer-checked/not_recommend:bg-labellight peer-checked/not_recommend:text-primary rounded"
           >
             <span class="flex items-center">
@@ -53,7 +53,7 @@
     </ul>
 
     <label for="message" class="block mb-2 text-sm font-medium"
-      >您{{ isRecommended ? '推薦' : '不推薦' }}
+      >您{{ isRecommended == 1 ? '推薦' : '不推薦' }}
       {{ props.data?.title }} 的原因：</label
     >
     <textarea
@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-const isRecommended = ref(true)
+const isRecommended = ref(1)
 const content = ref('')
 const props = defineProps({
   data: {
@@ -78,7 +78,7 @@ const props = defineProps({
 const getValue = () => {
   return {
     ...props.data,
-    is_recommend: isRecommended.value === 'true' ? true : false,
+    is_recommend: isRecommended.value,
     content: content.value
   }
 }
@@ -91,7 +91,7 @@ watch(
   () => props.data,
   (val) => {
     console.log(val)
-    isRecommended.value = val.is_recommend ? 'true' : 'false'
+    isRecommended.value = val.is_recommend
     content.value = val.content
   }
 )
