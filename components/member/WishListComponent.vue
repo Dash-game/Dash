@@ -40,23 +40,24 @@
               <p class="mb-6 text-24 font-semibold text-white truncate">{{ item.title }}</p>
               <ul class="mb-5 text-18">
                 <li>發行商：{{ item.supplier }}</li>
-                <li>發行日期：{{ item.issuingDate }}</li>
+                <li>發行日期：{{ item.release_date }}</li>
                 <li class="text-16">
-                  <p v-if="item.isLike === 'like'" class="text-labellight inline-flex items-center">整體評論：好評<Icon name="bxs:like" size="20" class="ml-2"></Icon></p>
-                  <p v-else-if="item.isLike === 'dislike'" class="text-labeldark inline-flex items-center">整體評論：不好評<Icon name="bxs:dislike" size="20" class="ml-2"></Icon></p>
-                  <p v-else>整體評論：尚未有人評論</p>
+                  <p v-if="item.like==0 && item.dislike==0">整體評論：尚未有人評論</p>
+                  <p v-else-if="item.like > item.dislike && (item.like-item.dislike)/item.dislike > 0.1" class="text-labellight inline-flex items-center">整體評論：推薦<Icon name="bxs:like" size="20" class="ml-2"></Icon></p>
+                  <p v-else-if="item.like < item.dislike && (item.dislike-item.like)/item.like > 0.1" class="text-labeldark inline-flex items-center">整體評論：不推薦<Icon name="bxs:dislike" size="20" class="ml-2"></Icon></p>
+                  <p v-else class="text-white">整體評論：褒貶不一</p>
                 </li>
               </ul>
-              <p class="text-16">{{ item.addDate }} 加入</p>
+              <p class="text-16">{{ item.add_Date }} 加入</p>
             </div>
             <!-- 遊戲價格 -->
             <div>
               <!-- price -->
               <div class="flex gap-4 justify-between items-center">
-                <span class="block text-labeldark text-48 font-semibold">${{ item.price.toLocaleString("en")}}</span>
-                <div class=" text-center">
-                  <span class="block text-labellight text-20 font-bold">{{ item.discount }}%</span>
-                  <span class="block text-light text-12 font-semibold line-through">{{ item.basePrice.toLocaleString("en") }}</span>
+                <span class="block text-labeldark text-48 font-semibold">${{ item.sale_price.toLocaleString("en")}}</span>
+                <div class=" text-center" v-if="item.price !== item.sale_price">
+                  <span class="block text-labellight text-20 font-bold">{{ ((item.sale_price-item.price) / item.price *100).toFixed(0) }}%</span>
+                  <span class="block text-light text-12 font-semibold line-through">{{ item.price.toLocaleString("en") }}</span>
                 </div>
               </div>
               <!-- button -->
@@ -86,56 +87,56 @@ export default {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          addDate: '2023-07-28 18:26',
-          isLike: 'like', // like|dislike|null or true|false|null
-          discount: -42,
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          like: 300,
+          dislike: 20,
           price: 1982,
-          basePrice: 1982
+          sale_price: 1882
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          addDate: '2023-07-28 18:26',
-          isLike: 'dislike', // like|dislike|null or true|false|null
-          discount: -42,
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          like: 60,
+          dislike: 170,
           price: 1982,
-          basePrice: 1982
+          sale_price: 1982
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          addDate: '2023-07-28 18:26',
-          isLike: null, // like|dislike|null or true|false|null
-          discount: -42,
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          like: 10,
+          dislike: 9,
           price: 1982,
-          basePrice: 1982
+          sale_price: 1200
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          addDate: '2023-07-28 18:26',
-          isLike: 'like', // like|dislike|null or true|false|null
-          discount: -42,
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          like: 1000,
+          dislike: 999,
           price: 1982,
-          basePrice: 1982
+          sale_price: 1982
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          addDate: '2023-07-28 18:26',
-          isLike: 'like', // like|dislike|null or true|false|null
-          discount: -42,
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          like: 0,
+          dislike: 0,
           price: 1982,
-          basePrice: 1982
+          sale_price: 1982
         },
 
       ],
