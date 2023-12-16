@@ -1,5 +1,23 @@
 <template>
   <div class="container">
+    <div class="flex justify-between pt-12 py-[72px]">
+      <div class="lg:w-1/2">
+        <input
+          type="text"
+          class="bg-white text-primary text-sm rounded-lg block w-full p-2.5"
+          placeholder="Search"
+        />
+      </div>
+      <div>
+        <select
+          id="small"
+          class="block w-full py-2.5 pl-12 mb-6 text-sm text-primary rounded-lg bg-white"
+        >
+          <option value="1">依購買日期排序</option>
+          <option value="2">依評論日期排序</option>
+        </select>
+      </div>
+    </div>
     <article
       class="bg-section px-12 py-10 rounded-[30px] flex gap-x-14 mb-16"
       v-for="data in CommentList"
@@ -11,11 +29,11 @@
         </div>
         <div
           :class="{
-            'text-labeldark': !data.isRecommend,
-            'text-secondary': data.isRecommend
+            'text-labeldark': !data.is_recommend,
+            'text-secondary': data.is_recommend
           }"
         >
-          <span v-if="!data.isRecommend">
+          <span v-if="!data.is_recommend">
             <Icon
               class="mr-1"
               name="icon-park-outline:bad-one"
@@ -70,7 +88,7 @@
           class="flex justify-between items-center mb-3 w-full pr-[17px] text-28"
         >
           <h6 class="text-white">遊戲評論</h6>
-          <div class="text-darkgray">Dave the Diver</div>
+          <div class="text-darkgray">{{ commentModalData.title }}</div>
         </div>
       </div>
     </template>
@@ -94,7 +112,7 @@ const CommentList = computed(() => {
       created_at: '2023-07-31 21:34',
       recommend_count: 30,
       interested_count: 0,
-      isRecommend: false,
+      is_recommend: false,
       content:
         '沒有一款 PlayStation 的遊戲上PC評價差的 因為個個都是佳作啊 ! ! ! ! ( 除了某款10/10 那個不上PC沒關係 )索尼 做的好繼續把作品上PC 就對了 你們賺爽爽 我們玩爽爽這樣大家都能 好蒿爽爽wwww'
     },
@@ -106,7 +124,7 @@ const CommentList = computed(() => {
       created_at: '2023-07-31 21:34',
       recommend_count: 30,
       interested_count: 0,
-      isRecommend: false,
+      is_recommend: false,
       content:
         '沒有一款 PlayStation 的遊戲上PC評價差的 因為個個都是佳作啊 ! ! ! ! ( 除了某款10/10 那個不上PC沒關係 )索尼 做的好繼續把作品上PC 就對了 你們賺爽爽 我們玩爽爽這樣大家都能 好蒿爽爽wwww'
     },
@@ -118,7 +136,7 @@ const CommentList = computed(() => {
       created_at: '2023-07-31 21:34',
       recommend_count: 30,
       interested_count: 0,
-      isRecommend: true,
+      is_recommend: true,
       content:
         '沒有一款 PlayStation 的遊戲上PC評價差的 因為個個都是佳作啊 ! ! ! ! ( 除了某款10/10 那個不上PC沒關係 )索尼 做的好繼續把作品上PC 就對了 你們賺爽爽 我們玩爽爽這樣大家都能 好蒿爽爽wwww'
     }

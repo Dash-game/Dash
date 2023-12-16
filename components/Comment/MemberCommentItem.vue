@@ -1,4 +1,4 @@
-q<template>
+<template>
   <article class="">
     <h3 class="mb-2 font-semibold">您是否推薦 {{ props.data?.title }} ?</h3>
     <ul
@@ -78,7 +78,7 @@ const props = defineProps({
 const getValue = () => {
   return {
     ...props.data,
-    isRecommend: isRecommended.value === 'true' ? true : false,
+    is_recommend: isRecommended.value === 'true' ? true : false,
     content: content.value
   }
 }
@@ -90,7 +90,8 @@ defineExpose({
 watch(
   () => props.data,
   (val) => {
-    isRecommended.value = val.isRecommended ? 'true' : 'false'
+    console.log(val)
+    isRecommended.value = val.is_recommend ? 'true' : 'false'
     content.value = val.content
   }
 )
