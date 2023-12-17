@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <MemberUserComponent />
-    <CommonTabPageComponent />
+    <MemberTabPageComponent />
+    <MemberPaginationComponent />
     <!-- <MemberListComponent v-if="switchType === 'list'"></MemberListComponent> -->
     <!-- <MemberWishListComponent v-else-if="switchType === 'wishList'"></MemberWishListComponent> -->
     <!-- <MemberCommentComponent /> -->

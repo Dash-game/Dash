@@ -1,5 +1,4 @@
 <script setup>
-    // import { ref, onMounted, watch } from 'vue'
 
     const tabStore = useTabStore()
 
@@ -9,12 +8,8 @@
     //     code: string;
     // }
 
-    // export interface IPage extends IApiRes {
-    //     pages: Ipage[];
-    // }
-    // export interface Ipage {
-    //     pageName: string;
-    //     page_length: Number;
+    // export interface ITab extends IApiRes {
+    //     tabName: string;
     // }
 </script>
 <template>
