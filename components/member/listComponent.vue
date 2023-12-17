@@ -95,7 +95,7 @@
             </div>
             <div class="text-right text-14">
               <p
-                v-if="item.isLike === 1"
+                v-if="item.is_recommend === 1"
                 class="text-labellight inline-flex items-center"
               >
                 您推薦這款遊戲<Icon
@@ -106,7 +106,7 @@
                 ></Icon>
               </p>
               <p
-                v-else-if="item.isLike === -1"
+                v-else-if="item.is_recommend === -1"
                 class="text-labeldark inline-flex items-center"
               >
                 您不推薦這款遊戲<Icon
@@ -192,10 +192,9 @@ export default {
           title: 'Dave the Diver',
           publishers:['Frictional Games'],
           release_date: 1702736324,
-          add_Date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,
-          isLike: 0 // like|dislike|null or true|false|null
+          is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
         },
         {
           image: '/images/member/memberGameImage001.png',
@@ -203,40 +202,36 @@ export default {
             'Dave the DiverDave the DiverDave the DiverDarDave the DiverDave the DiverDave the DiverDave theerDave the DiverDrDavet heDiverDave the DiverDave the DiverDavethe DiverDave thverDave the Diver',
           publishers:['Frictional Games'],
           release_date: 1702736324,
-          add_Date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,
-          isLike: 1 // like|dislike|null or true|false|null
+          is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
           publishers:['Frictional Games'],
           release_date: 1702736324,
-          add_Date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,
-          isLike: -1 // like|dislike|null or true|false|null
+          is_recommend: -1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
           publishers:['Frictional Games'],
           release_date: 1702736324,
-          add_Date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,
-          isLike: 0 // like|dislike|null or true|false|null
+          is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
           publishers:['Frictional Games'],
           release_date: 1702736324,
-          add_Date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,
-          isLike: 1 // like|dislike|null or true|false|null
+          is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
         }
       ]
     }

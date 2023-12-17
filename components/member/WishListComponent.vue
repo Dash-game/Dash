@@ -51,7 +51,7 @@
                 </li>
               </ul>
               <p class="text-16">
-                <span v-timeformat="item.add_Date * 1000"></span> 加入</p>
+                <span v-timeformat="item.add_date * 1000"></span> 加入</p>
             </div>
             <!-- 遊戲價格 -->
             <div>
@@ -91,7 +91,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702780324,
+          add_date: 1702780324,
           like: 300,
           dislike: 20,
           price: 1982,
@@ -102,7 +102,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702780324,
+          add_date: 1702780324,
           like: 60,
           dislike: 170,
           price: 1982,
@@ -113,7 +113,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702780324,
+          add_date: 1702780324,
           like: 10,
           dislike: 9,
           price: 1982,
@@ -124,7 +124,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702780324,
+          add_date: 1702780324,
           like: 1000,
           dislike: 999,
           price: 1982,
@@ -135,7 +135,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702780324,
+          add_date: 1702780324,
           like: 0,
           dislike: 0,
           price: 1982,
