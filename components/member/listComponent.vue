@@ -60,7 +60,7 @@
       </div>
     </div>
     <!-- item -->
-    <ul class="grid lg:grid-cols-2 gap-14">
+    <ul class="grid gap-14">
       <li
         class="bg-section rounded-lg shadow hover:text-secondary hover:-translate-y-1 duration-300 group h-[234px]"
         v-for="(item, index) in listData"
@@ -80,15 +80,16 @@
             class="flex-1 w-0 h-full py-3 pr-3 text-light flex flex-col justify-between"
           >
             <p class="text-12 text-right mb-3.5">
-              上次遊玩 {{ item.releaseDate }}
+              上次遊玩
+              <span v-timeformat="item.last_play_time * 1000"></span>
             </p>
             <div>
               <p class="mb-7 text-20 font-semibold text-white truncate">
                 {{ item.title }}
               </p>
               <ul class="space-y-2 mb-3">
-                <li>發行商：{{ item.supplier }}</li>
-                <li>發行日期：{{ item.issuingDate }}</li>
+                <li>發行商：{{ item.publishers.join("、") }}</li>
+                <li>發行日期：<span v-timeformat="item.release_date * 1000"></span></li>
                 <li>已遊玩了 {{ item.playTime }} 小時</li>
               </ul>
             </div>
@@ -189,9 +190,10 @@ export default {
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
-          supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          releaseDate: '2023-07-28 18:26',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          last_play_time: 1701000000,
           playTime: 1100,
           isLike: 0 // like|dislike|null or true|false|null
         },
@@ -199,36 +201,40 @@ export default {
           image: '/images/member/memberGameImage001.png',
           title:
             'Dave the DiverDave the DiverDave the DiverDarDave the DiverDave the DiverDave the DiverDave theerDave the DiverDrDavet heDiverDave the DiverDave the DiverDavethe DiverDave thverDave the Diver',
-          supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          releaseDate: '2023-07-28 18:26',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          last_play_time: 1701000000,
           playTime: 1100,
           isLike: 1 // like|dislike|null or true|false|null
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
-          supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          releaseDate: '2023-07-28 18:26',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          last_play_time: 1701000000,
           playTime: 1100,
           isLike: -1 // like|dislike|null or true|false|null
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
-          supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          releaseDate: '2023-07-28 18:26',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          last_play_time: 1701000000,
           playTime: 1100,
           isLike: 0 // like|dislike|null or true|false|null
         },
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
-          supplier: 'Frictional Games',
-          issuingDate: '2020-09-10',
-          releaseDate: '2023-07-28 18:26',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          add_Date: 1702736324,
+          last_play_time: 1701000000,
           playTime: 1100,
           isLike: 1 // like|dislike|null or true|false|null
         }

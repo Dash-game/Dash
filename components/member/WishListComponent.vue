@@ -27,7 +27,7 @@
       </div>
     </div>
     <!-- item -->
-    <ul class="grid xl:grid-cols-2 gap-14">
+    <ul class="grid gap-14">
       <li class="bg-section rounded-lg shadow hover:text-secondary hover:-translate-y-1 duration-300 group min-w-[740px] h-[230px] relative" v-for="(item, index) in wishListData" :key="index">
         <a href="#" class="flex flex-row justify-between items-stretch h-full">
           <!-- 遊戲圖片預覽 -->
@@ -40,7 +40,9 @@
               <p class="mb-6 text-24 font-semibold text-white truncate">{{ item.title }}</p>
               <ul class="mb-5 text-18">
                 <li>發行商：{{ item.supplier }}</li>
-                <li>發行日期：{{ item.release_date }}</li>
+                <li>發行日期：
+                  <span v-dateformat="item.release_date * 1000"></span>
+                </li>
                 <li class="text-16">
                   <p v-if="item.like==0 && item.dislike==0">整體評論：尚未有人評論</p>
                   <p v-else-if="item.like > item.dislike && (item.like-item.dislike)/item.dislike > 0.1" class="text-labellight inline-flex items-center">整體評論：推薦<Icon name="bxs:like" size="20" class="ml-2"></Icon></p>
@@ -48,7 +50,8 @@
                   <p v-else class="text-white">整體評論：褒貶不一</p>
                 </li>
               </ul>
-              <p class="text-16">{{ item.add_Date }} 加入</p>
+              <p class="text-16">
+                <span v-timeformat="item.add_Date * 1000"></span> 加入</p>
             </div>
             <!-- 遊戲價格 -->
             <div>
@@ -88,7 +91,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702736324,
+          add_Date: 1702780324,
           like: 300,
           dislike: 20,
           price: 1982,
@@ -99,7 +102,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702736324,
+          add_Date: 1702780324,
           like: 60,
           dislike: 170,
           price: 1982,
@@ -110,7 +113,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702736324,
+          add_Date: 1702780324,
           like: 10,
           dislike: 9,
           price: 1982,
@@ -121,7 +124,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702736324,
+          add_Date: 1702780324,
           like: 1000,
           dislike: 999,
           price: 1982,
@@ -132,7 +135,7 @@ export default {
           title: 'Dave the Diver',
           supplier: 'Frictional Games',
           release_date: 1702736324,
-          add_Date: 1702736324,
+          add_Date: 1702780324,
           like: 0,
           dislike: 0,
           price: 1982,
