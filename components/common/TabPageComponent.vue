@@ -40,13 +40,15 @@
         </label>
     </div>
     <div v-show="tabStore.selectedPage === 'collectPage'">
-        <!-- <MemberListComponent /> -->
+        <MemberListComponent />
     </div>
     <div v-show="tabStore.selectedPage === 'wonderPage'">
-        <h2>願望清單page</h2>
+        <!-- <h2>願望清單page</h2> -->
+        <MemberWishListComponent />
     </div>
     <div v-show="tabStore.selectedPage === 'commentPage'">
-        <h2>遊戲評論page</h2>
+        <!-- <h2>遊戲評論page</h2> -->
+        <MemberCommentComponent />
     </div>
 </template>
 <style>
