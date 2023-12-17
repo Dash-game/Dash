@@ -14,7 +14,7 @@
   //     tabPage_length: Number;
   //     currentPage: Number;
   // }
-  const tabPage_Name = ref(1250);
+  const tabPage_Name = ref(1200);
   // 分頁後呈現資料
   
   // 總頁數
@@ -54,17 +54,17 @@
       <li class=""  @click.prevent="changePage(1)">
         <a class="block px-3 py-1 mr-2 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>1</a>
       </li>
-      <li class="" @click.prevent="changePage(currentPage - 1)">
+      <li class="" @click.prevent="changePage(currentPage - 1)" :class="{'disabled': currentPage === 1}">
         <a class="block px-3 py-1 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>
-          <img class="w-full align-top" src="../../public/images/caret-left.png" alt="往前一頁">
+          <img class="w-full align-top" src="/images/caret-left.png" alt="往前一頁">
         </a>
       </li>
       <li class="px-3" v-for="i in pageEnd" @click.prevent="changePage(i + pageAddAmount)">
         <a class="block px-3 py-1 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>{{ i + pageAddAmount }}</a>
       </li>
-      <li @click.prevent="changePage(currentPage + 1)">
+      <li @click.prevent="changePage(currentPage + 1)" :class="{'disabled': currentPage === totalPage}">
         <a class="block px-3 py-1 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>
-          <img class="w-full align-top" src="../../public/images/caret-right.png" alt="往後一頁">
+          <img class="w-full align-top" src="/images/caret-right.png" alt="往後一頁">
         </a>
       </li>
       <li @click.prevent="changePage(totalPage)">
@@ -73,6 +73,8 @@
     </ul>
   </nav>
 </template>
-<style>
-  
+<style scoped>
+  .disabled{
+    opacity: 0;
+  }
 </style>
