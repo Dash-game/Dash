@@ -304,10 +304,10 @@ const toggleMember = () => {
           <div class="absolute top-full w-full   transition-transform duration-300 z-30" :class="{'-translate-y-full':!memberOpen}">
             <ul class="rounded-b-xl shadow border border-primary text-center ">
               <li class="hover:text-secondary bg-section border border-primary">
-                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'collectPage'; memberOpen=false">收藏庫</NuxtLink>
+                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'listPage'; memberOpen=false">收藏庫</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary">
-                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'wonderPage'; memberOpen=false">願望清單</NuxtLink>
+                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'wishListPage'; memberOpen=false">願望清單</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary">
                 <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'commentPage'; memberOpen=false">遊戲評論</NuxtLink>
