@@ -59,7 +59,7 @@
           <img class="w-full align-top" src="/images/caret-left.png" alt="往前一頁">
         </a>
       </li>
-      <li class="px-3" v-for="i in pageEnd" @click.prevent="changePage(i + pageAddAmount)">
+      <li class="px-3" v-for="i in pageEnd" :key="i" @click.prevent="changePage(i + pageAddAmount)">
         <a class="block px-3 py-1 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>{{ i + pageAddAmount }}</a>
       </li>
       <li @click.prevent="changePage(currentPage + 1)" :class="{'disabled': currentPage === totalPage}">
