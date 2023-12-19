@@ -1,74 +1,245 @@
 <template>
   <section class="py-12">
-    <!-- search -->
-    <div class="flex justify-between items-center mb-28">
-      <form>
-          <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-          <div class="relative">
-              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                  </svg>
-              </div>
-              <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required>
-              <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+    <div
+      class="flex flex-row justify-between items-center flex-wrap space-y-10 lg:space-y-0 mb-[110px]"
+    >
+      <!-- search -->
+      <form class="basis-full lg:basis-1/2">
+        <label for="default-search" class="mb-2 text-primary text-24 sr-only"
+          >Search</label
+        >
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center ps-10 pointer-events-none"
+          >
+            <Icon
+              name="material-symbols:search"
+              class="text-primary"
+              size="32"
+            ></Icon>
           </div>
+          <input
+            type="search"
+            id="default-search"
+            class="block w-full p-3 ps-20 text-24 text-primary border border-gray-300 rounded bg-white focus:ring-secondary focus:border-secondary"
+            placeholder="search..."
+            required
+          />
+        </div>
       </form>
-      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-      </svg>
+      <!-- Dropdown -->
+      <button
+        id="dropdownDefaultButton"
+        data-dropdown-toggle="dropdown"
+        class="text-primary bg-white hover:bg-secondary/80 focus:ring-2 focus:outline-none focus:ring-secondary rounded text-24 px-7 py-3 text-center inline-flex items-center justify-center basis-full lg:basis-1/4 w-full"
+        type="button"
+      >
+        <span class="inline-block">篩選條件</span>
+        <Icon
+          name="material-symbols:arrow-drop-down-rounded"
+          class="ms-3"
+          size="32"
+        ></Icon>
       </button>
       <!-- Dropdown menu -->
-      <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-            </li>
-          </ul>
+      <!-- hidden -->
+      <div
+        id="dropdown"
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow basis-full lg:basis-1/4"
+      >
+        <ul
+          class="py-2 text-24 text-primary"
+          aria-labelledby="dropdownDefaultButton"
+        >
+          <li v-for="(item, index) in dropData" :key="index">
+            <a href="#" class="block px-7 py-3 hover:bg-secondary">{{
+              item.item
+            }}</a>
+          </li>
+        </ul>
       </div>
     </div>
     <!-- item -->
-    <div>
-      <!-- <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <figure class="w-full">
-          <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="/docs/images/blog/image-4.jpg" alt="">
-        </figure>
-        <div class="flex flex-col justify-between p-4 leading-normal">
-              <small>上次遊玩  2023-07-28 18:26</small>
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dave the Diver</h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-              <ul>
-                <li>發行商：Frictional Games</li>
-                <li>發行日期：2020-09-10</li>
-                <li>已遊玩了 1100 小時</li>
+    <ul class="grid gap-14">
+      <li
+        class="bg-section rounded-lg shadow hover:text-secondary hover:-translate-y-1 duration-300 group h-[234px]"
+        v-for="(item, index) in listData"
+        :key="index"
+      >
+        <a href="#" class="flex flex-row justify-between items-stretch h-full">
+          <figure
+            class="mr-7 lg:mr-14 filter grayscale group-hover:grayscale-0 flex-none"
+          >
+            <img
+              class="object-cover rounded-t-lg w-[324px] h-[234px]"
+              :src="item.image"
+              :alt="item.title"
+            />
+          </figure>
+          <div
+            class="flex-1 w-0 h-full py-3 pr-3 text-light flex flex-col justify-between"
+          >
+            <p class="text-12 text-right mb-3.5">
+              上次遊玩
+              <span v-timeformat="item.last_play_time * 1000"></span>
+            </p>
+            <div>
+              <p class="mb-7 text-20 font-semibold text-white truncate">
+                {{ item.title }}
+              </p>
+              <ul class="space-y-2 mb-3">
+                <li>發行商：{{ item.publishers.join("、") }}</li>
+                <li>發行日期：<span v-timeformat="item.release_date * 1000"></span></li>
+                <li>已遊玩了 {{ item.playTime }} 小時</li>
               </ul>
-              <div>
-                <p>讚</p>
-                <p>bag</p>
-                <p>您推薦這款遊戲</p>
-                <p>您不推薦這款遊戲</p>
-              </div>
+            </div>
+            <div class="text-right text-14">
+              <p
+                v-if="item.is_recommend === 1"
+                class="text-labellight inline-flex items-center"
+              >
+                您推薦這款遊戲<Icon
+                  name="bxs:like"
+                  size="20"
+                  class="ml-2"
+                  @click.stop="showModal(item)"
+                ></Icon>
+              </p>
+              <p
+                v-else-if="item.is_recommend === -1"
+                class="text-labeldark inline-flex items-center"
+              >
+                您不推薦這款遊戲<Icon
+                  name="bxs:dislike"
+                  size="20"
+                  class="ml-2"
+                  @click.stop="showModal(item)"
+                ></Icon>
+              </p>
+              <p v-else>
+                <Icon
+                  name="bx:like"
+                  size="20"
+                  class="mr-2"
+                  @click.stop="showModal(item)"
+                ></Icon>
+                <Icon
+                  name="bx:dislike"
+                  size="20"
+                  @click.stop="showModal(item)"
+                ></Icon>
+              </p>
+            </div>
           </div>
-      </a> -->
-      <!-- 灰階到彩色效果 -->
-      <!-- <img class="h-auto max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png" alt="image description"> -->
-      <!-- 圖片 -->
-
-    <!-- <figure class="max-w-lg">
-      <img class="h-auto max-w-full rounded-lg" src="/docs/images/examples/image-3@2x.jpg" alt="image description">
-    </figure> -->
-
-
-    </div>
-
+        </a>
+      </li>
+    </ul>
   </section>
+  <commonModal
+    ref="commentModal"
+    class="CommentModal"
+    :cancleBtn="false"
+    :data="commentModalData"
+    :submitHandler="sendComment"
+  >
+    <template #modalHeader>
+      <div class="flex justify-between items-center mb-3 w-full pr-[17px]">
+        <div
+          class="flex justify-between items-center mb-3 w-full pr-[17px] text-28"
+        >
+          <h6 class="text-white">遊戲評論</h6>
+          <div class="text-darkgray">{{ commentModalData?.title }}</div>
+        </div>
+      </div>
+    </template>
+    <template #modalBody>
+      <commentMemberCommentItem
+        ref="modalbody"
+        :data="commentModalData"
+      ></commentMemberCommentItem>
+    </template>
+  </commonModal>
 </template>
+<script>
+export default {
+  setup() {
+    const commentModalData = ref({})
+    const commentModal = ref(null)
+
+    const showModal = (data) => {
+      commentModalData.value = { ...data }
+      commentModal.value.show()
+    }
+
+    const modalbody = ref(null)
+    const sendComment = () => {
+      const commentValue = modalbody.value.getValue()
+      console.log(commentValue)
+    }
+
+    return { modalbody, commentModal, commentModalData, sendComment, showModal }
+  },
+  data() {
+    return {
+      dropData: [
+        { item: '依收藏日期排序' },
+        { item: '篩選二' },
+        { item: '篩選三' }
+      ],
+      listData: [
+        {
+          image: '/images/member/memberGameImage001.png',
+          title: 'Dave the Diver',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          last_play_time: 1701000000,
+          playTime: 1100,
+          is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+        },
+        {
+          image: '/images/member/memberGameImage001.png',
+          title:
+            'Dave the DiverDave the DiverDave the DiverDarDave the DiverDave the DiverDave the DiverDave theerDave the DiverDrDavet heDiverDave the DiverDave the DiverDavethe DiverDave thverDave the Diver',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          last_play_time: 1701000000,
+          playTime: 1100,
+          is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+        },
+        {
+          image: '/images/member/memberGameImage001.png',
+          title: 'Dave the Diver',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          last_play_time: 1701000000,
+          playTime: 1100,
+          is_recommend: -1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+        },
+        {
+          image: '/images/member/memberGameImage001.png',
+          title: 'Dave the Diver',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          last_play_time: 1701000000,
+          playTime: 1100,
+          is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+        },
+        {
+          image: '/images/member/memberGameImage001.png',
+          title: 'Dave the Diver',
+          publishers:['Frictional Games'],
+          release_date: 1702736324,
+          last_play_time: 1701000000,
+          playTime: 1100,
+          is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+        }
+      ]
+    }
+  },
+  methods: {
+    // switchLike(isLike, index) {
+    //   this.listData[index].isLike = isLike
+    // }
+  }
+}
+</script>

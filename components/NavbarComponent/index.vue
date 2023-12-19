@@ -6,7 +6,7 @@ const route = useRoute()
 watch(
   ()=>route.path, 
   () => {
-  isHome.value = route.path == '/' ? true : false
+  isHome.value = route.path == '/' || route.path == '/login' ? true : false
 }, {deep: true, immediate: true})
 
 
@@ -27,6 +27,9 @@ const categoryOpen = ref(false)
 const toggleCategory = () => {
   categoryOpen.value = !categoryOpen.value
 }
+
+// 是否已登入
+const loginStore = useLoginStore()
 
 
 // 上下滑 menu 開闔
@@ -52,12 +55,20 @@ const checkScrollbar = (e) =>{
     e.preventDefault();
   }
 }
+
+
+// 切換 member 分頁
+const tabStore = useTabStore()
+const memberOpen = ref(false)
+const toggleMember = () => {
+  memberOpen.value = !memberOpen.value
+}
 </script>
 
 <template>
 <div class="sticky top-0 z-[1000]" >
   <!-- 購物車 -->
-    <CartBtnComponent class="fixed bottom-10 right-0 xl:hidden z-10"/>
+    <CartBtnComponent class="fixed bottom-10 right-8 xl:hidden z-10"/>
 
     <!-- 毛玻璃 -->
   <div class="fixed top-0 left-0 right-0 w-full h-full backdrop-blur-lg z-20 xl:hidden duration-300 " :class="{'hidden':!menuOpen}" @click="toggleMenu" ></div>
@@ -81,16 +92,17 @@ const checkScrollbar = (e) =>{
           </ul>
         </div>
       </button>
-      <div class="px-3 z-20 flex items-center justify-between py-2 mx-auto xl:py-6">
-        <NuxtLink to="/" class="w-auto mx-auto xl:mr-8 xl:ml-0 z-30" @click="closeMenu">
-          <img src="@/assets/images/logo.png" alt="Logo" class="h-12 xl:h-auto">      
+      <div class="px-3 z-20 flex items-center py-2 mx-auto" :class="{'xl:py-0':loginStore.loggedIn}">
+        <!-- logo -->
+        <NuxtLink to="/" class="block xl:h-[76px] w-auto mx-auto xl:mr-8 xl:ml-0 z-30" @click="closeMenu">
+          <img src="@/assets/images/logo.png" alt="Logo" class="h-12 xl:h-[76px]">      
         </NuxtLink>
 
         <!-- MENU -->
-        <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full text-2xl text-center top-full xl:relative bg-primary xl:bg-transparent z-20 duration-300 overflow-x-hidden" :class="{'-translate-y-full xl:translate-y-0 ':!menuOpen}">
+        <div class="absolute left-0 flex flex-col xl:flex-row items-center w-full xl:w-auto grow text-2xl text-center top-full xl:relative bg-primary xl:bg-transparent z-20 duration-300 overflow-x-hidden" :class="{'-translate-y-full xl:translate-y-0 ':!menuOpen}">
 
           <!-- 電腦版 -->
-          <ul class="hidden xl:flex py-0 whitespace-nowrap">
+          <ul class="hidden xl:flex py-0 whitespace-nowrap mr-auto">
             <li class="mr-2">
               <NuxtLink to="/game/1" class="block text-light navlink active" @click="closeMenu">
                 <div class="nav-design">
@@ -132,8 +144,7 @@ const checkScrollbar = (e) =>{
           <!-- 手機版 -->
           <div class="flex xl:hidden duration-300 w-[300%]" >
             <div class="duration-300" :class="{'w-[33.33%]':!categoryOpen, 'w-0':categoryOpen}"></div>
-            <ul class="xl:hidden pt-10 pb-8  w-[33.33%] duration-300 "
-            >
+            <ul class="xl:hidden pt-10 pb-8  w-[33.33%] duration-300 ">
               <li class="mb-5">
                 <NuxtLink to="/game/1" class="block text-light navlink " @click="closeMenu">
                   <div class="nav-design">
@@ -177,7 +188,7 @@ const checkScrollbar = (e) =>{
             </ul>
 
             <!-- 類別清單 -->
-            <ul ref="categoryMenu" class="pt-10 pb-8 w-[33.33%] overflow-y-scroll overscroll-contain duration-300 category-scrollbar relative" :class="{'h-0':!categoryOpen, 'h-[calc(100vh-174px)]':categoryOpen}"
+            <ul ref="categoryMenu" class="pt-10 pb-8 w-[33.33%] overflow-y-scroll overscroll-contain duration-300 category-scrollbar relative" :class="{'h-0':!categoryOpen, 'h-[calc(100vh-174px)]':categoryOpen && !loginStore.loggedIn, 'h-[calc(100vh-108px)]':categoryOpen && loginStore.loggedIn}"
             @wheel.stop="checkScrollbar"
             @touchmove.stop="checkScrollbar"
             @scroll.stop="checkScrollbar"
@@ -260,18 +271,22 @@ const checkScrollbar = (e) =>{
             </ul>
           </div>
 
-          <div v-if="!isHome" class="max-w-[364px] h-[44px] xl:rounded-full border-y xl:border border-secondary ml-auto xl:mr-6 pr-5 xl:pl-5 flex 2xl:flex justify-between items-center order-first xl:order-none">
+          <!-- 搜尋欄 -->
+          <div class="w-full xl:max-w-[364px] h-[44px] xl:rounded-full border-y xl:border border-secondary  xl:mr-6 pr-5 xl:pl-5 flex  justify-between items-center order-first xl:order-none" :class="{'xl:hidden':!isHome}">
             <input type="text" class="bg-transparent shadow-none border-none outline-none h-[44px] text-2xl w-full">
             <button type="button" class="duration-150 text-white hover:text-secondary flex items-center">
               <Icon name="uil:search" />
             </button>
           </div>
-          <button v-else class="w-[50px] h-[50px] rounded-full border ml-auto mr-4 hidden xl:flex justify-center items-center text-white hover:text-secondary hover:border-secondary">
+          <!-- 搜尋按鈕 -->
+          <button v-if="!isHome" class="w-[50px] h-[50px] rounded-full border  mr-4 hidden xl:flex justify-center items-center text-white hover:text-secondary hover:border-secondary">
             <Icon name="uil:search" />
           </button>
-          <CartBtnComponent class="relative hidden xl:block my-2"/>
-          <nuxt-link to="/login" class="block w-full xl:w-auto"  @click="closeMenu">
-            <button class="block w-full h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary xl:bg-transparent bg-section hover:bg-secondary text-secondary hover:text-primary duration-300">
+          <!-- 購物車 -->
+          <CartBtnComponent class="relative hidden xl:block my-2 xl:mr-[30px]"/>
+          <!-- 登入按鈕 -->
+          <nuxt-link to="/login" class="block w-full xl:w-auto"  @click="closeMenu" :class="{'hidden':loginStore.loggedIn}">
+            <button class="block w-full h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary xl:bg-transparent bg-section hover:bg-secondary text-secondary hover:text-primary duration-300" >
               <div class="h-[32px] flex justify-center items-center xl:rounded-[14px/16px] xl:px-4 xl:border-l-4 xl:border-r-4 xl:border-secondary ">
                 <Icon name="majesticons:login-line" />
                 <span class="ml-2 text-xl  whitespace-nowrap">登入</span>
@@ -279,6 +294,31 @@ const checkScrollbar = (e) =>{
             </button>            
           </nuxt-link>
         </div>
+
+        <!-- 會員中心 -->
+        <div class="absolute top-0 right-0 xl:relative w-[122px] h-16 xl:h-[92px] flex flex-col items-center justify-center group " :class="{'hidden':!loginStore.loggedIn}">
+          <div class="absolute top-0 py-1 flex flex-col items-center justify-center w-full h-full bg-section xl:bg-primary z-40" @click="toggleMember">
+            <img :src="loginStore.image" alt="" class="block w-[52px] h-[52px] rounded-xl object-cover">
+            <div class="text-[10px] xl:text-base">{{ loginStore.id }}</div>
+          </div>
+          <div class="absolute top-full w-full   transition-transform duration-300 z-30" :class="{'-translate-y-full':!memberOpen}">
+            <ul class="rounded-b-xl shadow border border-primary text-center ">
+              <li class="hover:text-secondary bg-section border border-primary">
+                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'listPage'; memberOpen=false">收藏庫</NuxtLink>
+              </li>
+              <li class="hover:text-secondary bg-section border border-primary">
+                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'wishListPage'; memberOpen=false">願望清單</NuxtLink>
+              </li>
+              <li class="hover:text-secondary bg-section border border-primary">
+                <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'commentPage'; memberOpen=false">遊戲評論</NuxtLink>
+              </li>
+              <li class="hover:text-secondary bg-section border border-primary rounded-b-xl">
+                <button type="button" class="w-full py-2" @click="loginStore.logout; memberOpen=false">登出</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

@@ -2,7 +2,8 @@
   <div>
     <MemberUserComponent />
     <div class="container">
-      <MemberListComponent></MemberListComponent>
+      <MemberTabPageComponent />
+      <MemberPaginationComponent />
     </div>
   </div>
 </template>

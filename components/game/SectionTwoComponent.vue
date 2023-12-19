@@ -19,7 +19,7 @@ const data = {
   "score": 8.9,
   "developers": ["CAPCOM Co., Ltd."],
   "publishers": ["CAPCOM Co., Ltd."],
-  "about_the_game": "狩獵本能躍動！<br>為狩獵掀起新風潮、無拘無束地躍動的動作；可隨心所欲地奔馳的新原野；帶來未知的興奮和驚喜的全新魔物。<br>在《MONSTER HUNTER RISE》中，前所未見的狩獵體驗正等候著獵人們！<br><img src=\"https://cdn.akamai.steamstatic.com/steam/apps/1446780/extras/01_マルチ_full.gif?t=1687140511\" /><br><br><strong>・掀起全新風潮的「翔蟲」動作</strong><br>翔蟲能飛往獵人指示的方向，並以特殊的「鐵蟲絲」把獵人拉到目的地。翔蟲為狩獵帶來進化，只要配合各武器種類的特色攻擊，便能誕生出新的狩獵動作！<br><img src=\"https://cdn.akamai.steamstatic.com/steam/apps/1446780/extras/02_翔蟲.gif?t=1687140511\" /><br><br><strong>・操縱魔物的豪邁動作「操龍」</strong><br>操縱兇猛暴虐的魔物，使出豪邁的動作！<br><img src=\"https://cdn.akamai.steamstatic.com/steam/apps/1446780/extras/03_操竜.gif?t=1687140511\" /><br><br><strong>・支援狩獵的隨從們</strong><br>除了老拍檔「隨從艾路」之外，還有可靠的「隨從加爾克」全新登場！<br><img src=\"https://cdn.akamai.steamstatic.com/steam/apps/1446780/extras/04_ガルク走り.gif?t=1687140511\" /><br><br><strong>・神火村的故事</strong><br>神火村因即將面臨時隔50年的災禍──「百龍夜行」而陷入窘境。<br>主角需一邊以成為頂尖獵人為目標而鍛鍊自身，一邊與村莊的同伴合力克服這場災禍。<br><strong><br>・魔物大舉侵襲的「百龍夜行」</strong><br>所謂「百龍夜行」，是指眾多魔物及由其帶領的「魔物群」進行的襲擊。<br>原野上滿佈著大型魔物……<br><br><strong>・擁有獨特生態的魔物</strong><br>以本作的象徵魔物──怨虎龍為首，擁有獨特生態的未知魔物及系列魔物將陸續登場！",
+  "about_the_game": "",
   "packages":[
     {
       "packageid": 692569,
@@ -46,7 +46,7 @@ const data = {
        "image":"https://clan.cloudflare.steamstatic.com/images//41286238/a4f7352c89d8d088f31f3a66aa6f93f9d19bcad2.jpg",
       "timestamp":1695307980,
       "author":"The Monster Hunter Community Team",
-      "content":"Hey hunters, How’s the hunting? We hope Kamura and Elgado are treating you well! Following on from our Capcom Online Program at Tokyo Game Show this week, we’re humbled and excited to share with you that March 2024 will mark 20 years since the release of the very first Monster Hunter game in Japan. To you, our global community of hunters, thank you! As we begin to mark the occasion, the team have created a special Monster Hunter 20th anniversary logo featuring one of the key things that defines our identities as hunters, our weapons! To coincide with the logo reveal, we’ve also got our first piece in the 20th anniversary art series to share with you, putting a spotlight on hunters!"
+      "content":""
       },
     {
       "news_id":3665415870869574919,
@@ -55,7 +55,7 @@ const data = {
        "image":"https://clan.cloudflare.steamstatic.com/images//41286238/285eb6af0f55c9f99a19e60b7595fdb72e029c3a.jpg",
       "timestamp":1688135100,
       "author":"Monster Hunter Community Team",
-      "content":"Hey Hunters, We're pleased to share with you all that today marks 1 full year since the launch of Monster Hunter Rise: Sunbreak! Since then, Sunbreak has received 5 full free Title Updates, plus the recent free Bonus Update, which wrapped up Elgado's story and introduced the mighty Primordial Malzeno! So, here's to you, our glorious Hunters! Whether you've been with us since launch, or joined us more recently, it's awesome to have you with us! Thank you! What are your Sunbreak highlights? Let us know in the comments! We'll see you in the hunt! - Monster Hunter Community Team"
+      "content":""
       },
    ]
 }
