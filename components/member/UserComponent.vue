@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative pb-24">
     <!-- Breadcrumb -->
     <div class="bg-Breadcrumb hidden md:block">
       <nav class="flex container xl:text-20 py-3" aria-label="Breadcrumb">
@@ -50,12 +50,16 @@
         </div>
         <div v-else>
           <button class="block md:inline md:px-6 button-sm xl:button-md button-hover px-4 py-2 xl:px-20 xl:mr-10" @click="onSubmit()">修改</button>
-          <button class="button-outline-sm md:ml-3 md:px-6 px-4 mt-2 py-2 xl:py-4 outline-labeldark text-labeldark xl:px-20 button-hover-labeldark" @click="toggleUser()">返回</button>
+          <button
+            class="button-outline-sm md:ml-3 md:px-6 px-4 mt-2 py-2 xl:py-4 outline-labeldark text-labeldark xl:px-20 button-hover-labeldark"
+            @click="toggleUser()"
+          >
+            返回
+          </button>
         </div>
       </div>
-
+      <!-- usercontent -->
       <div class="user-open-0fr" :class="{ 'user-open-1fr': !userToggle }">
-        <!-- usercontent -->
         <div id="hidden" class="">
           <div class="z-10 rounded-2xl bg-section mt-5 xl:mt-12 lg:flex justify-between items-center px-8 py-10 lg:px-24 lg:py-12 xl:px-28 xl:py-20">
             <!-- 上傳圖片 -->
@@ -64,13 +68,71 @@
               <button class="button-outline-sm md:button-outline-md button-outline-hover px-16 xl:px-20">上傳圖片</button>
             </div>
 
-            <div class="mt-5 border-t pt-7 lg:border-0 lg:pt-0 xl:w-1/2">
+            <VeeForm class="mt-5 border-t pt-7 lg:border-0 lg:pt-0 xl:w-1/2">
               <!-- 帳號 -->
+              <div class="flex items-center mb-2 xl:mb-7">
+                <p class="text-16 xl:text-24 w-1/3">帳號</p>
+                <p class="text-20 text-center w-full">{{ data.userId }}</p>
+              </div>
+              <!-- 暱稱 -->
+              <div class="flex justify-between items-center mb-2 lg:mb-0 relative">
+                <p class="text-16 xl:text-24 w-1/3">暱稱 <span class="text-labeldark">*</span></p>
+                <VeeField
+                  name="暱稱"
+                  type="text"
+                  class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
+                  placeholder="請輸入暱稱"
+                  rules="required"
+                />
+                <VeeErrorMessage name="暱稱" class="text-sm text-labeldark mt-1 absolute top-full right-1" />
+              </div>
+              <hr class="my-10 hidden lg:block" />
+              <!-- 舊密碼 -->
+              <div class="flex justify-between items-center mb-2 xl:mb-7 relative">
+                <p class="text-16 xl:text-24 w-1/3">舊密碼 <span class="text-labeldark">*</span></p>
+                <VeeField
+                  name="password"
+                  type="password"
+                  class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
+                  placeholder="請輸入舊的密碼"
+                  rules="required|min:8|uppercase"
+                />
+                <VeeErrorMessage name="password" class="text-sm text-labeldark mt-1 absolute top-full right-0" />
+              </div>
+              <!-- 新密碼 -->
+              <div class="flex justify-between items-center mb-2 xl:mb-7 relative">
+                <p class="text-16 xl:text-24 w-1/3">新密碼</p>
+                <VeeField
+                  name="新的密碼"
+                  type="password"
+                  v-model="tempData.oldPassWord"
+                  class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
+                  placeholder="請輸入新的密碼"
+                  rules="min:8|uppercase"
+                />
+                <VeeErrorMessage name="新的密碼" class="text-sm text-labeldark mt-1 absolute top-full right-0" />
+              </div>
+              <!-- 再次輸入 -->
+              <div class="flex justify-between items-center mb-2 xl:mb-7 relative">
+                <p class="text-16 xl:text-24 w-1/3">再次輸入</p>
+                <VeeField
+                  name="新的密碼"
+                  type="password"
+                  v-model="tempData.newPassWord"
+                  class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
+                  placeholder="請再次輸入新密碼"
+                  rules="min:8|uppercase"
+                />
+                <VeeErrorMessage name="新的密碼" class="text-sm text-labeldark mt-1 absolute top-full right-0" />
+              </div>
+            </VeeForm>
+
+            <!-- <div class="mt-5 border-t pt-7 lg:border-0 lg:pt-0 xl:w-1/2">
               <div class="flex items-center mb-2 xl:mb-7">
                 <p class="text-18 xl:text-24 w-1/3">帳號</p>
                 <p class="text-20 text-center w-full">{{ data.userId }}</p>
               </div>
-              <!-- 暱稱 -->
+
               <div class="flex justify-between items-center mb-2 lg:mb-0">
                 <label for="userName" class="text-18 xl:text-24 w-1/3">暱稱</label>
                 <input
@@ -84,7 +146,7 @@
                 />
               </div>
               <hr class="my-10 hidden lg:block" />
-              <!-- 舊密碼 -->
+
               <div class="flex justify-between items-center mb-2 xl:mb-7">
                 <label for="oldPassWord" class="text-18 xl:text-24 w-1/3">舊密碼</label>
                 <input
@@ -96,7 +158,6 @@
                   class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
                 />
               </div>
-              <!-- 新密碼 -->
               <div class="flex justify-between items-center mb-2 xl:mb-7">
                 <label for="newPassWord" class="text-18 xl:text-24 w-1/3">新密碼</label>
                 <input
@@ -108,8 +169,6 @@
                   class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
                 />
               </div>
-
-              <!-- 再次輸入密碼 -->
               <div class="flex justify-between items-center mb-2 xl:mb-7">
                 <label for="checkPassWord" class="text-18 xl:text-24 w-1/3">再次輸入</label>
                 <input
@@ -121,7 +180,7 @@
                   class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
                 />
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -148,10 +207,6 @@ let tempData = ref({
 function toggleUser() {
   userToggle.value = !userToggle.value;
 }
-
-// function checkPassWord(){
-//   tempData.checkPassWord == tempData.newPassWord
-// }
 
 function onSubmit() {
   console.log("送出", data);
