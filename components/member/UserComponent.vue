@@ -58,6 +58,7 @@
           </button>
         </div>
       </div>
+      {{ tempData  }}
       <!-- usercontent -->
       <div class="user-open-0fr" :class="{ 'user-open-1fr': !userToggle }">
         <div id="hidden" class="">
@@ -84,7 +85,7 @@
                   placeholder="請輸入暱稱"
                   rules="required"
                 />
-                <VeeErrorMessage name="暱稱" class="text-sm text-labeldark mt-1 absolute top-full right-1" />
+                <VeeErrorMessage name="暱稱" class="text-sm text-labeldark mt-1 absolute top-2.5 right-4" />
               </div>
               <hr class="my-10 hidden lg:block" />
               <!-- 舊密碼 -->
@@ -93,24 +94,30 @@
                 <VeeField
                   name="password"
                   type="password"
+                  v-model="tempData.oldPassWord"
                   class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
                   placeholder="請輸入舊的密碼"
                   rules="required|min:8|uppercase"
                 />
-                <VeeErrorMessage name="password" class="text-sm text-labeldark mt-1 absolute top-full right-0" />
+                <VeeErrorMessage name="password" class="text-sm text-labeldark mt-1 absolute top-2.5 right-4" />
               </div>
               <!-- 新密碼 -->
-              <div class="flex justify-between items-center mb-2 xl:mb-7 relative">
-                <p class="text-16 xl:text-24 w-1/3">新密碼</p>
+              <div class="flex justify-between items-center mb-4  relative">
+                <p class="text-16 xl:text-24 w-1/3 ">新密碼</p>
                 <VeeField
-                  name="新的密碼"
+                  name="新密碼"
                   type="password"
-                  v-model="tempData.oldPassWord"
+                  v-model="tempData.newPassWord"
                   class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
                   placeholder="請輸入新的密碼"
                   rules="min:8|uppercase"
                 />
-                <VeeErrorMessage name="新的密碼" class="text-sm text-labeldark mt-1 absolute top-full right-0" />
+                <VeeErrorMessage name="新密碼" class="text-sm text-labeldark mt-1 absolute top-2.5 right-4" />
+              </div>
+              <div class=" w-full flex text-center border border-gray-500  rounded-md  mb-2 xl:mb-7">
+                <div class="border-r w-full text-center p-1 rounded-s-md  bg-labeldark text-white"><p >弱</p></div>
+                <div class="border-r w-full text-center p-1  bg-[#ffd700] text-white"><p>中</p></div>
+                <div class="w-full text-center p-1 rounded-e-md bg-secondary text-white"><p>強</p></div>
               </div>
               <!-- 再次輸入 -->
               <div class="flex justify-between items-center mb-2 xl:mb-7 relative">
@@ -118,69 +125,15 @@
                 <VeeField
                   name="新的密碼"
                   type="password"
-                  v-model="tempData.newPassWord"
+                  v-model="tempData.checkPassWord"
                   class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
                   placeholder="請再次輸入新密碼"
                   rules="min:8|uppercase"
                 />
-                <VeeErrorMessage name="新的密碼" class="text-sm text-labeldark mt-1 absolute top-full right-0" />
+                <VeeErrorMessage name="新的密碼" class="text-sm text-labeldark mt-1 absolute top-2.5 right-4" />
               </div>
             </VeeForm>
 
-            <!-- <div class="mt-5 border-t pt-7 lg:border-0 lg:pt-0 xl:w-1/2">
-              <div class="flex items-center mb-2 xl:mb-7">
-                <p class="text-18 xl:text-24 w-1/3">帳號</p>
-                <p class="text-20 text-center w-full">{{ data.userId }}</p>
-              </div>
-
-              <div class="flex justify-between items-center mb-2 lg:mb-0">
-                <label for="userName" class="text-18 xl:text-24 w-1/3">暱稱</label>
-                <input
-                  required
-                  type="text"
-                  id="userName"
-                  name="userName"
-                  v-model.lazy="data.userName"
-                  placeholder="請輸入您的暱稱"
-                  class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
-                />
-              </div>
-              <hr class="my-10 hidden lg:block" />
-
-              <div class="flex justify-between items-center mb-2 xl:mb-7">
-                <label for="oldPassWord" class="text-18 xl:text-24 w-1/3">舊密碼</label>
-                <input
-                  type="password"
-                  v-model="tempData.oldPassWord"
-                  id="oldPassWord"
-                  name="oldPassWord"
-                  placeholder="請輸入舊的密碼"
-                  class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
-                />
-              </div>
-              <div class="flex justify-between items-center mb-2 xl:mb-7">
-                <label for="newPassWord" class="text-18 xl:text-24 w-1/3">新密碼</label>
-                <input
-                  v-model="tempData.newPassWord"
-                  type="passWord"
-                  id="newPassWord"
-                  name="newPassWord"
-                  placeholder="請輸入新的密碼"
-                  class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
-                />
-              </div>
-              <div class="flex justify-between items-center mb-2 xl:mb-7">
-                <label for="checkPassWord" class="text-18 xl:text-24 w-1/3">再次輸入</label>
-                <input
-                  v-model="tempData.checkPassWord"
-                  type="passWord"
-                  id="checkPassWord"
-                  name="checkPassWord"
-                  placeholder="再次輸入新密碼"
-                  class="focus:border-white focus:ring-0 lg:py-3 xl:px-6 bg-section rounded-2xl w-full lg:w-[450px]"
-                />
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
