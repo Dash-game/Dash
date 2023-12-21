@@ -58,7 +58,7 @@
           </button>
         </div>
       </div>
-      {{ tempData  }}
+      {{ tempData }}
       <!-- usercontent -->
       <div class="user-open-0fr" :class="{ 'user-open-1fr': !userToggle }">
         <div id="hidden" class="">
@@ -102,9 +102,10 @@
                 <VeeErrorMessage name="password" class="text-sm text-labeldark mt-1 absolute top-2.5 right-4" />
               </div>
               <!-- 新密碼 -->
-              <div class="flex justify-between items-center mb-4  relative">
-                <p class="text-16 xl:text-24 w-1/3 ">新密碼</p>
+              <div class="flex justify-between items-center mb-4 relative">
+                <p class="text-16 xl:text-24 w-1/3">新密碼</p>
                 <VeeField
+                  @change="checkPasswordStrength(tempData.newPassWord)"
                   name="新密碼"
                   type="password"
                   v-model="tempData.newPassWord"
@@ -114,10 +115,20 @@
                 />
                 <VeeErrorMessage name="新密碼" class="text-sm text-labeldark mt-1 absolute top-2.5 right-4" />
               </div>
-              <div class=" w-full flex text-center border border-gray-500  rounded-md  mb-2 xl:mb-7">
-                <div class="border-r w-full text-center p-1 rounded-s-md  bg-labeldark text-white"><p >弱</p></div>
-                <div class="border-r w-full text-center p-1  bg-[#ffd700] text-white"><p>中</p></div>
-                <div class="w-full text-center p-1 rounded-e-md bg-secondary text-white"><p>強</p></div>
+              <div class="w-full flex text-center border border-gray-500 rounded-md mb-2 xl:mb-7">
+                <div
+                  class="border-r w-full text-center p-1 rounded-s-md"
+                  :class="{ 'bg-labeldark text-white': PasswordStrength === '弱' || PasswordStrength === '中' || PasswordStrength === '強' }"
+                >
+                  <p>弱</p>
+                </div>
+                <div
+                  class="border-r w-full text-center p-1"
+                  :class="{ 'bg-[#ffd700] text-white': PasswordStrength === '中' || PasswordStrength === '強' }"
+                >
+                  <p>中</p>
+                </div>
+                <div class="w-full text-center p-1 rounded-e-md" :class="{ 'bg-secondary text-white': PasswordStrength === '強' }"><p>強</p></div>
               </div>
               <!-- 再次輸入 -->
               <div class="flex justify-between items-center mb-2 xl:mb-7 relative">
@@ -133,7 +144,6 @@
                 <VeeErrorMessage name="新的密碼" class="text-sm text-labeldark mt-1 absolute top-2.5 right-4" />
               </div>
             </VeeForm>
-
           </div>
         </div>
       </div>
@@ -144,6 +154,7 @@
 <script setup lang="ts">
 import { IUserData } from "./member.d";
 let userToggle = ref(true);
+let PasswordStrength = ref("");
 let data = ref<IUserData>({
   userId: "Mouse3153",
   userName: "黃鼠鼠",
@@ -157,6 +168,29 @@ let tempData = ref({
   checkPassWord: "",
 });
 
+//檢查密碼強度
+function checkPasswordStrength(password: string) {
+  let hasLowerCase = /[a-z]/.test(password);
+  let hasUpperCase = /[A-Z]/.test(password);
+  let hasNumber = /\d/.test(password);
+  let hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password);
+  let passwordLength = password.length;
+
+  if (password !== "") {
+    if (hasLowerCase && hasUpperCase && hasNumber && passwordLength > 12 && hasSpecialChar) {
+      PasswordStrength.value = "強";
+    } else if (hasLowerCase && hasUpperCase && hasNumber && passwordLength >= 10 && passwordLength <= 12) {
+      PasswordStrength.value = "中";
+    } else {
+      PasswordStrength.value = "弱";
+    }
+  }
+  else{
+    PasswordStrength.value = "";
+  }
+}
+
+//切換 User
 function toggleUser() {
   userToggle.value = !userToggle.value;
 }
