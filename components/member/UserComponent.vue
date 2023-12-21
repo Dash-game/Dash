@@ -58,7 +58,6 @@
           </button>
         </div>
       </div>
-      {{ tempData }}
       <!-- usercontent -->
       <div class="user-open-0fr" :class="{ 'user-open-1fr': !userToggle }">
         <div id="hidden" class="">
