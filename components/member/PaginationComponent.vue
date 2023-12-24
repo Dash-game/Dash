@@ -52,23 +52,27 @@
   <nav v-if="pageEnd > 0">
     <ul class="flex justify-center items-center">
       <li class=""  @click.prevent="changePage(1)">
-        <a class="block px-3 py-1 mr-2 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>1</a>
+        <a class="block px-3 py-1 mr-2 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>
+          <Icon name="fluent:next-24-filled" :horizontalFlip="true" />
+        </a>
       </li>
       <li class="" @click.prevent="changePage(currentPage - 1)" :class="{'disabled': currentPage === 1}">
         <a class="block px-3 py-1 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>
-          <img class="w-full align-top" src="/images/caret-left.png" alt="往前一頁">
+          <Icon name="eva:arrow-right-fill" :horizontalFlip="true" />
         </a>
       </li>
       <li class="px-3" v-for="i in pageEnd" :key="i" @click.prevent="changePage(i + pageAddAmount)">
-        <a class="block px-3 py-1 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>{{ i + pageAddAmount }}</a>
+        <a class="block px-3 py-1 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" :class="{'active-page': currentPage === i + pageAddAmount}" href>{{ i + pageAddAmount }}</a>
       </li>
       <li @click.prevent="changePage(currentPage + 1)" :class="{'disabled': currentPage === totalPage}">
         <a class="block px-3 py-1 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>
-          <img class="w-full align-top" src="/images/caret-right.png" alt="往後一頁">
+          <Icon name="eva:arrow-right-fill" />
         </a>
       </li>
       <li @click.prevent="changePage(totalPage)">
-        <a class="block px-3 py-1 ml-2 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>{{ totalPage }}</a>
+        <a class="block px-3 py-1 ml-2 border border-primary rounded-full text-light text-sm hover:bg-secondary hover:text-primary" href>
+          <Icon name="fluent:next-24-filled" />
+        </a>
       </li>
     </ul>
   </nav>
@@ -76,5 +80,8 @@
 <style scoped>
   .disabled{
     opacity: 0;
+  }
+  .active-page{
+    @apply bg-secondary text-primary;
   }
 </style>
