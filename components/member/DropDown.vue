@@ -1,9 +1,7 @@
 <template>
   <!-- Dropdown -->
   <button
-    @click="toggle"
     ref="triggerEl"
-    data-dropdown-toggle="dropdown"
     class="text-primary bg-white hover:bg-secondary/80 focus:ring-2 focus:outline-none focus:ring-secondary rounded text-24 px-7 py-3 text-center inline-flex items-center justify-center basis-full lg:basis-1/4 w-full"
     type="button"
   >
@@ -59,17 +57,14 @@ onMounted(() => {
 })
 
 const show = () => {
-  // show the tooltip
   dropdown.show()
 }
 
 const hide = () => {
-  // hide the tooltip
   dropdown.hide()
 }
 
 const toggle = () => {
-  // toggle the tooltip
   dropdown.toggle()
 }
 
