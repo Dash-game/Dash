@@ -17,6 +17,7 @@ import { Tooltip } from 'flowbite'
 
 const triggerEl = ref(null)
 const targetEl = ref(null)
+const tooltip = ref(null)
 
 onMounted(() => {
   const options = {
@@ -32,7 +33,7 @@ onMounted(() => {
       console.log('tooltip is toggled')
     }
   }
-  new Tooltip(targetEl.value, triggerEl.value, options)
+  tooltip.value = new Tooltip(targetEl.value, triggerEl.value, options)
 })
 
 const show = () => {
