@@ -1,14 +1,16 @@
 <template>
   <div class="container">
-    <div class="flex justify-between pt-12 py-[72px]">
-      <div class="lg:w-1/2">
+    <!-- <div
+      class="flex flex-wrap justify-between gap-x-3 pt-0 lg:pt-12 py-[24px] lg:py-[72px] gap-y-2"
+    >
+      <div class="w-full lg:w-1/2">
         <input
           type="text"
           class="bg-white text-primary text-sm rounded-lg block w-full p-2.5"
           placeholder="Search"
         />
       </div>
-      <div>
+      <div class="w-full lg:w-1/2">
         <select
           id="small"
           class="block w-full py-2.5 pl-12 mb-6 text-sm text-primary rounded-lg bg-white"
@@ -17,17 +19,50 @@
           <option value="2">依評論日期排序</option>
         </select>
       </div>
+    </div> -->
+
+    <div
+      class="flex flex-row justify-between items-center flex-wrap space-y-10 lg:space-y-0 mb-[110px]"
+    >
+      <!-- search -->
+      <form class="basis-full lg:basis-1/2">
+        <label for="default-search" class="mb-2 text-primary text-24 sr-only"
+          >Search</label
+        >
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center ps-10 pointer-events-none"
+          >
+            <Icon
+              name="material-symbols:search"
+              class="text-primary"
+              size="32"
+            ></Icon>
+          </div>
+          <input
+            type="search"
+            id="default-search"
+            class="block w-full p-3 ps-20 text-24 text-primary border border-gray-300 rounded bg-white focus:ring-secondary focus:border-secondary"
+            placeholder="search..."
+            required
+          />
+        </div>
+      </form>
+      <memberDropDown :dropData="dropData"></memberDropDown>
     </div>
     <article
-      class="bg-section px-12 py-10 rounded-[30px] flex gap-x-14 mb-16"
+      class="bg-section px-6 lg:px-12 py-5 lg:py-10 rounded-[30px] flex flex-col lg:flex-row gap-x-14 mb-4 lg:mb-16"
       v-for="data in CommentList"
       :key="data.id"
     >
       <div class="flex flex-col items-center">
-        <div class="w-[420px] h-[256px] text-center mb-4">
+        <div
+          class="w-[220px] h-[128px] lg:w-[420px] lg:h-[256px] text-center mb-4"
+        >
           <img class="object-cover w-full h-full mb-4" :src="data.imgUrl" />
         </div>
         <div
+          class="mb-4 lg:mb-0"
           :class="{
             'text-labeldark': data.is_recommend === -1,
             'text-labellight': data.is_recommend === 1
@@ -49,18 +84,18 @@
       </div>
       <div class="flex-grow">
         <button
-          class="float-right border border-secondary rounded-lg px-10 py-2 text-18"
+          class="hidden lg:inline-block float-right border border-secondary rounded-lg px-10 py-2 text-18 mb-2 lg:mb-0"
           type="button"
           @click="showModal(data)"
         >
           修改評論
         </button>
-        <h6 class="text-white font-bold text-24 clear-both">
+        <h6 class="text-white font-bold text-24 clear-both mb-2 lg:mb-0">
           {{ data.title }}
         </h6>
         <div class="flex justify-between">
           <small>已遊玩了{{ data.playing_hours }}小時</small>
-          <div class="">
+          <div class="text-right lg:text-left">
             <small class="text-[#656369] block"
               >{{ data.recommend_count }}人覺得有幫助</small
             >
@@ -69,8 +104,21 @@
             >
           </div>
         </div>
-        <div class="text-[#656369] text-14">{{ data.created_at }} 評論</div>
-        <div class="mt-6 py-6" v-html="data.content"></div>
+        <div
+          class="text-[#656369] text-14 text-right lg:text-left"
+          v-timeformat="{
+            timestamp: data.created_at,
+            format: 'YYYY-MM-DD HH:mm 評論'
+          }"
+        ></div>
+        <button
+          class="lg:hidden float-right border border-secondary rounded-lg px-10 py-2 my-2 text-18 mb-2 lg:mb-0"
+          type="button"
+          @click="showModal(data)"
+        >
+          修改評論
+        </button>
+        <div class="mt-6 py-6 clear-both" v-html="data.content"></div>
       </div>
     </article>
   </div>
@@ -102,6 +150,8 @@
 </template>
 
 <script setup>
+const dropData = ref([{ item: '依購買日期排序' }, { item: '依評論日期排序' }])
+
 const CommentList = computed(() => {
   return [
     {
@@ -109,7 +159,7 @@ const CommentList = computed(() => {
       imgUrl: 'https://fakeimg.pl/300x200/200',
       title: 'Dave the Drive',
       playing_hours: 16,
-      created_at: '2023-07-31 21:34',
+      created_at: 1703507627000,
       recommend_count: 30,
       interested_count: 0,
       is_recommend: -1,
@@ -121,7 +171,7 @@ const CommentList = computed(() => {
       imgUrl: 'https://fakeimg.pl/300x200/200',
       title: 'Dave the Drive',
       playing_hours: 16,
-      created_at: '2023-07-31 21:34',
+      created_at: 1703508654000,
       recommend_count: 30,
       interested_count: 0,
       is_recommend: -1,
@@ -133,7 +183,7 @@ const CommentList = computed(() => {
       imgUrl: 'https://fakeimg.pl/300x200/200',
       title: 'Dave the Drive',
       playing_hours: 16,
-      created_at: '2023-07-31 21:34',
+      created_at: 1703509676000,
       recommend_count: 30,
       interested_count: 0,
       is_recommend: 1,

@@ -27,37 +27,7 @@
           />
         </div>
       </form>
-      <!-- Dropdown -->
-      <button
-        id="dropdownDefaultButton"
-        data-dropdown-toggle="dropdown"
-        class="text-primary bg-white hover:bg-secondary/80 focus:ring-2 focus:outline-none focus:ring-secondary rounded text-24 px-7 py-3 text-center inline-flex items-center justify-center basis-full lg:basis-1/4 w-full"
-        type="button"
-      >
-        <span class="inline-block">篩選條件</span>
-        <Icon
-          name="material-symbols:arrow-drop-down-rounded"
-          class="ms-3"
-          size="32"
-        ></Icon>
-      </button>
-      <!-- Dropdown menu -->
-      <!-- hidden -->
-      <div
-        id="dropdown"
-        class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow basis-full lg:basis-1/4"
-      >
-        <ul
-          class="py-2 text-24 text-primary"
-          aria-labelledby="dropdownDefaultButton"
-        >
-          <li v-for="(item, index) in dropData" :key="index">
-            <a href="#" class="block px-7 py-3 hover:bg-secondary">{{
-              item.item
-            }}</a>
-          </li>
-        </ul>
-      </div>
+      <memberDropDown :dropData="dropData"></memberDropDown>
     </div>
     <!-- item -->
     <ul class="grid gap-14">
@@ -88,8 +58,12 @@
                 {{ item.title }}
               </p>
               <ul class="space-y-2 mb-3">
-                <li>發行商：{{ item.publishers.join("、") }}</li>
-                <li>發行日期：<span v-timeformat="item.release_date * 1000"></span></li>
+                <li>發行商：{{ item.publishers.join('、') }}</li>
+                <li>
+                  發行日期：<span
+                    v-timeformat="item.release_date * 1000"
+                  ></span>
+                </li>
                 <li>已遊玩了 {{ item.playTime }} 小時</li>
               </ul>
             </div>
@@ -121,12 +95,12 @@
                   name="bx:like"
                   size="20"
                   class="mr-2"
-                  @click.stop="showModal(item)"
+                  @click.stop="showModal({ ...item, is_recommend: 1 })"
                 ></Icon>
                 <Icon
                   name="bx:dislike"
                   size="20"
-                  @click.stop="showModal(item)"
+                  @click.stop="showModal({ ...item, is_recommend: 0 })"
                 ></Icon>
               </p>
             </div>
@@ -190,7 +164,7 @@ export default {
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
-          publishers:['Frictional Games'],
+          publishers: ['Frictional Games'],
           release_date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,
@@ -200,7 +174,7 @@ export default {
           image: '/images/member/memberGameImage001.png',
           title:
             'Dave the DiverDave the DiverDave the DiverDarDave the DiverDave the DiverDave the DiverDave theerDave the DiverDrDavet heDiverDave the DiverDave the DiverDavethe DiverDave thverDave the Diver',
-          publishers:['Frictional Games'],
+          publishers: ['Frictional Games'],
           release_date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,
@@ -209,7 +183,7 @@ export default {
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
-          publishers:['Frictional Games'],
+          publishers: ['Frictional Games'],
           release_date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,
@@ -218,7 +192,7 @@ export default {
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
-          publishers:['Frictional Games'],
+          publishers: ['Frictional Games'],
           release_date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,
@@ -227,7 +201,7 @@ export default {
         {
           image: '/images/member/memberGameImage001.png',
           title: 'Dave the Diver',
-          publishers:['Frictional Games'],
+          publishers: ['Frictional Games'],
           release_date: 1702736324,
           last_play_time: 1701000000,
           playTime: 1100,

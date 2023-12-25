@@ -2,7 +2,7 @@
   <article class="">
     <h3 class="mb-2 font-semibold">您是否推薦 {{ props.data?.title }} ?</h3>
     <ul
-      class="items-center w-full text-sm font-medium text- rounded-lg sm:flex mb-7"
+      class="items-center w-full text-sm font-medium text- rounded-lg flex mb-7"
     >
       <li class="w-auto">
         <div class="flex items-center">
