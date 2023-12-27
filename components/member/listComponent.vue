@@ -19,6 +19,7 @@
             ></Icon>
           </div>
           <input
+            v-model.lazy="searchList"
             type="search"
             id="default-search"
             class="block w-full p-3 ps-20 text-24 text-primary border border-gray-300 rounded bg-white focus:ring-secondary focus:border-secondary"
@@ -33,7 +34,7 @@
     <ul class="grid gap-14">
       <li
         class="bg-section rounded-lg shadow hover:text-secondary hover:-translate-y-1 duration-300 group h-[234px]"
-        v-for="(item, index) in listData"
+        v-for="(item, index) in newListData"
         :key="index"
       >
         <a href="#" class="flex flex-row justify-between items-stretch h-full">
@@ -167,7 +168,7 @@
     {
       image: '/images/member/memberGameImage001.png',
       title:
-        'Dave the DiverDave the DiverDave the DiverDarDave the DiverDave the DiverDave the DiverDave theerDave the DiverDrDavet heDiverDave the DiverDave the DiverDavethe DiverDave thverDave the Diver',
+        'abc the DiverDave the DiverDave the DiverDarDave the DiverDave the DiverDave the DiverDave theerDave the DiverDrDavet heDiverDave the DiverDave the DiverDavethe DiverDave thverDave the Diver',
       publishers: ['Frictional Games'],
       release_date: 1702736324,
       last_play_time: 1501000000,
@@ -176,7 +177,7 @@
     },
     {
       image: '/images/member/memberGameImage001.png',
-      title: 'Dave the Diver',
+      title: 'cat the Diver',
       publishers: ['Frictional Games'],
       release_date: 1702736324,
       last_play_time: 2001000000,
@@ -185,7 +186,7 @@
     },
     {
       image: '/images/member/memberGameImage001.png',
-      title: 'Dave the Diver',
+      title: 'pink the Diver',
       publishers: ['Frictional Games'],
       release_date: 1702736324,
       last_play_time: 1701000000,
@@ -217,5 +218,14 @@
         break;
     }
   }
+
+  // search
+  const searchList = ref('');
+  const newListData = computed(() => {
+    console.log(searchList);
+    let result;
+    result = listData.value.filter(item => item.title.toLowerCase().match(searchList.value.toLowerCase()));
+    return result;
+  })
 
 </script>
