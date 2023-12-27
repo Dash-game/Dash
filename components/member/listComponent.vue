@@ -100,7 +100,7 @@
                 <Icon
                   name="bx:dislike"
                   size="20"
-                  @click.stop="showModal({ ...item, is_recommend: 0 })"
+                  @click.stop="showModal({ ...item, is_recommend: -1 })"
                 ></Icon>
               </p>
             </div>
