@@ -13,14 +13,13 @@
     ></Icon>
   </button>
   <!-- Dropdown menu -->
-  <!-- hidden -->
   <div
     ref="targetEl"
     class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow basis-full lg:basis-1/4"
   >
     <ul class="py-2 text-24 text-primary">
       <li v-for="(item, index) in dropData" :key="index">
-        <a href="#" class="block px-7 py-3 hover:bg-secondary">{{
+        <a href="#" class="block px-7 py-3 hover:bg-secondary" @click="sort(item)">{{
           item.item
         }}</a>
       </li>
@@ -29,11 +28,13 @@
 </template>
 
 <script setup>
-import { Dropdown } from 'flowbite'
+import { Dropdown } from 'flowbite';
+import { defineProps, defineEmits } from 'vue';
 
 const triggerEl = ref(null)
 const targetEl = ref(null)
 const dropdown = ref(null)
+const emit = defineEmits(['dropdown-sort']);
 
 onMounted(() => {
   const options = {
@@ -53,7 +54,7 @@ onMounted(() => {
       console.log('dropdown has been toggled')
     }
   }
-  dropdown.value = new Dropdown(targetEl.value, triggerEl.value, options)
+  dropdown.value = new Dropdown(targetEl.value, triggerEl.value, options);
 })
 
 const show = () => {
@@ -67,6 +68,14 @@ const hide = () => {
 const toggle = () => {
   dropdown.toggle()
 }
+
+/**
+ * selected dropdown value
+ * @param { string } item
+ */
+const sort = (item) => {
+  emit('dropdown-sort', item);
+};
 
 const props = defineProps({
   dropData: {

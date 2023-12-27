@@ -27,7 +27,7 @@
           />
         </div>
       </form>
-      <memberDropDown :dropData="dropData"></memberDropDown>
+      <memberDropDown :dropData="dropData" @dropdown-sort="dropdownSort" ></memberDropDown>
     </div>
     <!-- item -->
     <ul class="grid gap-14">
@@ -134,86 +134,88 @@
     </template>
   </commonModal>
 </template>
-<script>
-export default {
-  setup() {
-    const commentModalData = ref({})
-    const commentModal = ref(null)
+<script setup>
+  const commentModalData = ref({})
+  const commentModal = ref(null)
 
-    const showModal = (data) => {
-      commentModalData.value = { ...data }
-      commentModal.value.show()
-    }
-
-    const modalbody = ref(null)
-    const sendComment = () => {
-      const commentValue = modalbody.value.getValue()
-      console.log(commentValue)
-    }
-
-    return { modalbody, commentModal, commentModalData, sendComment, showModal }
-  },
-  data() {
-    return {
-      dropData: [
-        { item: '依收藏日期排序' },
-        { item: '篩選二' },
-        { item: '篩選三' }
-      ],
-      listData: [
-        {
-          image: '/images/member/memberGameImage001.png',
-          title: 'Dave the Diver',
-          publishers: ['Frictional Games'],
-          release_date: 1702736324,
-          last_play_time: 1701000000,
-          playTime: 1100,
-          is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
-        },
-        {
-          image: '/images/member/memberGameImage001.png',
-          title:
-            'Dave the DiverDave the DiverDave the DiverDarDave the DiverDave the DiverDave the DiverDave theerDave the DiverDrDavet heDiverDave the DiverDave the DiverDavethe DiverDave thverDave the Diver',
-          publishers: ['Frictional Games'],
-          release_date: 1702736324,
-          last_play_time: 1701000000,
-          playTime: 1100,
-          is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
-        },
-        {
-          image: '/images/member/memberGameImage001.png',
-          title: 'Dave the Diver',
-          publishers: ['Frictional Games'],
-          release_date: 1702736324,
-          last_play_time: 1701000000,
-          playTime: 1100,
-          is_recommend: -1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
-        },
-        {
-          image: '/images/member/memberGameImage001.png',
-          title: 'Dave the Diver',
-          publishers: ['Frictional Games'],
-          release_date: 1702736324,
-          last_play_time: 1701000000,
-          playTime: 1100,
-          is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
-        },
-        {
-          image: '/images/member/memberGameImage001.png',
-          title: 'Dave the Diver',
-          publishers: ['Frictional Games'],
-          release_date: 1702736324,
-          last_play_time: 1701000000,
-          playTime: 1100,
-          is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
-        }
-      ]
-    }
-  },
-  methods: {
-    // switchLike(isLike, index) {
-    //   this.listData[index].isLike = isLike
-    // }
+  const showModal = (data) => {
+    commentModalData.value = { ...data }
+    commentModal.value.show()
   }
-}
+
+  const modalbody = ref(null)
+  const sendComment = () => {
+    const commentValue = modalbody.value.getValue()
+    console.log(commentValue)
+  }
+
+  const dropData = ref([
+    { item: '依收藏日期排序', code: 'date' },
+    { item: '篩選二', code: '' },
+    { item: '篩選三', code: '' }
+  ]);
+  const listData = ref([
+    {
+      image: '/images/member/memberGameImage001.png',
+      title: 'Dave the Diver',
+      publishers: ['Frictional Games'],
+      release_date: 1702736324,
+      last_play_time: 1901000000,
+      playTime: 1100,
+      is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+    },
+    {
+      image: '/images/member/memberGameImage001.png',
+      title:
+        'Dave the DiverDave the DiverDave the DiverDarDave the DiverDave the DiverDave the DiverDave theerDave the DiverDrDavet heDiverDave the DiverDave the DiverDavethe DiverDave thverDave the Diver',
+      publishers: ['Frictional Games'],
+      release_date: 1702736324,
+      last_play_time: 1501000000,
+      playTime: 1100,
+      is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+    },
+    {
+      image: '/images/member/memberGameImage001.png',
+      title: 'Dave the Diver',
+      publishers: ['Frictional Games'],
+      release_date: 1702736324,
+      last_play_time: 2001000000,
+      playTime: 1100,
+      is_recommend: -1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+    },
+    {
+      image: '/images/member/memberGameImage001.png',
+      title: 'Dave the Diver',
+      publishers: ['Frictional Games'],
+      release_date: 1702736324,
+      last_play_time: 1701000000,
+      playTime: 1100,
+      is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+    },
+    {
+      image: '/images/member/memberGameImage001.png',
+      title: 'Dave the Diver',
+      publishers: ['Frictional Games'],
+      release_date: 1802736324,
+      last_play_time: 1701110000,
+      playTime: 1100,
+      is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
+    }
+  ]);
+  /**
+   * selected dropdown value
+   * @param { string } selected
+   */
+  const dropdownSort = (selected) => {
+    switch (selected.code) {
+      case 'date':
+        listData.value = listData.value.sort((x, y) => y.last_play_time - x.last_play_time);
+        console.log('date');
+        console.log(listData.value);
+        break;
+      default:
+        break;
+    }
+  }
+
 </script>
