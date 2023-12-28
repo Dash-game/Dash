@@ -26,7 +26,7 @@
     >
       <!-- search -->
       <memberSearch v-model="searchValue" @update:searchValue="updateSearchValue"></memberSearch>
-      <memberDropDown :dropData="dropData"></memberDropDown>
+      <memberDropDown :dropData="dropData" @dropdown-sort="dropdownSort"></memberDropDown>
     </div>
     <article
       class="bg-section px-6 lg:px-12 py-5 lg:py-10 rounded-[30px] flex flex-col lg:flex-row gap-x-14 mb-4 lg:mb-16"
@@ -182,13 +182,39 @@ const sendComment = () => {
   const commentValue = modalbody.value.getValue()
   console.log(commentValue)
 }
-
-// search
+/**
+ * selected dropdown value
+ * @param { string } selected
+ */
+const selectedSort = ref(null);
+const dropdownSort = (selected) => {
+  selectedSort.value = selected;
+  newListData.value;
+}
+/**
+ * feature search
+ */
 const searchValue = ref('');
+const updateSearchValue = value => searchValue.value = value;
+/**
+ * Vue computed
+ */
 const NewCommentList = computed(() => {
-  let result;
-  result = CommentList.value.filter(item => item.title.toLowerCase().match(searchValue.value.toLowerCase()));
+  let result = [...CommentList.value];
+  // feature sort
+  if(selectedSort.value) {
+    switch (selectedSort.value.code) {
+      case 'date':
+        result = result.sort((x, y) => y.created_at - x.created_at);
+        break;
+      default:
+        break;
+    }
+  }
+  // feature search
+  result = result.filter(item => item.title.toLowerCase().match(searchValue.value.toLowerCase()));
+
+  console.log('result:', result);
   return result;
 })
-const updateSearchValue = value => searchValue.value = value;
 </script>

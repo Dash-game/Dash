@@ -139,7 +139,7 @@
       publishers: ['Frictional Games'],
       release_date: 1702736324,
       last_play_time: 1901000000,
-      playTime: 1100,
+      playTime: 1000,
       is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
     },
     {
@@ -149,7 +149,7 @@
       publishers: ['Frictional Games'],
       release_date: 1702736324,
       last_play_time: 1501000000,
-      playTime: 1100,
+      playTime: 2000,
       is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
     },
     {
@@ -158,7 +158,7 @@
       publishers: ['Frictional Games'],
       release_date: 1702736324,
       last_play_time: 2001000000,
-      playTime: 1100,
+      playTime: 3000,
       is_recommend: -1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
     },
     {
@@ -167,7 +167,7 @@
       publishers: ['Frictional Games'],
       release_date: 1702736324,
       last_play_time: 1701000000,
-      playTime: 1100,
+      playTime: 4000,
       is_recommend: 0 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
     },
     {
@@ -176,7 +176,7 @@
       publishers: ['Frictional Games'],
       release_date: 1802736324,
       last_play_time: 1701110000,
-      playTime: 1100,
+      playTime: 5000,
       is_recommend: 1 // -1 = 不推薦,0 = 尚未評論,1 = 推薦
     }
   ]);
@@ -184,25 +184,35 @@
    * selected dropdown value
    * @param { string } selected
    */
+  const selectedSort = ref(null);
   const dropdownSort = (selected) => {
-    switch (selected.code) {
-      case 'date':
-        listData.value = listData.value.sort((x, y) => y.last_play_time - x.last_play_time);
-        console.log('date');
-        console.log(listData.value);
-        break;
-      default:
-        break;
-    }
+    selectedSort.value = selected;
+    newListData.value;
   }
-
-  // search
+  /**
+   * feature search
+   */
   const searchValue = ref('');
+  const updateSearchValue = value => searchValue.value = value;
+  /**
+   * Vue computed
+   */
   const newListData = computed(() => {
-    let result;
-    result = listData.value.filter(item => item.title.toLowerCase().match(searchValue.value.toLowerCase()));
+    let result = [...listData.value];
+    // feature sort
+    if(selectedSort.value) {
+      switch (selectedSort.value.code) {
+        case 'date':
+          result = result.sort((x, y) => y.last_play_time - x.last_play_time);
+          break;
+        default:
+          break;
+      }
+    }
+    // feature search
+    result = result.filter(item => item.title.toLowerCase().match(searchValue.value.toLowerCase()));
+
+    console.log('result:', result);
     return result;
   })
-  const updateSearchValue = value => searchValue.value = value;
-
 </script>

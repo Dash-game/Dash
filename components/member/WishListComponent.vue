@@ -5,7 +5,7 @@
     >
       <!-- search -->
       <memberSearch v-model="searchValue" @update:searchValue="updateSearchValue"></memberSearch>
-      <memberDropDown :dropData="dropData"></memberDropDown>
+      <memberDropDown :dropData="dropData" @dropdown-sort="dropdownSort"></memberDropDown>
     </div>
     <!-- item -->
     <ul class="grid gap-14">
@@ -178,13 +178,39 @@
       sale_price: 1982
     }
   ]);
-
-  // search
+  /**
+   * selected dropdown value
+   * @param { string } selected
+   */
+  const selectedSort = ref(null);
+  const dropdownSort = (selected) => {
+    selectedSort.value = selected;
+    newListData.value;
+  }
+  /**
+   * feature search
+   */
   const searchValue = ref('');
+  const updateSearchValue = value => searchValue.value = value;
+  /**
+   * Vue computed
+   */
   const newWishListData = computed(() => {
-    let result;
-    result = wishListData.value.filter(item => item.title.toLowerCase().match(searchValue.value.toLowerCase()));
+    let result = [...wishListData.value];
+    // feature sort
+    if(selectedSort.value) {
+      switch (selectedSort.value.code) {
+        case 'date':
+          result = result.sort((x, y) => y.add_date - x.add_date);
+          break;
+        default:
+          break;
+      }
+    }
+    // feature search
+    result = result.filter(item => item.title.toLowerCase().match(searchValue.value.toLowerCase()));
+
+    console.log('result:', result);
     return result;
   })
-  const updateSearchValue = value => searchValue.value = value;
 </script>
