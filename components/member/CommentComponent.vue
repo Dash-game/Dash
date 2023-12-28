@@ -25,34 +25,12 @@
       class="flex flex-row justify-between items-center flex-wrap space-y-10 lg:space-y-0 mb-[110px]"
     >
       <!-- search -->
-      <form class="basis-full lg:basis-1/2">
-        <label for="default-search" class="mb-2 text-primary text-24 sr-only"
-          >Search</label
-        >
-        <div class="relative">
-          <div
-            class="absolute inset-y-0 start-0 flex items-center ps-10 pointer-events-none"
-          >
-            <Icon
-              name="material-symbols:search"
-              class="text-primary"
-              size="32"
-            ></Icon>
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            class="block w-full p-3 ps-20 text-24 text-primary border border-gray-300 rounded bg-white focus:ring-secondary focus:border-secondary"
-            placeholder="search..."
-            required
-          />
-        </div>
-      </form>
+      <memberSearch v-model="searchValue" @update:searchValue="updateSearchValue"></memberSearch>
       <memberDropDown :dropData="dropData"></memberDropDown>
     </div>
     <article
       class="bg-section px-6 lg:px-12 py-5 lg:py-10 rounded-[30px] flex flex-col lg:flex-row gap-x-14 mb-4 lg:mb-16"
-      v-for="data in CommentList"
+      v-for="data in NewCommentList"
       :key="data.id"
     >
       <div class="flex flex-col items-center">
@@ -157,7 +135,7 @@ const CommentList = computed(() => {
     {
       id: 1,
       imgUrl: 'https://fakeimg.pl/300x200/200',
-      title: 'Dave the Drive',
+      title: 'ABC the Drive',
       playing_hours: 16,
       created_at: 1703507627000,
       recommend_count: 30,
@@ -204,4 +182,13 @@ const sendComment = () => {
   const commentValue = modalbody.value.getValue()
   console.log(commentValue)
 }
+
+// search
+const searchValue = ref('');
+const NewCommentList = computed(() => {
+  let result;
+  result = CommentList.value.filter(item => item.title.toLowerCase().match(searchValue.value.toLowerCase()));
+  return result;
+})
+const updateSearchValue = value => searchValue.value = value;
 </script>

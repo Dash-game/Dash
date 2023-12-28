@@ -4,36 +4,14 @@
       class="flex flex-row justify-between items-center flex-wrap space-y-10 lg:space-y-0 mb-[110px]"
     >
       <!-- search -->
-      <form class="basis-full lg:basis-1/2">
-        <label for="default-search" class="mb-2 text-primary text-24 sr-only"
-          >Search</label
-        >
-        <div class="relative">
-          <div
-            class="absolute inset-y-0 start-0 flex items-center ps-10 pointer-events-none"
-          >
-            <Icon
-              name="material-symbols:search"
-              class="text-primary"
-              size="32"
-            ></Icon>
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            class="block w-full p-3 ps-20 text-24 text-primary border border-gray-300 rounded bg-white focus:ring-secondary focus:border-secondary"
-            placeholder="search..."
-            required
-          />
-        </div>
-      </form>
+      <memberSearch v-model="searchValue" @update:searchValue="updateSearchValue"></memberSearch>
       <memberDropDown :dropData="dropData"></memberDropDown>
     </div>
     <!-- item -->
     <ul class="grid gap-14">
       <li
         class="bg-section rounded-lg shadow hover:text-secondary hover:-translate-y-1 duration-300 group min-w-[740px] h-[230px] relative"
-        v-for="(item, index) in wishListData"
+        v-for="(item, index) in newWishListData"
         :key="index"
       >
         <a href="#" class="flex flex-row justify-between items-stretch h-full">
@@ -137,78 +115,76 @@
     </ul>
   </section>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      dropData: [
-        { item: '依收藏日期排序' },
-        { item: '篩選二' },
-        { item: '篩選三' }
-      ],
-      wishListData: [
-        {
-          image: '/images/member/memberGameImage001.png',
-          title: 'Dave the Diver',
-          supplier: 'Frictional Games',
-          release_date: 1702736324,
-          add_date: 1702780324,
-          like: 300,
-          dislike: 20,
-          price: 1982,
-          sale_price: 1882
-        },
-        {
-          image: '/images/member/memberGameImage001.png',
-          title: 'Dave the Diver',
-          supplier: 'Frictional Games',
-          release_date: 1702736324,
-          add_date: 1702780324,
-          like: 60,
-          dislike: 170,
-          price: 1982,
-          sale_price: 1982
-        },
-        {
-          image: '/images/member/memberGameImage001.png',
-          title: 'Dave the Diver',
-          supplier: 'Frictional Games',
-          release_date: 1702736324,
-          add_date: 1702780324,
-          like: 10,
-          dislike: 9,
-          price: 1982,
-          sale_price: 1200
-        },
-        {
-          image: '/images/member/memberGameImage001.png',
-          title: 'Dave the Diver',
-          supplier: 'Frictional Games',
-          release_date: 1702736324,
-          add_date: 1702780324,
-          like: 1000,
-          dislike: 999,
-          price: 1982,
-          sale_price: 1982
-        },
-        {
-          image: '/images/member/memberGameImage001.png',
-          title: 'Dave the Diver',
-          supplier: 'Frictional Games',
-          release_date: 1702736324,
-          add_date: 1702780324,
-          like: 0,
-          dislike: 0,
-          price: 1982,
-          sale_price: 1982
-        }
-      ]
+<script setup>
+  const dropData = ref([
+    { item: '依收藏日期排序', code: 'date' },
+    { item: '篩選二', code: '' },
+    { item: '篩選三', code: '' }
+  ]);
+  const wishListData = ref([
+    {
+      image: '/images/member/memberGameImage001.png',
+      title: 'abc the Diver',
+      supplier: 'Frictional Games',
+      release_date: 1702736324,
+      add_date: 1702780324,
+      like: 300,
+      dislike: 20,
+      price: 1982,
+      sale_price: 1882
+    },
+    {
+      image: '/images/member/memberGameImage001.png',
+      title: 'Dave the Diver',
+      supplier: 'Frictional Games',
+      release_date: 1702736324,
+      add_date: 1702780324,
+      like: 60,
+      dislike: 170,
+      price: 1982,
+      sale_price: 1982
+    },
+    {
+      image: '/images/member/memberGameImage001.png',
+      title: 'Dave the Diver',
+      supplier: 'Frictional Games',
+      release_date: 1702736324,
+      add_date: 1702780324,
+      like: 10,
+      dislike: 9,
+      price: 1982,
+      sale_price: 1200
+    },
+    {
+      image: '/images/member/memberGameImage001.png',
+      title: 'Dave the Diver',
+      supplier: 'Frictional Games',
+      release_date: 1702736324,
+      add_date: 1702780324,
+      like: 1000,
+      dislike: 999,
+      price: 1982,
+      sale_price: 1982
+    },
+    {
+      image: '/images/member/memberGameImage001.png',
+      title: 'Dave the Diver',
+      supplier: 'Frictional Games',
+      release_date: 1702736324,
+      add_date: 1702780324,
+      like: 0,
+      dislike: 0,
+      price: 1982,
+      sale_price: 1982
     }
-  },
-  methods: {
-    switchLike(isLike, index) {
-      this.listData[index].isLike = isLike
-    }
-  }
-}
+  ]);
+
+  // search
+  const searchValue = ref('');
+  const newWishListData = computed(() => {
+    let result;
+    result = wishListData.value.filter(item => item.title.toLowerCase().match(searchValue.value.toLowerCase()));
+    return result;
+  })
+  const updateSearchValue = value => searchValue.value = value;
 </script>

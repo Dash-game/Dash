@@ -4,30 +4,7 @@
       class="flex flex-row justify-between items-center flex-wrap space-y-10 lg:space-y-0 mb-[110px]"
     >
       <!-- search -->
-      <form class="basis-full lg:basis-1/2">
-        <label for="default-search" class="mb-2 text-primary text-24 sr-only"
-          >Search</label
-        >
-        <div class="relative">
-          <div
-            class="absolute inset-y-0 start-0 flex items-center ps-10 pointer-events-none"
-          >
-            <Icon
-              name="material-symbols:search"
-              class="text-primary"
-              size="32"
-            ></Icon>
-          </div>
-          <input
-            v-model.lazy="searchList"
-            type="search"
-            id="default-search"
-            class="block w-full p-3 ps-20 text-24 text-primary border border-gray-300 rounded bg-white focus:ring-secondary focus:border-secondary"
-            placeholder="search..."
-            required
-          />
-        </div>
-      </form>
+      <memberSearch v-model="searchValue" @update:searchValue="updateSearchValue"></memberSearch>
       <memberDropDown :dropData="dropData" @dropdown-sort="dropdownSort" ></memberDropDown>
     </div>
     <!-- item -->
@@ -220,12 +197,12 @@
   }
 
   // search
-  const searchList = ref('');
+  const searchValue = ref('');
   const newListData = computed(() => {
-    console.log(searchList);
     let result;
-    result = listData.value.filter(item => item.title.toLowerCase().match(searchList.value.toLowerCase()));
+    result = listData.value.filter(item => item.title.toLowerCase().match(searchValue.value.toLowerCase()));
     return result;
   })
+  const updateSearchValue = value => searchValue.value = value;
 
 </script>
