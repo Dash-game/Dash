@@ -313,7 +313,7 @@ const toggleMember = () => {
                 <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'commentPage'; memberOpen=false">遊戲評論</NuxtLink>
               </li>
               <li class="hover:text-secondary bg-section border border-primary rounded-b-xl">
-                <button type="button" class="w-full py-2" @click="loginStore.logout; memberOpen=false">登出</button>
+                <button type="button" class="w-full py-2" @click="loginStore.logout(); memberOpen=false">登出</button>
               </li>
             </ul>
           </div>
