@@ -283,7 +283,7 @@ const toggleMember = () => {
             <Icon name="uil:search" />
           </button>
           <!-- 購物車 -->
-          <CartBtnComponent class="relative hidden xl:block my-2 xl:mr-[30px]"/>
+          <CartBtnComponent class="relative hidden shrink-0 xl:block my-2 xl:mr-[30px]"/>
           <!-- 登入按鈕 -->
           <nuxt-link to="/login" class="block w-full xl:w-auto"  @click="closeMenu" :class="{'hidden':loginStore.loggedIn}">
             <button class="block w-full h-[68px] xl:h-[42px] xl:rounded-[20px/21px] xl:py-[6px] xl:px-2 xl:border-l-4 xl:border-r-4 xl:border-secondary xl:bg-transparent bg-section hover:bg-secondary text-secondary hover:text-primary duration-300" >
