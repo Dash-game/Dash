@@ -1,28 +1,20 @@
 <script setup>
-  const cartList = ref([])
-  const getItem = () => {
-    if(process.client){
-      cartList.value = JSON.parse(localStorage.getItem("dash"))
-    }
-  }
-  const addItem = (id)=>{
-    if(process.client){
-      if(!cartList.value){
-        localStorage.setItem("dash", `${[id]}`)
-        cartList.value = JSON.parse(localStorage.getItem("dash"))
-      }else{
-        cartList.value.push(id)
-        localStorage.setItem("dash",JSON.stringify(cartList.value))
-      }
-    }
-  }
-  getItem()
+  const { cartList,setItem }=useCart()
+
 </script>
 <template>
   <div class="h-80">
-    help
-    <button class="bg-red-300" @click="addItem('A123')">add</button>
     {{ cartList }}
+
+  <div>
+    <button class="bg-red-600 p-2 m-2" @click="setItem(true, 'A1')">A1</button>
+    <button class="bg-red-600 p-2 m-2" @click="setItem(false, 'A1')">Delete A1</button>
   </div>
+  <div>
+    <button class="bg-red-600 p-2 m-2" @click="setItem(true, 'A2')">A2</button>
+    <button class="bg-red-600 p-2 m-2" @click="setItem(false, 'A2')">Delete A2</button>
+  </div>
+  </div>
+
 
 </template>
