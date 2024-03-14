@@ -66,8 +66,8 @@
 </script>
 <template>
 <div class="container px-3 flex flex-col justify-between  py-6">
-  <!-- breadcrumb -->
-  <div>breadcrumb</div>
+  <!-- steps -->
+  <div>steps</div>
   <ul class="max-h-[526px] overflow-y-auto border-t border-light">
     <li class="border-b border-light" v-for="item in cartData.data" :key="item.id">
       <div class="flex py-3 sm:py-5 px-2 sm:pl-3 sm:pr-6 relative">
