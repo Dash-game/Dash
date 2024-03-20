@@ -1,9 +1,7 @@
 <template>
   <div class="container mx-auto">
-    <form
-      @submit="onSubmit"
-      class="md:grid grid-cols-12 [&_input]:border-0 [&_input]:bg-gray-50 [&_input]:border-gray-300 [&_input]: text-gray-900 [&_input]:text-sm [&_input]:rounded-lg [&_input]:!shadow-none [&_input]:focus:!border-transparent [&_input]:block [&_input]:w-full [&_input]:p-2.5 [&_input]:outline-none"
-    >
+    <form @submit="onSubmit" class="md:grid grid-cols-12">
+      <Field name="field" rules="between:1,10" />
       <div class="col-span-5">
         <h5 class="text-32 text-white pb-7">訂購明細</h5>
         <div
@@ -76,13 +74,12 @@
           <input
             type="text"
             id="CardName"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-transparent focus:border-transparent block w-full p-2.5"
             placeholder="John"
             required
             v-model="holder"
           />
-          <div class="text-red-400" v-if="errors.holder">
-            {{ errors.holder }}
-          </div>
+          <ErrorMessage :name="holder" />
         </div>
         <div class="mb-3">
           <label class="block mb-2 text-sm font-medium">信用卡號碼</label>
@@ -91,31 +88,23 @@
           >
             <input
               type="text"
-              maxlength="4"
+              class="bg-transparent border-none text-gray-900 text-sm rounded-lg focus:ring-transparent block w-full p-2.5"
               v-model="cardNum1"
-              @input="HandleCardNumber('cardNum1')"
             />
             <input
               type="text"
-              ref="cardNum2Element"
-              maxlength="4"
-              @input="HandleCardNumber('cardNum2')"
+              class="bg-transparent border-none text-gray-900 text-sm rounded-lg focus:ring-transparent block w-full p-2.5"
               v-model="cardNum2"
             />
             <input
               type="text"
               class="bg-transparent border-none text-gray-900 text-sm rounded-lg focus:ring-transparent block w-full p-2.5"
               v-model="cardNum3"
-              maxlength="4"
-              @input="HandleCardNumber('cardNum3')"
-              ref="cardNum3Element"
             />
             <input
               type="text"
               class="bg-transparent border-none text-gray-900 text-sm rounded-lg focus:ring-transparent block w-full p-2.5"
               v-model="cardNum4"
-              maxlength="4"
-              ref="cardNum4Element"
             />
           </div>
         </div>
@@ -148,46 +137,38 @@
               type="text"
               id="SafetyNumber"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-transparent focus:border-transparent block w-full p-2.5"
-              v-model.number="safetyNum"
+              v-model="safetyNum"
             />
           </div>
         </div>
       </div>
+      <!-- <button>Submit</button> -->
     </form>
   </div>
-  {{ errors }}
-  <hr />
-  {{ values }}
+  <button type="button" @click="handleSubmitForm">Submit</button>
 </template>
 
-<script setup lang="ts">
-import { useForm } from 'vee-validate'
-import { toTypedSchema } from '@vee-validate/zod'
-import { z } from 'zod'
+<script setup>
+import { useForm, useField, ErrorMessage } from 'vee-validate'
+import { required, min, max, numeric } from '@vee-validate/rules'
+const { handleSubmit } = useForm()
 
-const schema = toTypedSchema(
-  z.object({
-    holder: z.string().min(1, '請輸入持卡人姓名'),
-    cardNum1: z.string().length(4).regex(/\d/, 'must contain a number')
-  })
-)
-
-const { handleSubmit, defineField, errors, values } = useForm({
-  validationSchema: schema
-})
-
-const [holder] = defineField('holder')
-const [cardNum1] = defineField('cardNum1')
-const [cardNum2] = defineField('cardNum2')
-const [cardNum3] = defineField('cardNum3')
-const [cardNum4] = defineField('cardNum4')
-const [expireMonth] = defineField('expireMonth')
-const [expireYear] = defineField('expireYear')
-const [safetyNum] = defineField('safetyNum')
+const holder = useField('holder', required)
+const cardNum1 = useField('cardNum1')
+const cardNum2 = useField('cardNum2')
+const cardNum3 = useField('cardNum3')
+const cardNum4 = useField('cardNum4')
+const expireMonth = useField('expireMonth')
+const expireYear = useField('expireYear')
+const safetyNum = useField('safetyNum')
 
 const onSubmit = handleSubmit((values) => {
-  alert(JSON.stringify(values, null, 2))
+  console.log(values)
 })
+
+const handleSubmitForm = () => {
+  handleSubmit(onSubmit)()
+}
 
 const data = ref([
   {
@@ -230,21 +211,6 @@ const data = ref([
     platforms: { windows: true, mac: false, linux: false }
   }
 ])
-
-const cardNum2Element = ref(null)
-const cardNum3Element = ref(null)
-const cardNum4Element = ref(null)
-const HandleCardNumber = (element) => {
-  if (element === 'cardNum1' && cardNum1.value.length === 4) {
-    cardNum2Element.value.focus()
-  }
-  if (element === 'cardNum2' && cardNum2.value.length === 4) {
-    cardNum3Element.value.focus()
-  }
-  if (element === 'cardNum3' && cardNum3.value.length === 4) {
-    cardNum4Element.value.focus()
-  }
-}
 </script>
 
 <style scoped>

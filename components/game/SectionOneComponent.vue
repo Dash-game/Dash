@@ -64,7 +64,7 @@
                   <p class="text-labellight leading-none text-32">- 42%</p>
                   <div class="relative text-center">
                     <!-- 定位刪除線 -->
-                    <div class="h-[1px] w-full bg-white absolute -left-0 top-1/2"></div>
+                    <div class="h-px w-full bg-white absolute -left-0 top-1/2"></div>
                     <p class="text-18 leading-none">$ 1,982</p>
                   </div>
                 </div>

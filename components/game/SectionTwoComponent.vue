@@ -98,7 +98,7 @@ const data = {
             after:w-full 
             after:top-full 
             after:right-full 
-            after:h-[1px] 
+            after:h-px
             after:bg-secondary
             lg:after:bg-transparent">
               <span class="mr-3 text-28">超值組合包</span>
@@ -116,7 +116,7 @@ const data = {
                       <span v-if="true" class="relative leading-3 text-12 px-1 
                       after:w-full 
                       after:absolute 
-                      after:h-[1px] 
+                      after:h-px
                       after:bg-light 
                       after:left-0 
                       after:top-1/2">${{ packageItem.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}</span>
@@ -135,7 +135,7 @@ const data = {
             after:w-full 
             after:top-full 
             after:right-full 
-            after:h-[1px] 
+            after:h-px
             after:bg-secondary">
               <span class="mr-3 text-28">新聞</span>
               <span class="font-medium text-24">News</span>

@@ -23,6 +23,7 @@
     "@vee-validate/i18n": "^4.12.2",
     "@vee-validate/nuxt": "^4.12.2",
     "@vee-validate/rules": "^4.12.2",
+    "@vee-validate/zod": "^4.12.6",
     "dayjs": "^1.11.10",
     "flowbite": "^1.8.1",
     "pinia": "^2.1.6",
