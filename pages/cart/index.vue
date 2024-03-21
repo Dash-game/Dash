@@ -8,7 +8,7 @@
         {
           id:"A1",
           name:"PUBG: BATTLEGROUNDS",
-          image:"https://s3-alpha-sig.figma.com/img/96ca/b8d5/8a4278ad8a0da7338d49abea4a759fd5?Expires=1710720000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=F8N4pFfP4XjNw1Ev3pOZRfQco61g-gPD9uVARSV4rUx71cl-Pzm3Esz6lvuSYWckvUWuJqpJmQhy2obrj2Ntuf6oYbVAic5lYYnz3P1NZvBsduczpMzmR454srgcXZBcMIwcB8VgSe8Hjas3iEE9EOKtGF2QIj5lV5~6sxSnZBlDhE1aYaBl1L1xHivPspFt1GuS3or9YyrUr1X5Sc0dlwV0jYBXpCao5BsDwakPSc1CeDbkqFhFIUgOig3s~oun-IyRHiuPZgo288yIKlX-9S857geSJkeDxMi7gWAOyKaxipYBDu-ySNOcckM2lbQuYqQps5jDNJYnguuR73GOUw__",
+          image:"https://s3-alpha-sig.figma.com/img/96ca/b8d5/8a4278ad8a0da7338d49abea4a759fd5?Expires=1711929600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Rz4XZptu5Mb8n1eCeC6p2ZpuPWMTVh~XnrzzqMsfzbBw9Jc6L6Mij~mw5JShYlcATqjtTnhtFAL1tX2MZOGh2fIP61X1SE0ovEtWdkZ3BpLSxrkDlpuEeAtNFNswErKlo0jRvvvK-Xl-3HrGbkgJ2OXszVHGiTxKp4IMU-wXSPFgEscw-nKEg8euXvDfEh6Igb8v~5jqjGSYzGtzA9Se26AwyMVcaOMg1fM8~bjoCEWYcDpMHXShpyBKKEI8rV~xhod~FJPaJ5Wzhtpkv3~xMZBejZbCSeMeUDhuNYJxv1wRZgTg0F-rjfaUssUpeNQ7U47M0yVb9sh1vf2qQmH-zA__",
           release_date:1707494400,
           price:{
             price:2000,
@@ -19,7 +19,7 @@
         {
           id:"A1",
           name:"Double Dragon Gaiden: Rise Of The Dragons",
-          image:"https://s3-alpha-sig.figma.com/img/a3f6/5de7/a84adc56e2b9b778aa31f08498804267?Expires=1710720000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OOpJyYDU-dAB6O5KbbSSDIPjYxEJRl9QtFd8-chh1uunB4xI7ROd6aNcmbdmGLUojFhbtqmV2DTY-qkbrFzMG3JxfLpgSMvpUi1qN00OefF2N0i7zIc3RYcmTOtiIBDexx-45Epb44bWl6WBztf9p3mFcZSAD4T~La9cVxIVSTgxTNtR-1qmaf1haMtbQD9n~gSixh-WkmTsutYQiM19d4wBr48SaXplU89cXX1Jhkis53YYr0BwnJZMtfTbkFuAYjU6p4SposGRjCnP3vlvfUZ5YGpumciRyvIEX5h~JFjfKedBUAV8OFXIxvViU10wILLQC7NaxZ08Bu37tO6WNg__",
+          image:"https://cdn.cloudflare.steamstatic.com/steam/apps/1967260/header_alt_assets_0.jpg",
           release_date:1723219200,
           price:{
             price:1500,
@@ -30,7 +30,7 @@
         {
           id:"A3",
           name:"Double Dragon Gaiden: Rise Of The Dragons",
-          image:"https://s3-alpha-sig.figma.com/img/a3f6/5de7/a84adc56e2b9b778aa31f08498804267?Expires=1710720000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OOpJyYDU-dAB6O5KbbSSDIPjYxEJRl9QtFd8-chh1uunB4xI7ROd6aNcmbdmGLUojFhbtqmV2DTY-qkbrFzMG3JxfLpgSMvpUi1qN00OefF2N0i7zIc3RYcmTOtiIBDexx-45Epb44bWl6WBztf9p3mFcZSAD4T~La9cVxIVSTgxTNtR-1qmaf1haMtbQD9n~gSixh-WkmTsutYQiM19d4wBr48SaXplU89cXX1Jhkis53YYr0BwnJZMtfTbkFuAYjU6p4SposGRjCnP3vlvfUZ5YGpumciRyvIEX5h~JFjfKedBUAV8OFXIxvViU10wILLQC7NaxZ08Bu37tO6WNg__",
+          image:"https://cdn.cloudflare.steamstatic.com/steam/apps/1967260/header_alt_assets_0.jpg",
           release_date:1723219200,
           price:{
             price:1200,
@@ -41,7 +41,7 @@
         {
           id:"A4",
           name:"Double Dragon Gaiden: Rise Of The Dragons, Double Dragon Gaiden: Rise Of The Dragons",
-          image:"https://s3-alpha-sig.figma.com/img/a3f6/5de7/a84adc56e2b9b778aa31f08498804267?Expires=1710720000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OOpJyYDU-dAB6O5KbbSSDIPjYxEJRl9QtFd8-chh1uunB4xI7ROd6aNcmbdmGLUojFhbtqmV2DTY-qkbrFzMG3JxfLpgSMvpUi1qN00OefF2N0i7zIc3RYcmTOtiIBDexx-45Epb44bWl6WBztf9p3mFcZSAD4T~La9cVxIVSTgxTNtR-1qmaf1haMtbQD9n~gSixh-WkmTsutYQiM19d4wBr48SaXplU89cXX1Jhkis53YYr0BwnJZMtfTbkFuAYjU6p4SposGRjCnP3vlvfUZ5YGpumciRyvIEX5h~JFjfKedBUAV8OFXIxvViU10wILLQC7NaxZ08Bu37tO6WNg__",
+          image:"https://cdn.cloudflare.steamstatic.com/steam/apps/1967260/header_alt_assets_0.jpg",
           release_date:1723219200,
           price:{
             price:1200,
