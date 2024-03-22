@@ -297,12 +297,12 @@ const toggleMember = () => {
 
         <!-- 會員中心 -->
         <div class="absolute top-0 right-0 xl:relative w-[122px] h-16 xl:h-[92px] flex flex-col items-center justify-center group " :class="{'hidden':!loginStore.loggedIn}">
-          <div class="absolute top-0 py-1 flex flex-col items-center justify-center w-full h-full bg-section xl:bg-primary z-40" @click="toggleMember">
+          <div class="absolute top-0 py-1 flex flex-col items-center justify-center w-full h-full  z-40" @click="toggleMember">
             <img :src="loginStore.image" alt="" class="block w-[52px] h-[52px] rounded-xl object-cover">
             <div class="text-[10px] xl:text-base">{{ loginStore.id }}</div>
           </div>
-          <div class="absolute top-full w-full   transition-transform duration-300 z-30" :class="{'-translate-y-full':!memberOpen}">
-            <ul class="rounded-b-xl shadow border border-primary text-center ">
+          <div class="absolute top-full w-full  overflow-hidden  z-30">
+            <ul class="rounded-b-xl shadow border border-primary text-center  transition-transform duration-300" :class="{'-translate-y-full':!memberOpen}">
               <li class="hover:text-secondary bg-section border border-primary">
                 <NuxtLink to="/member" class="block py-2" @click="tabStore.selectedPage = 'listPage'; memberOpen=false">收藏庫</NuxtLink>
               </li>
