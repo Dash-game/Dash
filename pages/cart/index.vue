@@ -14,7 +14,11 @@
             price:2000,
             sale_price:1680
           },
-          platforms:["windows", "playstation","xbox"]
+          platforms:{
+            windows: true,
+            mac:true,
+            linux: true
+          }
         },
         {
           id:"A1",
@@ -25,7 +29,11 @@
             price:1500,
             sale_price:1080
           },
-          platforms:["windows", "playstation","xbox"]
+          platforms:{
+            windows: true,
+            mac:false,
+            linux: false
+          }
         },
         {
           id:"A3",
@@ -36,7 +44,11 @@
             price:1200,
             sale_price:1200
           },
-          platforms:["mac", "linux"]
+          platforms:{
+            windows: true,
+            mac:false,
+            linux: true
+          }
         },
         {
           id:"A4",
@@ -47,18 +59,14 @@
             price:1200,
             sale_price:1200
           },
-          platforms:["mac", "linux"]
+          platforms:{
+            windows: false,
+            mac:true,
+            linux: true
+          }
         }
       ]
     }
-  }
-
-  const platformList = {
-    playstation:"sony-playstation",
-    xbox:"microsoft-xbox",
-    windows:"microsoft-windows",
-    mac: "apple",
-    linux:  "linux"
   }
   
   getCart()
@@ -95,9 +103,9 @@
               
               <!-- platform -->
               <div class="flex h-7">
-                <div v-for="platform in item.platforms" :key="platform" :title="platform">
-                  <Icon :name="`mdi:${platformList[platform]}`" class="mr-1 sm:mr-3 text-16 sm:text-24"  />
-                </div>
+                <Icon v-show="item.platforms.windows" name="mdi:microsoft-windows" class="mr-1 sm:mr-3 text-16 sm:text-24"  />
+                <Icon v-show="item.platforms.mac" name="mdi:apple" class="mr-1 sm:mr-3 text-16 sm:text-24"  />
+                <Icon v-show="item.platforms.linux" name="mdi:linux" class="mr-1 sm:mr-3 text-16 sm:text-24"  />
               </div>
             </div >
 
