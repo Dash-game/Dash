@@ -1,4 +1,7 @@
 <script setup>
+definePageMeta({
+  layout: 'cart'
+})
   const { cartList,setItem }=useCart()
   const cartData = ref({})
   const getCart = () => {
